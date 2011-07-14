@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ENTURNADORModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ENTURNADORModelStoreContainer">
+          <EntitySet Name="CAMION" EntityType="ENTURNADORModel.Store.CAMION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="COLA" EntityType="ENTURNADORModel.Store.COLA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOG_AUTOMATICO" EntityType="ENTURNADORModel.Store.LOG_AUTOMATICO" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOG_ERROR" EntityType="ENTURNADORModel.Store.LOG_ERROR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LOG_MANUAL" EntityType="ENTURNADORModel.Store.LOG_MANUAL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NOTICIA" EntityType="ENTURNADORModel.Store.NOTICIA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="READER" EntityType="ENTURNADORModel.Store.READER" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ROL" EntityType="ENTURNADORModel.Store.ROL" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TIPO_CARGUE" EntityType="ENTURNADORModel.Store.TIPO_CARGUE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USUARIO" EntityType="ENTURNADORModel.Store.USUARIO" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CAMION_TIPO_CARGUE" Association="ENTURNADORModel.Store.FK_CAMION_TIPO_CARGUE">
+            <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
+            <End Role="CAMION" EntitySet="CAMION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLA_READER" Association="ENTURNADORModel.Store.FK_COLA_READER">
+            <End Role="READER" EntitySet="READER" />
+            <End Role="COLA" EntitySet="COLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLA_TIPO_CARGUE" Association="ENTURNADORModel.Store.FK_COLA_TIPO_CARGUE">
+            <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
+            <End Role="COLA" EntitySet="COLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_AUTOMATICO_CAMION" Association="ENTURNADORModel.Store.FK_LOG_AUTOMATICO_CAMION">
+            <End Role="CAMION" EntitySet="CAMION" />
+            <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_AUTOMATICO_READER" Association="ENTURNADORModel.Store.FK_LOG_AUTOMATICO_READER">
+            <End Role="READER" EntitySet="READER" />
+            <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_AUTOMATICO_TIPO_CARGUE" Association="ENTURNADORModel.Store.FK_LOG_AUTOMATICO_TIPO_CARGUE">
+            <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
+            <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_ERROR_USUARIO" Association="ENTURNADORModel.Store.FK_LOG_ERROR_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOG_ERROR" EntitySet="LOG_ERROR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_MANUAL_CAMION" Association="ENTURNADORModel.Store.FK_LOG_MANUAL_CAMION">
+            <End Role="CAMION" EntitySet="CAMION" />
+            <End Role="LOG_MANUAL" EntitySet="LOG_MANUAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_MANUAL_TIPO_CARGUE" Association="ENTURNADORModel.Store.FK_LOG_MANUAL_TIPO_CARGUE">
+            <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
+            <End Role="LOG_MANUAL" EntitySet="LOG_MANUAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_MANUAL_USUARIO" Association="ENTURNADORModel.Store.FK_LOG_MANUAL_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOG_MANUAL" EntitySet="LOG_MANUAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTICIA_USUARIO" Association="ENTURNADORModel.Store.FK_NOTICIA_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="NOTICIA" EntitySet="NOTICIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_ROL" Association="ENTURNADORModel.Store.FK_USUARIO_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CAMION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoCargue" Type="int" Nullable="false" />
+          <Property Name="placa" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="codigoRFID" Type="varchar" MaxLength="50" />
+          <Property Name="idModificador" Type="int" Nullable="false" />
+          <Property Name="fechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COLA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idReader" Type="int" Nullable="false" />
+          <Property Name="idTipoCargue" Type="int" Nullable="false" />
+          <Property Name="placa" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="hora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_AUTOMATICO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idReader" Type="int" Nullable="false" />
+          <Property Name="idTipoCargue" Type="int" Nullable="false" />
+          <Property Name="idCamion" Type="int" Nullable="false" />
+          <Property Name="puerta" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="codigoRFID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="hora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOG_ERROR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="mensaje" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="innerMensaje" Type="varchar" MaxLength="1000" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="clase" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="metodo" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOG_MANUAL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoCargue" Type="int" Nullable="false" />
+          <Property Name="idCamion" Type="int" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="hora" Type="datetime" Nullable="false" />
+          <Property Name="puerta" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NOTICIA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="noticia" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="idModifcador" Type="int" Nullable="false" />
+          <Property Name="fechaModificacion" Type="int" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="READER">
+          <Key>
+            <PropertyRef Name="idReader" />
+          </Key>
+          <Property Name="idReader" Type="int" Nullable="false" />
+          <Property Name="ip" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="puerta" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rol" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_CARGUE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tipoCargue" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="identificacion" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="login" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="clave" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="notas" Type="varchar" MaxLength="500" />
+          <Property Name="idModificador" Type="int" Nullable="false" />
+          <Property Name="fechaModificacion" Type="datetime" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CAMION_TIPO_CARGUE">
+          <End Role="TIPO_CARGUE" Type="ENTURNADORModel.Store.TIPO_CARGUE" Multiplicity="1" />
+          <End Role="CAMION" Type="ENTURNADORModel.Store.CAMION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CARGUE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CAMION">
+              <PropertyRef Name="idTipoCargue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLA_READER">
+          <End Role="READER" Type="ENTURNADORModel.Store.READER" Multiplicity="1" />
+          <End Role="COLA" Type="ENTURNADORModel.Store.COLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="READER">
+              <PropertyRef Name="idReader" />
+            </Principal>
+            <Dependent Role="COLA">
+              <PropertyRef Name="idReader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLA_TIPO_CARGUE">
+          <End Role="TIPO_CARGUE" Type="ENTURNADORModel.Store.TIPO_CARGUE" Multiplicity="1" />
+          <End Role="COLA" Type="ENTURNADORModel.Store.COLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CARGUE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="COLA">
+              <PropertyRef Name="idTipoCargue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_AUTOMATICO_CAMION">
+          <End Role="CAMION" Type="ENTURNADORModel.Store.CAMION" Multiplicity="1" />
+          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.Store.LOG_AUTOMATICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMION">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_AUTOMATICO">
+              <PropertyRef Name="idCamion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_AUTOMATICO_READER">
+          <End Role="READER" Type="ENTURNADORModel.Store.READER" Multiplicity="1" />
+          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.Store.LOG_AUTOMATICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="READER">
+              <PropertyRef Name="idReader" />
+            </Principal>
+            <Dependent Role="LOG_AUTOMATICO">
+              <PropertyRef Name="idReader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_AUTOMATICO_TIPO_CARGUE">
+          <End Role="TIPO_CARGUE" Type="ENTURNADORModel.Store.TIPO_CARGUE" Multiplicity="1" />
+          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.Store.LOG_AUTOMATICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CARGUE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_AUTOMATICO">
+              <PropertyRef Name="idTipoCargue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_ERROR_USUARIO">
+          <End Role="USUARIO" Type="ENTURNADORModel.Store.USUARIO" Multiplicity="1" />
+          <End Role="LOG_ERROR" Type="ENTURNADORModel.Store.LOG_ERROR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_ERROR">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_MANUAL_CAMION">
+          <End Role="CAMION" Type="ENTURNADORModel.Store.CAMION" Multiplicity="1" />
+          <End Role="LOG_MANUAL" Type="ENTURNADORModel.Store.LOG_MANUAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMION">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_MANUAL">
+              <PropertyRef Name="idCamion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_MANUAL_TIPO_CARGUE">
+          <End Role="TIPO_CARGUE" Type="ENTURNADORModel.Store.TIPO_CARGUE" Multiplicity="1" />
+          <End Role="LOG_MANUAL" Type="ENTURNADORModel.Store.LOG_MANUAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CARGUE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_MANUAL">
+              <PropertyRef Name="idTipoCargue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_MANUAL_USUARIO">
+          <End Role="USUARIO" Type="ENTURNADORModel.Store.USUARIO" Multiplicity="1" />
+          <End Role="LOG_MANUAL" Type="ENTURNADORModel.Store.LOG_MANUAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_MANUAL">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTICIA_USUARIO">
+          <End Role="USUARIO" Type="ENTURNADORModel.Store.USUARIO" Multiplicity="1" />
+          <End Role="NOTICIA" Type="ENTURNADORModel.Store.NOTICIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NOTICIA">
+              <PropertyRef Name="idModifcador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ROL">
+          <End Role="ROL" Type="ENTURNADORModel.Store.ROL" Multiplicity="1" />
+          <End Role="USUARIO" Type="ENTURNADORModel.Store.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ENTURNADORModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ENTURNADOREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CAMION" EntityType="ENTURNADORModel.CAMION" />
+          <EntitySet Name="COLA" EntityType="ENTURNADORModel.COLA" />
+          <EntitySet Name="LOG_AUTOMATICO" EntityType="ENTURNADORModel.LOG_AUTOMATICO" />
+          <EntitySet Name="LOG_ERROR" EntityType="ENTURNADORModel.LOG_ERROR" />
+          <EntitySet Name="LOG_MANUAL" EntityType="ENTURNADORModel.LOG_MANUAL" />
+          <EntitySet Name="NOTICIA" EntityType="ENTURNADORModel.NOTICIA" />
+          <EntitySet Name="READER" EntityType="ENTURNADORModel.READER" />
+          <EntitySet Name="ROL" EntityType="ENTURNADORModel.ROL" />
+          <EntitySet Name="TIPO_CARGUE" EntityType="ENTURNADORModel.TIPO_CARGUE" />
+          <EntitySet Name="USUARIO" EntityType="ENTURNADORModel.USUARIO" />
+          <AssociationSet Name="FK_CAMION_TIPO_CARGUE" Association="ENTURNADORModel.FK_CAMION_TIPO_CARGUE">
+            <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
+            <End Role="CAMION" EntitySet="CAMION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_AUTOMATICO_CAMION" Association="ENTURNADORModel.FK_LOG_AUTOMATICO_CAMION">
+            <End Role="CAMION" EntitySet="CAMION" />
+            <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_MANUAL_CAMION" Association="ENTURNADORModel.FK_LOG_MANUAL_CAMION">
+            <End Role="CAMION" EntitySet="CAMION" />
+            <End Role="LOG_MANUAL" EntitySet="LOG_MANUAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLA_READER" Association="ENTURNADORModel.FK_COLA_READER">
+            <End Role="READER" EntitySet="READER" />
+            <End Role="COLA" EntitySet="COLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COLA_TIPO_CARGUE" Association="ENTURNADORModel.FK_COLA_TIPO_CARGUE">
+            <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
+            <End Role="COLA" EntitySet="COLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_AUTOMATICO_READER" Association="ENTURNADORModel.FK_LOG_AUTOMATICO_READER">
+            <End Role="READER" EntitySet="READER" />
+            <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_AUTOMATICO_TIPO_CARGUE" Association="ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE">
+            <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
+            <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_ERROR_USUARIO" Association="ENTURNADORModel.FK_LOG_ERROR_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOG_ERROR" EntitySet="LOG_ERROR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_MANUAL_TIPO_CARGUE" Association="ENTURNADORModel.FK_LOG_MANUAL_TIPO_CARGUE">
+            <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
+            <End Role="LOG_MANUAL" EntitySet="LOG_MANUAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_MANUAL_USUARIO" Association="ENTURNADORModel.FK_LOG_MANUAL_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOG_MANUAL" EntitySet="LOG_MANUAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NOTICIA_USUARIO" Association="ENTURNADORModel.FK_NOTICIA_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="NOTICIA" EntitySet="NOTICIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_ROL" Association="ENTURNADORModel.FK_USUARIO_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CAMION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoCargue" Type="Int32" Nullable="false" />
+          <Property Name="placa" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="codigoRFID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idModificador" Type="Int32" Nullable="false" />
+          <Property Name="fechaModificacion" Type="DateTime" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TIPO_CARGUE" Relationship="ENTURNADORModel.FK_CAMION_TIPO_CARGUE" FromRole="CAMION" ToRole="TIPO_CARGUE" />
+          <NavigationProperty Name="LOG_AUTOMATICO" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_CAMION" FromRole="CAMION" ToRole="LOG_AUTOMATICO" />
+          <NavigationProperty Name="LOG_MANUAL" Relationship="ENTURNADORModel.FK_LOG_MANUAL_CAMION" FromRole="CAMION" ToRole="LOG_MANUAL" />
+        </EntityType>
+        <EntityType Name="COLA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idReader" Type="Int32" Nullable="false" />
+          <Property Name="idTipoCargue" Type="Int32" Nullable="false" />
+          <Property Name="placa" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="hora" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="READER" Relationship="ENTURNADORModel.FK_COLA_READER" FromRole="COLA" ToRole="READER" />
+          <NavigationProperty Name="TIPO_CARGUE" Relationship="ENTURNADORModel.FK_COLA_TIPO_CARGUE" FromRole="COLA" ToRole="TIPO_CARGUE" />
+        </EntityType>
+        <EntityType Name="LOG_AUTOMATICO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idReader" Type="Int32" Nullable="false" />
+          <Property Name="idTipoCargue" Type="Int32" Nullable="false" />
+          <Property Name="idCamion" Type="Int32" Nullable="false" />
+          <Property Name="puerta" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="codigoRFID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="hora" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CAMION" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_CAMION" FromRole="LOG_AUTOMATICO" ToRole="CAMION" />
+          <NavigationProperty Name="READER" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_READER" FromRole="LOG_AUTOMATICO" ToRole="READER" />
+          <NavigationProperty Name="TIPO_CARGUE" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE" FromRole="LOG_AUTOMATICO" ToRole="TIPO_CARGUE" />
+        </EntityType>
+        <EntityType Name="LOG_ERROR">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mensaje" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="innerMensaje" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="clase" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="metodo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="USUARIO" Relationship="ENTURNADORModel.FK_LOG_ERROR_USUARIO" FromRole="LOG_ERROR" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="LOG_MANUAL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoCargue" Type="Int32" Nullable="false" />
+          <Property Name="idCamion" Type="Int32" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="hora" Type="DateTime" Nullable="false" />
+          <Property Name="puerta" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CAMION" Relationship="ENTURNADORModel.FK_LOG_MANUAL_CAMION" FromRole="LOG_MANUAL" ToRole="CAMION" />
+          <NavigationProperty Name="TIPO_CARGUE" Relationship="ENTURNADORModel.FK_LOG_MANUAL_TIPO_CARGUE" FromRole="LOG_MANUAL" ToRole="TIPO_CARGUE" />
+          <NavigationProperty Name="USUARIO" Relationship="ENTURNADORModel.FK_LOG_MANUAL_USUARIO" FromRole="LOG_MANUAL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="NOTICIA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noticia1" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="idModifcador" Type="Int32" Nullable="false" />
+          <Property Name="fechaModificacion" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="ENTURNADORModel.FK_NOTICIA_USUARIO" FromRole="NOTICIA" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="READER">
+          <Key>
+            <PropertyRef Name="idReader" />
+          </Key>
+          <Property Name="idReader" Type="Int32" Nullable="false" />
+          <Property Name="ip" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="puerta" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="COLA" Relationship="ENTURNADORModel.FK_COLA_READER" FromRole="READER" ToRole="COLA" />
+          <NavigationProperty Name="LOG_AUTOMATICO" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_READER" FromRole="READER" ToRole="LOG_AUTOMATICO" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rol1" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="USUARIO" Relationship="ENTURNADORModel.FK_USUARIO_ROL" FromRole="ROL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="TIPO_CARGUE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoCargue" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CAMION" Relationship="ENTURNADORModel.FK_CAMION_TIPO_CARGUE" FromRole="TIPO_CARGUE" ToRole="CAMION" />
+          <NavigationProperty Name="COLA" Relationship="ENTURNADORModel.FK_COLA_TIPO_CARGUE" FromRole="TIPO_CARGUE" ToRole="COLA" />
+          <NavigationProperty Name="LOG_AUTOMATICO" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE" FromRole="TIPO_CARGUE" ToRole="LOG_AUTOMATICO" />
+          <NavigationProperty Name="LOG_MANUAL" Relationship="ENTURNADORModel.FK_LOG_MANUAL_TIPO_CARGUE" FromRole="TIPO_CARGUE" ToRole="LOG_MANUAL" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="identificacion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="clave" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="notas" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="idModificador" Type="Int32" Nullable="false" />
+          <Property Name="fechaModificacion" Type="DateTime" Nullable="false" />
+          <Property Name="activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LOG_ERROR" Relationship="ENTURNADORModel.FK_LOG_ERROR_USUARIO" FromRole="USUARIO" ToRole="LOG_ERROR" />
+          <NavigationProperty Name="LOG_MANUAL" Relationship="ENTURNADORModel.FK_LOG_MANUAL_USUARIO" FromRole="USUARIO" ToRole="LOG_MANUAL" />
+          <NavigationProperty Name="NOTICIA" Relationship="ENTURNADORModel.FK_NOTICIA_USUARIO" FromRole="USUARIO" ToRole="NOTICIA" />
+          <NavigationProperty Name="ROL" Relationship="ENTURNADORModel.FK_USUARIO_ROL" FromRole="USUARIO" ToRole="ROL" />
+        </EntityType>
+        <Association Name="FK_CAMION_TIPO_CARGUE">
+          <End Role="TIPO_CARGUE" Type="ENTURNADORModel.TIPO_CARGUE" Multiplicity="1" />
+          <End Role="CAMION" Type="ENTURNADORModel.CAMION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CARGUE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CAMION">
+              <PropertyRef Name="idTipoCargue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_AUTOMATICO_CAMION">
+          <End Role="CAMION" Type="ENTURNADORModel.CAMION" Multiplicity="1" />
+          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.LOG_AUTOMATICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMION">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_AUTOMATICO">
+              <PropertyRef Name="idCamion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_MANUAL_CAMION">
+          <End Role="CAMION" Type="ENTURNADORModel.CAMION" Multiplicity="1" />
+          <End Role="LOG_MANUAL" Type="ENTURNADORModel.LOG_MANUAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAMION">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_MANUAL">
+              <PropertyRef Name="idCamion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLA_READER">
+          <End Role="READER" Type="ENTURNADORModel.READER" Multiplicity="1" />
+          <End Role="COLA" Type="ENTURNADORModel.COLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="READER">
+              <PropertyRef Name="idReader" />
+            </Principal>
+            <Dependent Role="COLA">
+              <PropertyRef Name="idReader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COLA_TIPO_CARGUE">
+          <End Role="TIPO_CARGUE" Type="ENTURNADORModel.TIPO_CARGUE" Multiplicity="1" />
+          <End Role="COLA" Type="ENTURNADORModel.COLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CARGUE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="COLA">
+              <PropertyRef Name="idTipoCargue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_AUTOMATICO_READER">
+          <End Role="READER" Type="ENTURNADORModel.READER" Multiplicity="1" />
+          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.LOG_AUTOMATICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="READER">
+              <PropertyRef Name="idReader" />
+            </Principal>
+            <Dependent Role="LOG_AUTOMATICO">
+              <PropertyRef Name="idReader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_AUTOMATICO_TIPO_CARGUE">
+          <End Role="TIPO_CARGUE" Type="ENTURNADORModel.TIPO_CARGUE" Multiplicity="1" />
+          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.LOG_AUTOMATICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CARGUE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_AUTOMATICO">
+              <PropertyRef Name="idTipoCargue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_ERROR_USUARIO">
+          <End Role="USUARIO" Type="ENTURNADORModel.USUARIO" Multiplicity="1" />
+          <End Role="LOG_ERROR" Type="ENTURNADORModel.LOG_ERROR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_ERROR">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_MANUAL_TIPO_CARGUE">
+          <End Role="TIPO_CARGUE" Type="ENTURNADORModel.TIPO_CARGUE" Multiplicity="1" />
+          <End Role="LOG_MANUAL" Type="ENTURNADORModel.LOG_MANUAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_CARGUE">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_MANUAL">
+              <PropertyRef Name="idTipoCargue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_MANUAL_USUARIO">
+          <End Role="USUARIO" Type="ENTURNADORModel.USUARIO" Multiplicity="1" />
+          <End Role="LOG_MANUAL" Type="ENTURNADORModel.LOG_MANUAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_MANUAL">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NOTICIA_USUARIO">
+          <End Role="USUARIO" Type="ENTURNADORModel.USUARIO" Multiplicity="1" />
+          <End Role="NOTICIA" Type="ENTURNADORModel.NOTICIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NOTICIA">
+              <PropertyRef Name="idModifcador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ROL">
+          <End Role="ROL" Type="ENTURNADORModel.ROL" Multiplicity="1" />
+          <End Role="USUARIO" Type="ENTURNADORModel.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ENTURNADORModelStoreContainer" CdmEntityContainer="ENTURNADOREntities">
+          <EntitySetMapping Name="CAMION"><EntityTypeMapping TypeName="ENTURNADORModel.CAMION"><MappingFragment StoreEntitySet="CAMION">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="idTipoCargue" ColumnName="idTipoCargue" />
+            <ScalarProperty Name="placa" ColumnName="placa" />
+            <ScalarProperty Name="codigoRFID" ColumnName="codigoRFID" />
+            <ScalarProperty Name="idModificador" ColumnName="idModificador" />
+            <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+            <ScalarProperty Name="activo" ColumnName="activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="COLA"><EntityTypeMapping TypeName="ENTURNADORModel.COLA"><MappingFragment StoreEntitySet="COLA">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="idReader" ColumnName="idReader" />
+            <ScalarProperty Name="idTipoCargue" ColumnName="idTipoCargue" />
+            <ScalarProperty Name="placa" ColumnName="placa" />
+            <ScalarProperty Name="hora" ColumnName="hora" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LOG_AUTOMATICO"><EntityTypeMapping TypeName="ENTURNADORModel.LOG_AUTOMATICO"><MappingFragment StoreEntitySet="LOG_AUTOMATICO">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="idReader" ColumnName="idReader" />
+            <ScalarProperty Name="idTipoCargue" ColumnName="idTipoCargue" />
+            <ScalarProperty Name="idCamion" ColumnName="idCamion" />
+            <ScalarProperty Name="puerta" ColumnName="puerta" />
+            <ScalarProperty Name="codigoRFID" ColumnName="codigoRFID" />
+            <ScalarProperty Name="hora" ColumnName="hora" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LOG_ERROR"><EntityTypeMapping TypeName="ENTURNADORModel.LOG_ERROR"><MappingFragment StoreEntitySet="LOG_ERROR">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+            <ScalarProperty Name="innerMensaje" ColumnName="innerMensaje" />
+            <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+            <ScalarProperty Name="fecha" ColumnName="fecha" />
+            <ScalarProperty Name="clase" ColumnName="clase" />
+            <ScalarProperty Name="metodo" ColumnName="metodo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LOG_MANUAL"><EntityTypeMapping TypeName="ENTURNADORModel.LOG_MANUAL"><MappingFragment StoreEntitySet="LOG_MANUAL">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="idTipoCargue" ColumnName="idTipoCargue" />
+            <ScalarProperty Name="idCamion" ColumnName="idCamion" />
+            <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+            <ScalarProperty Name="hora" ColumnName="hora" />
+            <ScalarProperty Name="puerta" ColumnName="puerta" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="NOTICIA"><EntityTypeMapping TypeName="ENTURNADORModel.NOTICIA"><MappingFragment StoreEntitySet="NOTICIA">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="noticia1" ColumnName="noticia" />
+            <ScalarProperty Name="idModifcador" ColumnName="idModifcador" />
+            <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+            <ScalarProperty Name="activo" ColumnName="activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="READER"><EntityTypeMapping TypeName="ENTURNADORModel.READER"><MappingFragment StoreEntitySet="READER">
+            <ScalarProperty Name="idReader" ColumnName="idReader" />
+            <ScalarProperty Name="ip" ColumnName="ip" />
+            <ScalarProperty Name="puerta" ColumnName="puerta" />
+            <ScalarProperty Name="activo" ColumnName="activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ROL"><EntityTypeMapping TypeName="ENTURNADORModel.ROL"><MappingFragment StoreEntitySet="ROL">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="rol1" ColumnName="rol" />
+            <ScalarProperty Name="activo" ColumnName="activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="TIPO_CARGUE"><EntityTypeMapping TypeName="ENTURNADORModel.TIPO_CARGUE"><MappingFragment StoreEntitySet="TIPO_CARGUE">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="tipoCargue" ColumnName="tipoCargue" />
+            <ScalarProperty Name="activo" ColumnName="activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="USUARIO"><EntityTypeMapping TypeName="ENTURNADORModel.USUARIO"><MappingFragment StoreEntitySet="USUARIO">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="idRol" ColumnName="idRol" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+            <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+            <ScalarProperty Name="login" ColumnName="login" />
+            <ScalarProperty Name="clave" ColumnName="clave" />
+            <ScalarProperty Name="notas" ColumnName="notas" />
+            <ScalarProperty Name="idModificador" ColumnName="idModificador" />
+            <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
+            <ScalarProperty Name="activo" ColumnName="activo" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="ENTURNADORModel.CAMION" Width="1.5" PointX="6" PointY="4.125" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.COLA" Width="1.5" PointX="6" PointY="0.75" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.LOG_AUTOMATICO" Width="1.5" PointX="8.25" PointY="4.125" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.LOG_ERROR" Width="1.5" PointX="5.25" PointY="7.875" Height="2.5571907552083308" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.LOG_MANUAL" Width="1.5" PointX="8.25" PointY="9.25" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.NOTICIA" Width="1.5" PointX="5.25" PointY="14.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.READER" Width="1.5" PointX="3.75" PointY="17.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.ROL" Width="1.5" PointX="0.75" PointY="9.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.TIPO_CARGUE" Width="1.5" PointX="3.75" PointY="4.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.USUARIO" Width="1.5" PointX="3" PointY="8.75" Height="3.7109993489583353" IsExpanded="true" />
+        <AssociationConnector Association="ENTURNADORModel.FK_CAMION_TIPO_CARGUE" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="5.9083968098958328" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="5.9083968098958319" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="5.9083968098958328" />
+          <ConnectorPoint PointX="6" PointY="5.9083968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_CAMION" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="5.5958968098958328" />
+          <ConnectorPoint PointX="8.25" PointY="5.5958968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_LOG_MANUAL_CAMION" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.15625" PointY="7.0667936197916656" />
+          <ConnectorPoint PointX="7.15625" PointY="11.247091471354166" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="11.247091471354166" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="11.247091471354166" />
+          <ConnectorPoint PointX="8.25" PointY="11.247091471354166" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_COLA_READER" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="17.75" />
+          <ConnectorPoint PointX="4.5" PointY="12.710999348958335" />
+          <ConnectorPoint PointX="4.75" PointY="12.710999348958335" />
+          <ConnectorPoint PointX="4.75" PointY="7.3648893229166674" />
+          <ConnectorPoint PointX="5.5" PointY="7.3648893229166674" />
+          <ConnectorPoint PointX="5.5" PointY="1.9324446614583328" />
+          <ConnectorPoint PointX="6" PointY="1.9324446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_COLA_TIPO_CARGUE" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.75" />
+          <ConnectorPoint PointX="4.5" PointY="2.5549194921874991" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="2.5549194921874987" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="2.5549194921874991" />
+          <ConnectorPoint PointX="6" PointY="2.5549194921874991" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_READER" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="17.751152846153843" />
+          <ConnectorPoint PointX="5.6261528461538433" PointY="17.375" />
+          <ConnectorPoint PointX="7.875" PointY="17.375" />
+          <ConnectorPoint PointX="7.875" PointY="7.4417936197916656" />
+          <ConnectorPoint PointX="8.25" PointY="7.0667936197916656" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="4.75" />
+          <ConnectorPoint PointX="5.4410744349011209" PointY="4.5589255650988783" />
+          <ConnectorPoint PointX="5.5589255650988791" PointY="4.4410744349011209" />
+          <ConnectorPoint PointX="5.625" PointY="4.375" />
+          <ConnectorPoint PointX="5.625" PointY="3.75" />
+          <ConnectorPoint PointX="7.875" PointY="3.75" />
+          <ConnectorPoint PointX="8.25" PointY="4.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_LOG_ERROR_USUARIO" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.5910953776041659" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="9.5910953776041659" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="9.5910953776041659" />
+          <ConnectorPoint PointX="5.25" PointY="9.5910953776041659" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_LOG_MANUAL_TIPO_CARGUE" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="7.1148893229166674" />
+          <ConnectorPoint PointX="5.625" PointY="7.4898893229166674" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="7.4898893229166665" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="7.4898893229166674" />
+          <ConnectorPoint PointX="9" PointY="7.4898893229166674" />
+          <ConnectorPoint PointX="9" PointY="9.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_LOG_MANUAL_USUARIO" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="7.791666666666667" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="7.958333333333333" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="8.25" PointY="10.80839111328125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_NOTICIA_USUARIO" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.75" PointY="12.460999348958335" />
+          <ConnectorPoint PointX="3.75" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="4.416666666666667" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="4.583333333333333" PointY="15.8362939453125" />
+          <ConnectorPoint PointX="5.25" PointY="15.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_USUARIO_ROL" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="10.643992513020834" />
+          <ConnectorPoint PointX="3" PointY="10.643992513020834" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
