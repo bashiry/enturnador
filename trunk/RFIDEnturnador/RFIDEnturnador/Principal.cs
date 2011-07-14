@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace RFIDEnturnador
 {
-    public partial class Form1 : Form
+    public partial class Principal : Form
     {
-        public Form1()
+        public Principal()
         {
             InitializeComponent();
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+            this.Controls[this.Controls.Count - 1].BackColor = System.Drawing.Color.WhiteSmoke;
         }
     }
 }
