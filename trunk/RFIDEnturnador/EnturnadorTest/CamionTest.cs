@@ -124,15 +124,5 @@ namespace EnturnadorTest
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
-        /// <summary>
-        ///A test for GetAll
-        ///</summary>
-        [TestMethod()]
-        public void GetAllTest()
-        {
-            Camion target = new Camion(); 
-            List<CAMION> actual = target.GetAll();            
-            Assert.AreEqual("ABC123", actual[0].placa);
-        }
     }
 }

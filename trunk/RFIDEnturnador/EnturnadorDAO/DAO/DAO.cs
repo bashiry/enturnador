@@ -129,26 +129,23 @@ namespace EnturnadorDAO.DAO
             this._ent.SaveChanges();
         }
 
-
-        #region "Get"
+        #region "Listas"
 
         /// <summary>
-        /// Retorna camiones activos
+        /// Retorna lista de tipos de cargue
         /// </summary>
         /// <returns></returns>
-        public List<CAMION> GetCamiones()
+        public List<TIPO_CARGUE> GetListaTipoCargue()
         {
-            var q = from c in this._ent.CAMION
-                    where c.activo == true
-                    orderby c.placa
-                    select c;
+            var q = from t in this._ent.TIPO_CARGUE
+                    where t.activo == true
+                    orderby t.tipoCargue
+                    select t;
 
             return q.ToList();
         }
 
         #endregion
-
-
 
     }
 }

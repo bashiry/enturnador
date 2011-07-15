@@ -40,6 +40,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\Camiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\Camiones.Designer.cs">
+      <DependentUpon>Camiones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +65,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="admin\Camiones.resx">
+      <DependentUpon>Camiones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -71,6 +81,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,6 +124,43 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnturnadorDAO\EnturnadorDAO.csproj">
+      <Project>{D027DB5B-F485-498A-BAA2-F506A4B128C7}</Project>
+      <Name>EnturnadorDAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnturnadorLIB\EnturnadorLIB.csproj">
+      <Project>{6D2FF4FC-DD7E-4050-A0A9-E5CCAC7528EA}</Project>
+      <Name>EnturnadorLIB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agregar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancelar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chulo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eliminar.GIF" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_save.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewFolder.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xpLens.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

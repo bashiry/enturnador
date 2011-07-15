@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using EnturnadorDAO.Utilidades;
 
 namespace EnturnadorDAO.DAO
@@ -23,6 +24,30 @@ namespace EnturnadorDAO.DAO
         {
             this._ent = new ENTURNADOREntities();
         }
+
+        /// <summary>
+        /// Retorna camiones activos
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetCamiones()
+        {
+            var q = from c in this._ent.CAMION
+                    join t in this._ent.TIPO_CARGUE on c.idTipoCargue equals t.id
+                    where c.activo == true
+                    orderby c.placa
+                    select new
+                    {
+                        id = c.id,
+                        idTipoCargue = c.idTipoCargue,
+                        placa = c.placa,
+                        codigoRFID = c.codigoRFID,
+                        tipoCargue = t.tipoCargue
+                    };
+
+            return Utilidades.DAOUtil.ToDataTable(q);
+        }
+
+
 
         /// <summary>
         /// Retorna un camión dada una placa

@@ -15,10 +15,12 @@ namespace EnturnadorLIB.Enturnador
         /// Objeto que provee el acceso a datos generico
         /// </summary>
         private EnturnadorDAO.DAO.DAO objDAO;
+        private EnturnadorDAO.DAO.CamionDAO objCamionDAO;
 
         public Camion()
         {
             this.objDAO = new EnturnadorDAO.DAO.DAO();
+            this.objCamionDAO = new EnturnadorDAO.DAO.CamionDAO();
         }
 
         /// <summary>
@@ -33,11 +35,10 @@ namespace EnturnadorLIB.Enturnador
                 throw new Exception("El camión no puede ser null");
 
             //Se valida que no exista ya un camión con la misma placa o codigo rfid
-            string validacion = "";
-            EnturnadorDAO.DAO.CamionDAO objCamionDAO = new EnturnadorDAO.DAO.CamionDAO();
-            if (objCamionDAO.GetCamionByPlaca(camion.placa) != null)
+            string validacion = "";            
+            if (this.objCamionDAO.GetCamionByPlaca(camion.placa) != null)
                 validacion += "- Ya existe un camión con la placa '" + camion.placa + "'\n";
-            if (objCamionDAO.GetCamionByRFID(camion.codigoRFID) != null)
+            if (this.objCamionDAO.GetCamionByRFID(camion.codigoRFID) != null)
                 validacion += "- Ya existe un camión con el código RFID leído\n";
 
             //No se superaron las validaciones, se lanza error
@@ -62,10 +63,9 @@ namespace EnturnadorLIB.Enturnador
 
             //Se valida que no exista otro camión con la misma placa o codigo rfid
             string validacion = "";
-            EnturnadorDAO.DAO.CamionDAO objCamionDAO = new EnturnadorDAO.DAO.CamionDAO();
-
-            CAMION cam1 = objCamionDAO.GetCamionByPlaca(camion.placa);
-            CAMION cam2 = objCamionDAO.GetCamionByRFID(camion.codigoRFID);
+            
+            CAMION cam1 = this.objCamionDAO.GetCamionByPlaca(camion.placa);
+            CAMION cam2 = this.objCamionDAO.GetCamionByRFID(camion.codigoRFID);
 
             if (cam1 != null)
             { 
@@ -103,12 +103,22 @@ namespace EnturnadorLIB.Enturnador
         }
 
         /// <summary>
+        /// Retorna una camión dado su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public CAMION GetById(int id)
+        {
+            return (CAMION)this.objDAO.GetEntidadById(Enumeraciones.Entidad.CAMION, id);
+        }
+
+        /// <summary>
         /// Retorna una lista de todos los camiones activos
         /// </summary>
         /// <returns></returns>
-        public List<CAMION> GetAll()
+        public DataTable GetAll()
         {
-            return this.objDAO.GetCamiones();            
+            return this.objCamionDAO.GetCamiones();
         }
 
     }
