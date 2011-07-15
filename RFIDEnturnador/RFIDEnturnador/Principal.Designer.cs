@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.panelPrincipal = new System.Windows.Forms.Panel();
-            this.panelLeft = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnMonitor = new System.Windows.Forms.Button();
             this.btnEnturnar = new System.Windows.Forms.Button();
             this.btnAdminReaders = new System.Windows.Forms.Button();
             this.btnAdminUsuarios = new System.Windows.Forms.Button();
             this.btnAdminNoticia = new System.Windows.Forms.Button();
             this.btnAdminCamiones = new System.Windows.Forms.Button();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnMonitor = new System.Windows.Forms.Button();
             this.panelPrincipal.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,30 +63,17 @@
             this.panelPrincipal.Size = new System.Drawing.Size(1008, 557);
             this.panelPrincipal.TabIndex = 1;
             // 
-            // panelLeft
+            // btnMonitor
             // 
-            this.panelLeft.BackColor = System.Drawing.Color.White;
-            this.panelLeft.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelLeft.Controls.Add(this.label1);
-            this.panelLeft.Controls.Add(this.pictureBox1);
-            this.panelLeft.Controls.Add(this.pictureBox3);
-            this.panelLeft.Controls.Add(this.pictureBox2);
-            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(418, 557);
-            this.panelLeft.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label1.Location = new System.Drawing.Point(25, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(358, 29);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Enturnador de camiones RFID";
+            this.btnMonitor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMonitor.Image = global::RFIDEnturnador.Properties.Resources.monitor;
+            this.btnMonitor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMonitor.Location = new System.Drawing.Point(456, 421);
+            this.btnMonitor.Name = "btnMonitor";
+            this.btnMonitor.Size = new System.Drawing.Size(241, 68);
+            this.btnMonitor.TabIndex = 6;
+            this.btnMonitor.Text = "Ver colas";
+            this.btnMonitor.UseVisualStyleBackColor = true;
             // 
             // btnEnturnar
             // 
@@ -149,6 +136,32 @@
             this.btnAdminCamiones.Text = "              Camiones";
             this.btnAdminCamiones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdminCamiones.UseVisualStyleBackColor = true;
+            this.btnAdminCamiones.Click += new System.EventHandler(this.btnAdminCamiones_Click);
+            // 
+            // panelLeft
+            // 
+            this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelLeft.Controls.Add(this.label1);
+            this.panelLeft.Controls.Add(this.pictureBox1);
+            this.panelLeft.Controls.Add(this.pictureBox3);
+            this.panelLeft.Controls.Add(this.pictureBox2);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(418, 557);
+            this.panelLeft.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label1.Location = new System.Drawing.Point(25, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(358, 29);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Enturnador de camiones RFID";
             // 
             // pictureBox1
             // 
@@ -179,18 +192,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-            // 
-            // btnMonitor
-            // 
-            this.btnMonitor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMonitor.Image = global::RFIDEnturnador.Properties.Resources.monitor;
-            this.btnMonitor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMonitor.Location = new System.Drawing.Point(456, 421);
-            this.btnMonitor.Name = "btnMonitor";
-            this.btnMonitor.Size = new System.Drawing.Size(241, 68);
-            this.btnMonitor.TabIndex = 6;
-            this.btnMonitor.Text = "Ver colas";
-            this.btnMonitor.UseVisualStyleBackColor = true;
             // 
             // Principal
             // 

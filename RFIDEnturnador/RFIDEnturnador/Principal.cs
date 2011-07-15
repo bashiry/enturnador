@@ -20,5 +20,11 @@ namespace RFIDEnturnador
         {
             this.Controls[this.Controls.Count - 1].BackColor = System.Drawing.Color.WhiteSmoke;
         }
+
+        private void btnAdminCamiones_Click(object sender, EventArgs e)
+        {
+            Form form = new admin.Camiones();
+            form.Show();
+        }
     }
 }
