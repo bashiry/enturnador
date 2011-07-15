@@ -13,7 +13,7 @@ namespace EnturnadorDAO.Utilidades
     /// <summary>
     /// Clase con métodos utilitarios
     /// </summary>
-    public class DAOUtil
+    public static class DAOUtil
     {
 
         /// <summary>

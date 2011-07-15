@@ -38,8 +38,8 @@ namespace EnturnadorDAO.DAO
         /// <param name="obj">objeto que se recibe y se inserta en la DB</param>
         /// <param name="idUsuario">Si no se requiere usuario se puede recibir null</param>
         /// <returns>retorno del id delregistro insertado</returns>
-        public int Crear(Enumeraciones.Entidad entidad, EntityObject obj, int? idUsuario)
-        {
+        public int Crear(Enumeraciones.Entidad entidad, EntityObject obj)
+        {            
             this._ent.AddObject(entidad.ToString(), obj);
             this._ent.SaveChanges();
 
@@ -49,7 +49,7 @@ namespace EnturnadorDAO.DAO
             if (obj.EntityKey.EntityKeyValues.Count() == 1)
                 return Convert.ToInt32(obj.EntityKey.EntityKeyValues[0].Value.ToString());
             else
-                return 0;
+                return 0;            
         }
 
         /// <summary>
