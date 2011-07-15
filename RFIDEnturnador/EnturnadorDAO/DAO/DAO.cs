@@ -31,6 +31,7 @@ namespace EnturnadorDAO.DAO
             this._ent = new ENTURNADOREntities();
         }
 
+       
         /// <summary>
         /// Persiste en la base de datos el objeto que le llega y retorna el id del registro recien creado
         /// </summary>
@@ -39,7 +40,7 @@ namespace EnturnadorDAO.DAO
         /// <param name="idUsuario">Si no se requiere usuario se puede recibir null</param>
         /// <returns>retorno del id delregistro insertado</returns>
         public int Crear(Enumeraciones.Entidad entidad, EntityObject obj)
-        {            
+        {          
             this._ent.AddObject(entidad.ToString(), obj);
             this._ent.SaveChanges();
 
@@ -127,6 +128,25 @@ namespace EnturnadorDAO.DAO
             this._ent.AddToLOG_ERROR(objError);
             this._ent.SaveChanges();
         }
+
+
+        #region "Get"
+
+        /// <summary>
+        /// Retorna camiones activos
+        /// </summary>
+        /// <returns></returns>
+        public List<CAMION> GetCamiones()
+        {
+            var q = from c in this._ent.CAMION
+                    where c.activo == true
+                    orderby c.placa
+                    select c;
+
+            return q.ToList();
+        }
+
+        #endregion
 
 
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.Objects.DataClasses;
+using System.Data.Objects;
 using EnturnadorDAO;
 
 namespace EnturnadorLIB.Enturnador
@@ -30,6 +32,18 @@ namespace EnturnadorLIB.Enturnador
             if (camion == null)
                 throw new Exception("El camión no puede ser null");
 
+            //Se valida que no exista ya un camión con la misma placa o codigo rfid
+            string validacion = "";
+            EnturnadorDAO.DAO.CamionDAO objCamionDAO = new EnturnadorDAO.DAO.CamionDAO();
+            if (objCamionDAO.GetCamionByPlaca(camion.placa) != null)
+                validacion += "- Ya existe un camión con la placa '" + camion.placa + "'\n";
+            if (objCamionDAO.GetCamionByRFID(camion.codigoRFID) != null)
+                validacion += "- Ya existe un camión con el código RFID leído\n";
+
+            //No se superaron las validaciones, se lanza error
+            if (validacion.Length > 0)            
+                throw new Exception(validacion);             
+
             camion.idModificador = idUsuario;
             camion.fechaModificacion = DateTime.Now;
             camion.activo = true;            
@@ -45,6 +59,28 @@ namespace EnturnadorLIB.Enturnador
         {
             if (camion == null)
                 throw new Exception("El camión no puede ser null");
+
+            //Se valida que no exista otro camión con la misma placa o codigo rfid
+            string validacion = "";
+            EnturnadorDAO.DAO.CamionDAO objCamionDAO = new EnturnadorDAO.DAO.CamionDAO();
+
+            CAMION cam1 = objCamionDAO.GetCamionByPlaca(camion.placa);
+            CAMION cam2 = objCamionDAO.GetCamionByRFID(camion.codigoRFID);
+
+            if (cam1 != null)
+            { 
+                if(cam1.id != camion.id)
+                    validacion += "- Ya existe un camión con la placa '" + camion.placa + "'\n";
+            }
+            if (cam2 != null)
+            {
+                if (cam2.codigoRFID != camion.codigoRFID)
+                    validacion += "- Ya existe un camión con el código RFID leído\n";
+            }
+
+            //No se superaron las validaciones, se lanza error
+            if (validacion.Length > 0)
+                throw new Exception(validacion);             
 
             camion.idModificador = idUsuario;
             camion.fechaModificacion = DateTime.Now;
@@ -64,6 +100,15 @@ namespace EnturnadorLIB.Enturnador
             camion.idModificador = idUsuario;
 
             this.objDAO.Actualizar(Enumeraciones.Entidad.CAMION, camion, camion.id, idUsuario);
+        }
+
+        /// <summary>
+        /// Retorna una lista de todos los camiones activos
+        /// </summary>
+        /// <returns></returns>
+        public List<CAMION> GetAll()
+        {
+            return this.objDAO.GetCamiones();            
         }
 
     }
