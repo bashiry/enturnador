@@ -57,6 +57,7 @@
     <Compile Include="admin\Camiones.Designer.cs">
       <DependentUpon>Camiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>

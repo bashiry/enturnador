@@ -47,9 +47,10 @@ namespace RFIDEnturnador.admin
             this.grdCamiones.DataSource = dtCamiones;
 
             this.grdCamiones.Columns["PLACA"].Width = 130;
-            this.grdCamiones.Columns["TIPOCARGUE"].Width = 250;
+            this.grdCamiones.Columns["TIPOCARGUE"].Width = 200;
             this.grdCamiones.Columns["EDITAR"].Width = 95;
             this.grdCamiones.Columns["ELIMINAR"].Width = 95;
+            this.grdCamiones.Columns["TIPOCARGUE"].HeaderText = "TIPO CARGUE";
         }
 
         private void LlenarComboTipoCargue()
@@ -111,18 +112,74 @@ namespace RFIDEnturnador.admin
         }
 
         private void Eliminar()
-        { 
-        
+        {
+            if (MessageBox.Show("¿Realmente desea eliminar este camión?", "Eliminar camión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.objCamion.Eliminar(this.idCamion, RFIDEnturnador.CGlobal.IdUsuario);
+                this.GetCamiones();
+            }
         }
 
+        /// <summary>
+        /// Valida los datos para la creacion de un camion
+        /// </summary>
+        /// <returns></returns>
         private bool Validar()
         {
+            string mensaje = string.Empty;
+
+            if (this.txtPlaca.Text.Trim().Length == 0)
+                mensaje += "- La placa no puede quedar vacía\n";
+            else
+            { 
+                if(this.txtPlaca.Text.Length != 6)
+                    mensaje += "- La placa no puede tener espacios y debe tener 6 caracteres\n";
+            }
+
+            if (this.cboTipoCargue.SelectedIndex == 0)
+                mensaje += "- Debe seleccionar el tipo de cargue\n";
+
+            if (mensaje.Length > 0)
+            {
+                MessageBox.Show("Por favor complete la siguiente información: \n" + mensaje, "Información incompleta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }            
+
             return true;
         }
 
         private void Guardar()
-        { 
-        
+        {
+            try
+            {
+                CAMION cam = new CAMION();
+                cam.codigoRFID = "";
+                cam.idTipoCargue = Convert.ToInt32(this.cboTipoCargue.SelectedValue);
+                cam.placa = this.txtPlaca.Text;
+                cam.codigoRFID = this.txtCodigoRFID.Text;
+                cam.activo = true;
+
+                //Si se esta creando el camion
+                if (this.idCamion == 0)
+                {
+                    this.objCamion.Crear(cam, RFIDEnturnador.CGlobal.IdUsuario);
+                    MessageBox.Show("El camión ha sido creado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    cam.id = this.idCamion;
+                    this.objCamion.Actualizar(cam, RFIDEnturnador.CGlobal.IdUsuario);
+                    MessageBox.Show("El camión se ha actualizado", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                this.GetCamiones();
+                this.Limpiar();
+                this.CambiarVista(Vista.LISTA);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo guardar el camión: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         #endregion
