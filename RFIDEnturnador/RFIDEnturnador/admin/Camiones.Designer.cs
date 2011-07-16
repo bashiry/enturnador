@@ -68,7 +68,7 @@
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(469, 457);
             this.panel1.TabIndex = 0;
@@ -80,7 +80,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(469, 70);
             this.panel2.TabIndex = 6;
@@ -89,7 +89,7 @@
             // 
             this.pictureBox1.Image = global::RFIDEnturnador.Properties.Resources.camion6;
             this.pictureBox1.Location = new System.Drawing.Point(9, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -112,13 +112,14 @@
             // 
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(9, 75);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.btnNuevo);
             this.splitContainer1.Panel1.Controls.Add(this.grdCamiones);
+            this.splitContainer1.Panel1Collapsed = true;
             // 
             // splitContainer1.Panel2
             // 
@@ -130,7 +131,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2Collapsed = true;
             this.splitContainer1.Size = new System.Drawing.Size(450, 373);
             this.splitContainer1.SplitterDistance = 25;
             this.splitContainer1.SplitterWidth = 3;
@@ -141,7 +141,7 @@
             this.btnNuevo.Image = global::RFIDEnturnador.Properties.Resources.NewFolder;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNuevo.Location = new System.Drawing.Point(10, 10);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(108, 29);
             this.btnNuevo.TabIndex = 18;
@@ -241,8 +241,9 @@
             // txtCodigoRFID
             // 
             this.txtCodigoRFID.Location = new System.Drawing.Point(155, 127);
-            this.txtCodigoRFID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoRFID.Margin = new System.Windows.Forms.Padding(2);
             this.txtCodigoRFID.Name = "txtCodigoRFID";
+            this.txtCodigoRFID.ReadOnly = true;
             this.txtCodigoRFID.Size = new System.Drawing.Size(196, 20);
             this.txtCodigoRFID.TabIndex = 22;
             // 
@@ -250,7 +251,7 @@
             // 
             this.cboTipoCargue.FormattingEnabled = true;
             this.cboTipoCargue.Location = new System.Drawing.Point(155, 93);
-            this.cboTipoCargue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboTipoCargue.Margin = new System.Windows.Forms.Padding(2);
             this.cboTipoCargue.Name = "cboTipoCargue";
             this.cboTipoCargue.Size = new System.Drawing.Size(196, 21);
             this.cboTipoCargue.TabIndex = 21;
@@ -258,7 +259,7 @@
             // txtPlaca
             // 
             this.txtPlaca.Location = new System.Drawing.Point(155, 58);
-            this.txtPlaca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPlaca.Margin = new System.Windows.Forms.Padding(2);
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(196, 20);
             this.txtPlaca.TabIndex = 20;
@@ -326,7 +327,7 @@
             this.ClientSize = new System.Drawing.Size(469, 457);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Camiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
