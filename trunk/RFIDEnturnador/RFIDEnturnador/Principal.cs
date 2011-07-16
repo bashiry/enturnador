@@ -26,5 +26,11 @@ namespace RFIDEnturnador
             Form form = new admin.Camiones();
             form.Show();
         }
+
+        private void btnAdminNoticia_Click(object sender, EventArgs e)
+        {
+            Form form = new admin.Camiones();
+            form.Show();
+        }
     }
 }

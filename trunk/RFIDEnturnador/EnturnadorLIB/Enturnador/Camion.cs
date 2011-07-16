@@ -36,10 +36,13 @@ namespace EnturnadorLIB.Enturnador
 
             //Se valida que no exista ya un camión con la misma placa o codigo rfid
             string validacion = "";            
-            if (this.objCamionDAO.GetCamionByPlaca(camion.placa) != null)
+            if (this.GetCamionByPlaca(camion.placa) != null)
                 validacion += "- Ya existe un camión con la placa '" + camion.placa + "'\n";
-            if (this.objCamionDAO.GetCamionByRFID(camion.codigoRFID) != null)
-                validacion += "- Ya existe un camión con el código RFID leído\n";
+            if (camion.codigoRFID.Length > 0)
+            {
+                if (this.GetCamionByRFID(camion.codigoRFID) != null)
+                    validacion += "- Ya existe un camión con el mismo código RFID \n";            
+            }
 
             //No se superaron las validaciones, se lanza error
             if (validacion.Length > 0)            
@@ -130,6 +133,25 @@ namespace EnturnadorLIB.Enturnador
             return this.objCamionDAO.GetCamionesByPlaca(placa);
         }
 
+        /// <summary>
+        /// Retorna un camión dada una placa
+        /// </summary>
+        /// <param name="placa">Placa a consultar</param>
+        /// <returns></returns>
+        public CAMION GetCamionByPlaca(string placa)
+        {
+            return this.objCamionDAO.GetCamionByPlaca(placa);
+        }
+
+        /// <summary>
+        /// Retorna un camión dado un codigo rfid
+        /// </summary>
+        /// <param name="codigoRFID">cODIGO a consultar</param>
+        /// <returns></returns>
+        public CAMION GetCamionByRFID(string codigoRFID)
+        {            
+            return this.objCamionDAO.GetCamionByRFID(codigoRFID);
+        }
 
 
     }
