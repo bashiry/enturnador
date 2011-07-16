@@ -121,5 +121,16 @@ namespace EnturnadorLIB.Enturnador
             return this.objCamionDAO.GetCamiones();
         }
 
+        /// <summary>
+        /// Retorna camiones que contienen en la placa el string que se recibe como parametro
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetCamionesByPlaca(string placa)
+        {
+            return this.objCamionDAO.GetCamionesByPlaca(placa);
+        }
+
+
+
     }
 }
