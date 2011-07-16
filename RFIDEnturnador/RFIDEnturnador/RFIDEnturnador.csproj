@@ -57,6 +57,12 @@
     <Compile Include="admin\Camiones.Designer.cs">
       <DependentUpon>Camiones.cs</DependentUpon>
     </Compile>
+    <Compile Include="admin\Noticias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\Noticias.Designer.cs">
+      <DependentUpon>Noticias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -162,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\xpLens.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

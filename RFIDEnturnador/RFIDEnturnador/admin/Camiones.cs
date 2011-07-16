@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 using EnturnadorDAO;
 using EnturnadorLIB;
 
@@ -16,6 +17,7 @@ namespace RFIDEnturnador.admin
     {
         private EnturnadorLIB.Enturnador.Camion objCamion;
         private int idCamion;
+        List<TIPO_CARGUE> listaTipoCargue;
 
         private enum Vista
         { 
@@ -57,15 +59,15 @@ namespace RFIDEnturnador.admin
         private void LlenarComboTipoCargue()
         {
             EnturnadorLIB.Enturnador.Lista objLista = new EnturnadorLIB.Enturnador.Lista();
-            List<TIPO_CARGUE> lista = objLista.GetListaTipoCargue();
+            this.listaTipoCargue = objLista.GetListaTipoCargue();
 
             //Se inserta item de "seleccione" a la lista
             TIPO_CARGUE sel = new TIPO_CARGUE();
             sel.id = 0;
             sel.tipoCargue = "Seleccione...";
-            lista.Insert(0, sel);            
+            listaTipoCargue.Insert(0, sel);            
 
-            this.cboTipoCargue.DataSource = lista;
+            this.cboTipoCargue.DataSource = listaTipoCargue;
             this.cboTipoCargue.DisplayMember = "tipoCargue";
             this.cboTipoCargue.ValueMember = "id";            
         }
@@ -190,6 +192,155 @@ namespace RFIDEnturnador.admin
             }
         }
 
+        /// <summary>
+        /// Lee el archivo de texto que contiene los camiones a cargar
+        /// </summary>
+        /// <param name="ruta"></param>
+        private void LeerArchivo(string ruta)
+        {
+            if (!File.Exists(ruta))
+            {
+                MessageBox.Show("No se encontró el archivo", "Archivo no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            Cursor = Cursors.WaitCursor;
+
+            //Tabla que guardara los registros con error
+            DataTable dtError = new DataTable();
+            dtError.Columns.Add("FILA");
+            dtError.Columns.Add("ERROR");
+            DataRow dr;
+
+            string line;
+            int contador = 1;           //Variable que va contando el numero de filas leidas                         
+            string error = string.Empty;
+
+            try
+            {
+                StreamReader sr = new StreamReader(ruta);
+                line = sr.ReadLine();
+                while (line != null)
+                {
+                    error = this.ProcesarLinea(line);
+
+                    //Si se encontro algun error
+                    if (error.Length > 0)
+                    {
+                        dr = dtError.NewRow();
+                        dr["FILA"] = contador.ToString();
+                        dr["ERROR"] = error;
+                        dtError.Rows.Add(dr);
+                    }
+
+                    error = "";
+                    contador += 1;
+                    line = sr.ReadLine();
+                }
+
+                sr.Close();
+
+                //Se muetsran los errores y totales
+                this.lblCantidadLeida.Text = "Registros en el archivo: " + contador.ToString();
+                this.lblCantidadGuardada.Text = "Cantidad guardada exitosamente: " + (contador - dtError.Rows.Count).ToString();
+                this.lblCantidadError.Text = "Registros con error: " + dtError.Rows.Count.ToString();
+
+                //this.grdCargue.AutoGenerateColumns = false;
+                this.grdCargue.DataSource = dtError;
+                this.grdCargue.Columns["FILA"].Width = 70;
+
+                Cursor = Cursors.Default;
+                MessageBox.Show("Ha finalizado el proceso de cargue masivo", "Proceso finalizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                Cursor = Cursors.Default;
+                MessageBox.Show("Ocurrió un error al leer el archivo: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }            
+        }
+
+        /// <summary>
+        /// Procesa una linea leida del archivo de cargue masivo. Si todo sale OK retorna una cadena vacia, de lo contrario retorna el error
+        /// </summary>
+        private string ProcesarLinea(string linea)
+        {
+            string error = string.Empty;
+            String[] arrLinea;
+            string placa = string.Empty;
+            string tipoDescargue = string.Empty;
+            string codigoRFID = string.Empty;
+            int idTipoCargue = 0;
+            TIPO_CARGUE objTipoCargue;
+            CAMION objCamionTemp;
+
+            if (linea.Contains("|"))
+            {
+                arrLinea = linea.Split('|');
+                if (arrLinea.Count() >= 2)
+                {
+                    placa = arrLinea[0].Trim();
+                    tipoDescargue = arrLinea[1].Trim();
+                    codigoRFID = "";
+                    idTipoCargue = 0;
+
+                    if (arrLinea.Count() >= 3)
+                        codigoRFID = arrLinea[2].Trim();
+
+                    //Validacion de la estructura de la placa
+                    if (placa.Length == 0)
+                        error += "- La placa no puede quedar vacía\n";
+            
+                    else
+                    {
+                        if (placa.Length != 6)
+                            error += "- La placa no puede tener espacios y debe tener 6 caracteres\n";
+                    }
+
+                    //Validacion del tipo de descargue
+                    if (tipoDescargue.Length == 0)
+                        error += "- El tipo de descargue no puede quedar vacío\n";
+                    else
+                    { 
+                        //Se busca el id de tipo de cargue correspondiente
+                        objTipoCargue = this.listaTipoCargue.Find(t => t.tipoCargue == tipoDescargue);
+                        if(objTipoCargue != null)
+                            idTipoCargue = objTipoCargue.id;
+                        else
+                            error += "- No se encontró el tipo de descargue correspondiente a '" + tipoDescargue + "'\n";
+                    }
+
+                    //Se inserta el registro
+                    if (error.Length == 0)
+                    {
+                        try
+                        {
+                            objCamionTemp = new CAMION();
+                            objCamionTemp.activo = true;
+                            objCamionTemp.codigoRFID = codigoRFID;
+                            objCamionTemp.idTipoCargue = idTipoCargue;
+                            objCamionTemp.placa = placa;
+                            this.objCamion.Crear(objCamionTemp, CGlobal.IdUsuario);
+                        }
+                        catch (Exception ex)
+                        {
+                            error += ex.Message + "\n";
+                        }                    
+                    }
+
+                }
+                else
+                {
+                    error = "El registro no tiene el formato especificado";
+                }
+            }
+            else
+            {
+                error = "El registro no tiene el formato especificado";
+            }
+
+            return error;
+        }
+
         #endregion
 
         #region "Eventos"
@@ -259,9 +410,21 @@ namespace RFIDEnturnador.admin
             this.CambiarVista(Vista.LISTA);
         }
 
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            //Se abre el dialogo para seleccionar el archivo con los datos a cargar
+            this.openFileDialog1.Filter = "Text files(*.txt)|*.txt";
+            this.openFileDialog1.Multiselect = false;
+            this.openFileDialog1.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            this.LeerArchivo(this.openFileDialog1.FileName);
+        }
+
 
         #endregion
-
 
 
 
