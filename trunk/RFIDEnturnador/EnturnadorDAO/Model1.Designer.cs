@@ -1762,7 +1762,7 @@ namespace EnturnadorDAO
         /// <param name="idModifcador">Initial value of the idModifcador property.</param>
         /// <param name="fechaModificacion">Initial value of the fechaModificacion property.</param>
         /// <param name="activo">Initial value of the activo property.</param>
-        public static NOTICIA CreateNOTICIA(global::System.Int32 id, global::System.String noticia1, global::System.Int32 idModifcador, global::System.Int32 fechaModificacion, global::System.Boolean activo)
+        public static NOTICIA CreateNOTICIA(global::System.Int32 id, global::System.String noticia1, global::System.Int32 idModifcador, global::System.DateTime fechaModificacion, global::System.Boolean activo)
         {
             NOTICIA nOTICIA = new NOTICIA();
             nOTICIA.id = id;
@@ -1856,7 +1856,7 @@ namespace EnturnadorDAO
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 fechaModificacion
+        public global::System.DateTime fechaModificacion
         {
             get
             {
@@ -1871,8 +1871,8 @@ namespace EnturnadorDAO
                 OnfechaModificacionChanged();
             }
         }
-        private global::System.Int32 _fechaModificacion;
-        partial void OnfechaModificacionChanging(global::System.Int32 value);
+        private global::System.DateTime _fechaModificacion;
+        partial void OnfechaModificacionChanging(global::System.DateTime value);
         partial void OnfechaModificacionChanged();
     
         /// <summary>

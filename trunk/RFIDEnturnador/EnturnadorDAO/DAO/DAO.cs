@@ -145,6 +145,19 @@ namespace EnturnadorDAO.DAO
             return q.ToList();
         }
 
+        /// <summary>
+        /// Retorna lista de noticias activas
+        /// </summary>
+        /// <returns></returns>
+        public List<NOTICIA> GetNoticias()
+        {
+            var q = from t in this._ent.NOTICIA
+                    where t.activo == true                    
+                    select t;
+
+            return q.ToList();            
+        }
+
         #endregion
 
     }
