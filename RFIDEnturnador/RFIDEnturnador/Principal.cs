@@ -29,7 +29,7 @@ namespace RFIDEnturnador
 
         private void btnAdminNoticia_Click(object sender, EventArgs e)
         {
-            Form form = new admin.Camiones();
+            Form form = new admin.Noticias();
             form.Show();
         }
     }
