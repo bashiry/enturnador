@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -51,6 +53,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBuscarPlaca = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.panelCargueMasivo = new System.Windows.Forms.Panel();
+            this.grdCargue = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.lblCantidadLeida = new System.Windows.Forms.Label();
+            this.lblCantidadGuardada = new System.Windows.Forms.Label();
+            this.lblCantidadError = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ERROR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVerCargue = new System.Windows.Forms.Button();
+            this.btnCancelarCarga = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,18 +78,21 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCamiones)).BeginInit();
+            this.panelCargueMasivo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCargue)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.panelCargueMasivo);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 457);
+            this.panel1.Size = new System.Drawing.Size(469, 488);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -88,7 +110,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::RFIDEnturnador.Properties.Resources.camion6;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
@@ -111,12 +133,16 @@
             // splitContainer1
             // 
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(9, 75);
+            this.splitContainer1.Location = new System.Drawing.Point(12, 90);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnVerCargue);
+            this.splitContainer1.Panel1.Controls.Add(this.btnBuscar);
+            this.splitContainer1.Panel1.Controls.Add(this.txtBuscarPlaca);
+            this.splitContainer1.Panel1.Controls.Add(this.label5);
             this.splitContainer1.Panel1.Controls.Add(this.btnNuevo);
             this.splitContainer1.Panel1.Controls.Add(this.grdCamiones);
             this.splitContainer1.Panel1Collapsed = true;
@@ -131,7 +157,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Size = new System.Drawing.Size(450, 373);
+            this.splitContainer1.Size = new System.Drawing.Size(450, 387);
             this.splitContainer1.SplitterDistance = 25;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
@@ -155,14 +181,14 @@
             this.grdCamiones.AllowUserToDeleteRows = false;
             this.grdCamiones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdCamiones.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdCamiones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdCamiones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grdCamiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCamiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -171,22 +197,22 @@
             this.TIPOCARGUE,
             this.EDITAR,
             this.ELIMINAR});
-            this.grdCamiones.Location = new System.Drawing.Point(10, 53);
+            this.grdCamiones.Location = new System.Drawing.Point(10, 84);
             this.grdCamiones.Name = "grdCamiones";
             this.grdCamiones.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdCamiones.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdCamiones.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.grdCamiones.RowHeadersVisible = false;
             this.grdCamiones.RowHeadersWidth = 20;
             this.grdCamiones.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.grdCamiones.RowTemplate.Height = 24;
-            this.grdCamiones.Size = new System.Drawing.Size(428, 306);
+            this.grdCamiones.Size = new System.Drawing.Size(428, 290);
             this.grdCamiones.TabIndex = 17;
             this.grdCamiones.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCamiones_CellDoubleClick);
             // 
@@ -320,11 +346,197 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Placa:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Buscar por placa:";
+            // 
+            // txtBuscarPlaca
+            // 
+            this.txtBuscarPlaca.Location = new System.Drawing.Point(103, 50);
+            this.txtBuscarPlaca.Name = "txtBuscarPlaca";
+            this.txtBuscarPlaca.Size = new System.Drawing.Size(100, 20);
+            this.txtBuscarPlaca.TabIndex = 20;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Image = global::RFIDEnturnador.Properties.Resources.xpLens;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(208, 50);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(26, 24);
+            this.btnBuscar.TabIndex = 21;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // panelCargueMasivo
+            // 
+            this.panelCargueMasivo.Controls.Add(this.btnCancelarCarga);
+            this.panelCargueMasivo.Controls.Add(this.lblCantidadError);
+            this.panelCargueMasivo.Controls.Add(this.lblCantidadGuardada);
+            this.panelCargueMasivo.Controls.Add(this.lblCantidadLeida);
+            this.panelCargueMasivo.Controls.Add(this.btnSeleccionar);
+            this.panelCargueMasivo.Controls.Add(this.label6);
+            this.panelCargueMasivo.Controls.Add(this.grdCargue);
+            this.panelCargueMasivo.Location = new System.Drawing.Point(12, 75);
+            this.panelCargueMasivo.Name = "panelCargueMasivo";
+            this.panelCargueMasivo.Size = new System.Drawing.Size(449, 322);
+            this.panelCargueMasivo.TabIndex = 7;
+            this.panelCargueMasivo.Visible = false;
+            // 
+            // grdCargue
+            // 
+            this.grdCargue.AllowUserToAddRows = false;
+            this.grdCargue.AllowUserToDeleteRows = false;
+            this.grdCargue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.grdCargue.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdCargue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdCargue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdCargue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn4,
+            this.ERROR});
+            this.grdCargue.Location = new System.Drawing.Point(9, 113);
+            this.grdCargue.Name = "grdCargue";
+            this.grdCargue.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdCargue.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grdCargue.RowHeadersVisible = false;
+            this.grdCargue.RowHeadersWidth = 20;
+            this.grdCargue.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.grdCargue.RowTemplate.Height = 24;
+            this.grdCargue.Size = new System.Drawing.Size(428, 261);
+            this.grdCargue.TabIndex = 18;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(178, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Seleccione el archivo con los datos:";
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.Location = new System.Drawing.Point(190, 9);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.TabIndex = 20;
+            this.btnSeleccionar.Text = "Seleccionar";
+            this.btnSeleccionar.UseVisualStyleBackColor = true;
+            // 
+            // lblCantidadLeida
+            // 
+            this.lblCantidadLeida.AutoSize = true;
+            this.lblCantidadLeida.Location = new System.Drawing.Point(6, 39);
+            this.lblCantidadLeida.Name = "lblCantidadLeida";
+            this.lblCantidadLeida.Size = new System.Drawing.Size(118, 13);
+            this.lblCantidadLeida.TabIndex = 21;
+            this.lblCantidadLeida.Text = "Registros en el archivo:";
+            // 
+            // lblCantidadGuardada
+            // 
+            this.lblCantidadGuardada.AutoSize = true;
+            this.lblCantidadGuardada.Location = new System.Drawing.Point(6, 63);
+            this.lblCantidadGuardada.Name = "lblCantidadGuardada";
+            this.lblCantidadGuardada.Size = new System.Drawing.Size(172, 13);
+            this.lblCantidadGuardada.TabIndex = 22;
+            this.lblCantidadGuardada.Text = "Registros guardados exitosamente:";
+            // 
+            // lblCantidadError
+            // 
+            this.lblCantidadError.AutoSize = true;
+            this.lblCantidadError.Location = new System.Drawing.Point(6, 86);
+            this.lblCantidadError.Name = "lblCantidadError";
+            this.lblCantidadError.Size = new System.Drawing.Size(99, 13);
+            this.lblCantidadError.TabIndex = 23;
+            this.lblCantidadError.Text = "Registros con error:";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "fila";
+            this.dataGridViewTextBoxColumn1.HeaderText = "FILA";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "placa";
+            this.dataGridViewTextBoxColumn2.FillWeight = 45.16006F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "PLACA";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "tipoCargue";
+            this.dataGridViewTextBoxColumn4.FillWeight = 115.8913F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "TIPO DE CARGUE";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // ERROR
+            // 
+            this.ERROR.HeaderText = "ERROR";
+            this.ERROR.Name = "ERROR";
+            this.ERROR.ReadOnly = true;
+            // 
+            // btnVerCargue
+            // 
+            this.btnVerCargue.Image = global::RFIDEnturnador.Properties.Resources.NewFolder;
+            this.btnVerCargue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVerCargue.Location = new System.Drawing.Point(129, 10);
+            this.btnVerCargue.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVerCargue.Name = "btnVerCargue";
+            this.btnVerCargue.Size = new System.Drawing.Size(105, 29);
+            this.btnVerCargue.TabIndex = 22;
+            this.btnVerCargue.Text = "    Cargar registro";
+            this.btnVerCargue.UseVisualStyleBackColor = true;
+            this.btnVerCargue.Click += new System.EventHandler(this.btnVerCargue_Click);
+            // 
+            // btnCancelarCarga
+            // 
+            this.btnCancelarCarga.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelarCarga.Image = global::RFIDEnturnador.Properties.Resources.cancelar;
+            this.btnCancelarCarga.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelarCarga.Location = new System.Drawing.Point(271, 9);
+            this.btnCancelarCarga.Name = "btnCancelarCarga";
+            this.btnCancelarCarga.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarCarga.TabIndex = 24;
+            this.btnCancelarCarga.Text = "Cancelar";
+            this.btnCancelarCarga.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancelarCarga.UseVisualStyleBackColor = true;
+            this.btnCancelarCarga.Click += new System.EventHandler(this.btnCancelarCarga_Click);
+            // 
             // Camiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 457);
+            this.ClientSize = new System.Drawing.Size(469, 488);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -338,11 +550,15 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCamiones)).EndInit();
+            this.panelCargueMasivo.ResumeLayout(false);
+            this.panelCargueMasivo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCargue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -370,6 +586,23 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtBuscarPlaca;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panelCargueMasivo;
+        private System.Windows.Forms.Label lblCantidadError;
+        private System.Windows.Forms.Label lblCantidadGuardada;
+        private System.Windows.Forms.Label lblCantidadLeida;
+        private System.Windows.Forms.Button btnSeleccionar;
+        private System.Windows.Forms.Label label6;
+        internal System.Windows.Forms.DataGridView grdCargue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ERROR;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnVerCargue;
+        internal System.Windows.Forms.Button btnCancelarCarga;
 
     }
 }

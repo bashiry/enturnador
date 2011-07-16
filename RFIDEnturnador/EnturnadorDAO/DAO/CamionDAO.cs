@@ -47,6 +47,29 @@ namespace EnturnadorDAO.DAO
             return Utilidades.DAOUtil.ToDataTable(q);
         }
 
+        /// <summary>
+        /// Retorna camiones que contienen en la placa el string que se recibe como parametro
+        /// </summary>
+        /// <param name="placa">String que se va a buscar en la placa</param>
+        /// <returns></returns>
+        public DataTable GetCamionesByPlaca(string placa)
+        {
+            var q = from c in this._ent.CAMION
+                    join t in this._ent.TIPO_CARGUE on c.idTipoCargue equals t.id
+                    where c.activo == true && c.placa.Contains(placa)
+                    orderby c.placa
+                    select new
+                    {
+                        id = c.id,
+                        idTipoCargue = c.idTipoCargue,
+                        placa = c.placa,
+                        codigoRFID = c.codigoRFID,
+                        tipoCargue = t.tipoCargue
+                    };
+
+            return Utilidades.DAOUtil.ToDataTable(q);        
+        }
+
 
 
         /// <summary>
@@ -76,6 +99,8 @@ namespace EnturnadorDAO.DAO
 
             return q;
         }
+
+        
 
 
     }

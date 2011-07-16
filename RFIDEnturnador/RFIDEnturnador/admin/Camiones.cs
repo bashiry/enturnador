@@ -20,7 +20,8 @@ namespace RFIDEnturnador.admin
         private enum Vista
         { 
             LISTA = 0,
-            NUEVO
+            NUEVO,
+            CARGUE
         }
 
         public Camiones()
@@ -77,11 +78,18 @@ namespace RFIDEnturnador.admin
                 splitContainer1.Panel1Collapsed = false;
                 splitContainer1.Panel2Collapsed = true;
                 this.idCamion = 0;
+                this.panelCargueMasivo.Visible = false;
             }
-            else
+            else if(vista == Vista.NUEVO)
             {
                 splitContainer1.Panel1Collapsed = true;
                 splitContainer1.Panel2Collapsed = false;
+                this.panelCargueMasivo.Visible = false;
+            }
+            else if (vista == Vista.CARGUE)
+            {
+                this.panelCargueMasivo.Visible = true;
+                this.panelCargueMasivo.Height = 390;
             }
         }
 
@@ -220,7 +228,42 @@ namespace RFIDEnturnador.admin
                 this.Guardar();
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.grdCamiones.AutoGenerateColumns = false;
+            DataTable dtCamiones = this.objCamion.GetCamionesByPlaca(this.txtBuscarPlaca.Text);
+            this.grdCamiones.DataSource = dtCamiones;
+
+            if (dtCamiones.Rows.Count == 0)
+                MessageBox.Show("No se encontraron camiones", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.grdCamiones.Columns["PLACA"].Width = 130;
+            this.grdCamiones.Columns["TIPOCARGUE"].Width = 200;
+            this.grdCamiones.Columns["EDITAR"].Width = 95;
+            this.grdCamiones.Columns["ELIMINAR"].Width = 95;
+            this.grdCamiones.Columns["TIPOCARGUE"].HeaderText = "TIPO CARGUE";
+        }
+
+        private void btnVerCargue_Click(object sender, EventArgs e)
+        {
+            this.CambiarVista(Vista.CARGUE);
+        }
+
+        /// <summary>
+        /// Estando en el panel de carga masiva se presiona cancelar: se vuelve a mostrar la lista de camiones
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancelarCarga_Click(object sender, EventArgs e)
+        {
+            this.CambiarVista(Vista.LISTA);
+        }
+
+
         #endregion
+
+
+
 
 
     }
