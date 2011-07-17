@@ -10,7 +10,7 @@ namespace RFIDEnturnador
     /// </summary>
     public static class CGlobal
     {
-        public static int IdUsuario = 0;
+        public static int IdUsuario = 2;
 
     }
 }

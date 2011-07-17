@@ -178,7 +178,7 @@
             // 
             // NOTICIA
             // 
-            this.NOTICIA.DataPropertyName = "noticia";
+            this.NOTICIA.DataPropertyName = "noticia1";
             this.NOTICIA.FillWeight = 45.16006F;
             this.NOTICIA.HeaderText = "NOTICIA";
             this.NOTICIA.Name = "NOTICIA";
