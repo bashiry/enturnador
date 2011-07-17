@@ -50,6 +50,7 @@ namespace EnturnadorLIB.Enturnador
 
             noticia.idModifcador = idUsuario;
             noticia.fechaModificacion = DateTime.Now;
+            noticia.activo = true;
             this.objDAO.Actualizar(Enumeraciones.Entidad.NOTICIA, noticia, noticia.id, idUsuario);
         }
 
