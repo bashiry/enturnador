@@ -158,6 +158,19 @@ namespace EnturnadorDAO.DAO
             return q.ToList();            
         }
 
+        /// <summary>
+        /// Retorna lista de perfiles activos
+        /// </summary>
+        /// <returns></returns>
+        public List<ROL> GetRoles()
+        {
+            var q = from t in this._ent.ROL
+                    where t.activo == true
+                    select t;
+
+            return q.ToList();
+        }
+
         #endregion
 
     }
