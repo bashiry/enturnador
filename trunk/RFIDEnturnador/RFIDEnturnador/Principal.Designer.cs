@@ -116,6 +116,7 @@
             this.btnAdminUsuarios.TabIndex = 3;
             this.btnAdminUsuarios.Text = "Usuarios";
             this.btnAdminUsuarios.UseVisualStyleBackColor = true;
+            this.btnAdminUsuarios.Click += new System.EventHandler(this.btnAdminUsuarios_Click);
             // 
             // btnAdminNoticia
             // 
