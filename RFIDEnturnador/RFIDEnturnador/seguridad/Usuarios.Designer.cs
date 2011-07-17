@@ -39,25 +39,31 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.grdCamiones = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PLACA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDTIPOCARGUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPOCARGUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txtCodigoRFID = new System.Windows.Forms.TextBox();
-            this.cboTipoCargue = new System.Windows.Forms.ComboBox();
-            this.txtPlaca = new System.Windows.Forms.TextBox();
+            this.cboRol = new System.Windows.Forms.ComboBox();
+            this.txtIdentificacion = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnListo = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cboRol = new System.Windows.Forms.ComboBox();
+            this.txtBuscarLogin = new System.Windows.Forms.TextBox();
+            this.cboBuscarRol = new System.Windows.Forms.ComboBox();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOMBRE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOGIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ROL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.txtLogin = new System.Windows.Forms.TextBox();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.txtNotas = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -116,18 +122,24 @@
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.btnNuevo);
             this.splitContainer1.Panel1.Controls.Add(this.grdCamiones);
+            this.splitContainer1.Panel1Collapsed = true;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.txtCodigoRFID);
-            this.splitContainer1.Panel2.Controls.Add(this.cboTipoCargue);
-            this.splitContainer1.Panel2.Controls.Add(this.txtPlaca);
+            this.splitContainer1.Panel2.Controls.Add(this.txtNotas);
+            this.splitContainer1.Panel2.Controls.Add(this.txtClave);
+            this.splitContainer1.Panel2.Controls.Add(this.txtLogin);
+            this.splitContainer1.Panel2.Controls.Add(this.txtNombre);
+            this.splitContainer1.Panel2.Controls.Add(this.label10);
+            this.splitContainer1.Panel2.Controls.Add(this.label9);
+            this.splitContainer1.Panel2.Controls.Add(this.label8);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
+            this.splitContainer1.Panel2.Controls.Add(this.cboRol);
+            this.splitContainer1.Panel2.Controls.Add(this.txtIdentificacion);
             this.splitContainer1.Panel2.Controls.Add(this.btnCancelar);
             this.splitContainer1.Panel2.Controls.Add(this.btnListo);
-            this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2Collapsed = true;
             this.splitContainer1.Size = new System.Drawing.Size(458, 440);
             this.splitContainer1.SplitterDistance = 25;
             this.splitContainer1.SplitterWidth = 3;
@@ -189,9 +201,9 @@
             this.grdCamiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCamiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
-            this.PLACA,
-            this.IDTIPOCARGUE,
-            this.TIPOCARGUE,
+            this.NOMBRE,
+            this.LOGIN,
+            this.ROL,
             this.EDITAR,
             this.ELIMINAR});
             this.grdCamiones.Location = new System.Drawing.Point(10, 160);
@@ -212,86 +224,29 @@
             this.grdCamiones.Size = new System.Drawing.Size(428, 277);
             this.grdCamiones.TabIndex = 17;
             // 
-            // ID
+            // cboRol
             // 
-            this.ID.DataPropertyName = "id";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
+            this.cboRol.FormattingEnabled = true;
+            this.cboRol.Location = new System.Drawing.Point(147, 94);
+            this.cboRol.Margin = new System.Windows.Forms.Padding(2);
+            this.cboRol.Name = "cboRol";
+            this.cboRol.Size = new System.Drawing.Size(254, 21);
+            this.cboRol.TabIndex = 21;
             // 
-            // PLACA
+            // txtIdentificacion
             // 
-            this.PLACA.DataPropertyName = "placa";
-            this.PLACA.FillWeight = 45.16006F;
-            this.PLACA.HeaderText = "PLACA";
-            this.PLACA.Name = "PLACA";
-            this.PLACA.ReadOnly = true;
-            // 
-            // IDTIPOCARGUE
-            // 
-            this.IDTIPOCARGUE.DataPropertyName = "idTipoCargue";
-            this.IDTIPOCARGUE.HeaderText = "IDTIPOCARGUE";
-            this.IDTIPOCARGUE.Name = "IDTIPOCARGUE";
-            this.IDTIPOCARGUE.ReadOnly = true;
-            this.IDTIPOCARGUE.Visible = false;
-            // 
-            // TIPOCARGUE
-            // 
-            this.TIPOCARGUE.DataPropertyName = "tipoCargue";
-            this.TIPOCARGUE.FillWeight = 115.8913F;
-            this.TIPOCARGUE.HeaderText = "TIPO DE CARGUE";
-            this.TIPOCARGUE.Name = "TIPOCARGUE";
-            this.TIPOCARGUE.ReadOnly = true;
-            // 
-            // EDITAR
-            // 
-            this.EDITAR.FillWeight = 96.81666F;
-            this.EDITAR.HeaderText = "EDITAR";
-            this.EDITAR.Image = global::RFIDEnturnador.Properties.Resources.editar;
-            this.EDITAR.Name = "EDITAR";
-            this.EDITAR.ReadOnly = true;
-            // 
-            // ELIMINAR
-            // 
-            this.ELIMINAR.FillWeight = 142.132F;
-            this.ELIMINAR.HeaderText = "ELIMINAR";
-            this.ELIMINAR.Image = global::RFIDEnturnador.Properties.Resources.eliminar;
-            this.ELIMINAR.Name = "ELIMINAR";
-            this.ELIMINAR.ReadOnly = true;
-            // 
-            // txtCodigoRFID
-            // 
-            this.txtCodigoRFID.Location = new System.Drawing.Point(155, 127);
-            this.txtCodigoRFID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCodigoRFID.Name = "txtCodigoRFID";
-            this.txtCodigoRFID.ReadOnly = true;
-            this.txtCodigoRFID.Size = new System.Drawing.Size(196, 20);
-            this.txtCodigoRFID.TabIndex = 22;
-            // 
-            // cboTipoCargue
-            // 
-            this.cboTipoCargue.FormattingEnabled = true;
-            this.cboTipoCargue.Location = new System.Drawing.Point(155, 93);
-            this.cboTipoCargue.Margin = new System.Windows.Forms.Padding(2);
-            this.cboTipoCargue.Name = "cboTipoCargue";
-            this.cboTipoCargue.Size = new System.Drawing.Size(196, 21);
-            this.cboTipoCargue.TabIndex = 21;
-            // 
-            // txtPlaca
-            // 
-            this.txtPlaca.Location = new System.Drawing.Point(155, 58);
-            this.txtPlaca.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Size = new System.Drawing.Size(196, 20);
-            this.txtPlaca.TabIndex = 20;
+            this.txtIdentificacion.Location = new System.Drawing.Point(147, 130);
+            this.txtIdentificacion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtIdentificacion.Name = "txtIdentificacion";
+            this.txtIdentificacion.Size = new System.Drawing.Size(254, 20);
+            this.txtIdentificacion.TabIndex = 20;
             // 
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Image = global::RFIDEnturnador.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(275, 162);
+            this.btnCancelar.Location = new System.Drawing.Point(326, 330);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 19;
@@ -303,32 +258,22 @@
             // 
             this.btnListo.Image = global::RFIDEnturnador.Properties.Resources.chulo;
             this.btnListo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListo.Location = new System.Drawing.Point(194, 162);
+            this.btnListo.Location = new System.Drawing.Point(245, 330);
             this.btnListo.Name = "btnListo";
             this.btnListo.Size = new System.Drawing.Size(75, 23);
             this.btnListo.TabIndex = 18;
             this.btnListo.Text = "Listo";
             this.btnListo.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(70, 129);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Código RFID";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 95);
+            this.label3.Location = new System.Drawing.Point(70, 97);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Tipo de cargue:";
+            this.label3.Text = "Rol:";
             // 
             // label2
             // 
@@ -336,15 +281,15 @@
             this.label2.Location = new System.Drawing.Point(70, 61);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Placa:";
+            this.label2.Text = "Nombre:";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cboRol);
+            this.groupBox1.Controls.Add(this.cboBuscarRol);
             this.groupBox1.Controls.Add(this.btnBuscar);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtBuscarLogin);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtBuscarNombre);
@@ -374,20 +319,140 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Rol:";
             // 
-            // textBox1
+            // txtBuscarLogin
             // 
-            this.textBox1.Location = new System.Drawing.Point(58, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(249, 20);
-            this.textBox1.TabIndex = 22;
+            this.txtBuscarLogin.Location = new System.Drawing.Point(58, 49);
+            this.txtBuscarLogin.Name = "txtBuscarLogin";
+            this.txtBuscarLogin.Size = new System.Drawing.Size(249, 20);
+            this.txtBuscarLogin.TabIndex = 22;
             // 
-            // cboRol
+            // cboBuscarRol
             // 
-            this.cboRol.FormattingEnabled = true;
-            this.cboRol.Location = new System.Drawing.Point(58, 75);
-            this.cboRol.Name = "cboRol";
-            this.cboRol.Size = new System.Drawing.Size(249, 21);
-            this.cboRol.TabIndex = 23;
+            this.cboBuscarRol.FormattingEnabled = true;
+            this.cboBuscarRol.Location = new System.Drawing.Point(58, 75);
+            this.cboBuscarRol.Name = "cboBuscarRol";
+            this.cboBuscarRol.Size = new System.Drawing.Size(249, 21);
+            this.cboBuscarRol.TabIndex = 23;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "id";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            // 
+            // NOMBRE
+            // 
+            this.NOMBRE.DataPropertyName = "nombre";
+            this.NOMBRE.FillWeight = 45.16006F;
+            this.NOMBRE.HeaderText = "NOMBRE";
+            this.NOMBRE.Name = "NOMBRE";
+            this.NOMBRE.ReadOnly = true;
+            // 
+            // LOGIN
+            // 
+            this.LOGIN.DataPropertyName = "login";
+            this.LOGIN.HeaderText = "LOGIN";
+            this.LOGIN.Name = "LOGIN";
+            this.LOGIN.ReadOnly = true;
+            // 
+            // ROL
+            // 
+            this.ROL.DataPropertyName = "rol";
+            this.ROL.FillWeight = 115.8913F;
+            this.ROL.HeaderText = "ROL";
+            this.ROL.Name = "ROL";
+            this.ROL.ReadOnly = true;
+            // 
+            // EDITAR
+            // 
+            this.EDITAR.FillWeight = 96.81666F;
+            this.EDITAR.HeaderText = "EDITAR";
+            this.EDITAR.Image = global::RFIDEnturnador.Properties.Resources.editar;
+            this.EDITAR.Name = "EDITAR";
+            this.EDITAR.ReadOnly = true;
+            // 
+            // ELIMINAR
+            // 
+            this.ELIMINAR.FillWeight = 142.132F;
+            this.ELIMINAR.HeaderText = "ELIMINAR";
+            this.ELIMINAR.Image = global::RFIDEnturnador.Properties.Resources.eliminar;
+            this.ELIMINAR.Name = "ELIMINAR";
+            this.ELIMINAR.ReadOnly = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(70, 133);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 13);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Identificacion:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(70, 169);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Login:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(70, 205);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Clave:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(70, 241);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Notas:";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(147, 58);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(254, 20);
+            this.txtNombre.TabIndex = 26;
+            // 
+            // txtLogin
+            // 
+            this.txtLogin.Location = new System.Drawing.Point(147, 166);
+            this.txtLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(254, 20);
+            this.txtLogin.TabIndex = 27;
+            // 
+            // txtClave
+            // 
+            this.txtClave.Location = new System.Drawing.Point(147, 202);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(2);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(254, 20);
+            this.txtClave.TabIndex = 28;
+            // 
+            // txtNotas
+            // 
+            this.txtNotas.Location = new System.Drawing.Point(147, 238);
+            this.txtNotas.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNotas.Multiline = true;
+            this.txtNotas.Name = "txtNotas";
+            this.txtNotas.Size = new System.Drawing.Size(254, 87);
+            this.txtNotas.TabIndex = 29;
             // 
             // Usuarios
             // 
@@ -428,23 +493,29 @@
         private System.Windows.Forms.TextBox txtBuscarNombre;
         private System.Windows.Forms.Button btnNuevo;
         internal System.Windows.Forms.DataGridView grdCamiones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PLACA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDTIPOCARGUE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIPOCARGUE;
-        private System.Windows.Forms.DataGridViewImageColumn EDITAR;
-        private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
-        private System.Windows.Forms.TextBox txtCodigoRFID;
-        private System.Windows.Forms.ComboBox cboTipoCargue;
-        private System.Windows.Forms.TextBox txtPlaca;
+        private System.Windows.Forms.ComboBox cboRol;
+        private System.Windows.Forms.TextBox txtIdentificacion;
         internal System.Windows.Forms.Button btnCancelar;
         internal System.Windows.Forms.Button btnListo;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboRol;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cboBuscarRol;
+        private System.Windows.Forms.TextBox txtBuscarLogin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LOGIN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ROL;
+        private System.Windows.Forms.DataGridViewImageColumn EDITAR;
+        private System.Windows.Forms.DataGridViewImageColumn ELIMINAR;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtNotas;
+        private System.Windows.Forms.TextBox txtClave;
+        private System.Windows.Forms.TextBox txtLogin;
+        private System.Windows.Forms.TextBox txtNombre;
     }
 }
