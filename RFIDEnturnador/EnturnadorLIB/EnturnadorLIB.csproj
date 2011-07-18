@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Enturnador\Camion.cs" />
     <Compile Include="Enturnador\Cola.cs" />
+    <Compile Include="Enturnador\Configuracion.cs" />
     <Compile Include="Enturnador\Lista.cs" />
     <Compile Include="Enturnador\Noticia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

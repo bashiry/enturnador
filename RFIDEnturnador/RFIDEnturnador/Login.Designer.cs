@@ -68,6 +68,7 @@
             this.txtClave.PasswordChar = '*';
             this.txtClave.Size = new System.Drawing.Size(179, 20);
             this.txtClave.TabIndex = 10;
+            this.txtClave.Text = "admin";
             // 
             // txtUsuario
             // 
@@ -75,6 +76,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(179, 20);
             this.txtUsuario.TabIndex = 8;
+            this.txtUsuario.Text = "admin";
             // 
             // PasswordLabel
             // 

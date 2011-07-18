@@ -8,10 +8,12 @@
         <EntityContainer Name="ENTURNADORModelStoreContainer">
           <EntitySet Name="CAMION" EntityType="ENTURNADORModel.Store.CAMION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="COLA" EntityType="ENTURNADORModel.Store.COLA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CONFIGURACION" EntityType="ENTURNADORModel.Store.CONFIGURACION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LOG_AUTOMATICO" EntityType="ENTURNADORModel.Store.LOG_AUTOMATICO" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LOG_ERROR" EntityType="ENTURNADORModel.Store.LOG_ERROR" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LOG_MANUAL" EntityType="ENTURNADORModel.Store.LOG_MANUAL" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="NOTICIA" EntityType="ENTURNADORModel.Store.NOTICIA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PUERTA" EntityType="ENTURNADORModel.Store.PUERTA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="READER" EntityType="ENTURNADORModel.Store.READER" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ROL" EntityType="ENTURNADORModel.Store.ROL" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TIPO_CARGUE" EntityType="ENTURNADORModel.Store.TIPO_CARGUE" store:Type="Tables" Schema="dbo" />
@@ -20,8 +22,8 @@
             <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
             <End Role="CAMION" EntitySet="CAMION" />
           </AssociationSet>
-          <AssociationSet Name="FK_COLA_READER" Association="ENTURNADORModel.Store.FK_COLA_READER">
-            <End Role="READER" EntitySet="READER" />
+          <AssociationSet Name="FK_COLA_PUERTA" Association="ENTURNADORModel.Store.FK_COLA_PUERTA">
+            <End Role="PUERTA" EntitySet="PUERTA" />
             <End Role="COLA" EntitySet="COLA" />
           </AssociationSet>
           <AssociationSet Name="FK_COLA_TIPO_CARGUE" Association="ENTURNADORModel.Store.FK_COLA_TIPO_CARGUE">
@@ -82,10 +84,17 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="idReader" Type="int" Nullable="false" />
+          <Property Name="idPuerta" Type="int" Nullable="false" />
           <Property Name="idTipoCargue" Type="int" Nullable="false" />
           <Property Name="placa" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="hora" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONFIGURACION">
+          <Key>
+            <PropertyRef Name="llave" />
+          </Key>
+          <Property Name="llave" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="valor" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="LOG_AUTOMATICO">
           <Key>
@@ -131,6 +140,15 @@
           <Property Name="idModifcador" Type="int" Nullable="false" />
           <Property Name="fechaModificacion" Type="datetime" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PUERTA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="puerta" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="generaTurno" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="READER">
           <Key>
@@ -184,15 +202,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_COLA_READER">
-          <End Role="READER" Type="ENTURNADORModel.Store.READER" Multiplicity="1" />
+        <Association Name="FK_COLA_PUERTA">
+          <End Role="PUERTA" Type="ENTURNADORModel.Store.PUERTA" Multiplicity="1" />
           <End Role="COLA" Type="ENTURNADORModel.Store.COLA" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="READER">
-              <PropertyRef Name="idReader" />
+            <Principal Role="PUERTA">
+              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="COLA">
-              <PropertyRef Name="idReader" />
+              <PropertyRef Name="idPuerta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -343,10 +361,6 @@
             <End Role="CAMION" EntitySet="CAMION" />
             <End Role="LOG_MANUAL" EntitySet="LOG_MANUAL" />
           </AssociationSet>
-          <AssociationSet Name="FK_COLA_READER" Association="ENTURNADORModel.FK_COLA_READER">
-            <End Role="READER" EntitySet="READER" />
-            <End Role="COLA" EntitySet="COLA" />
-          </AssociationSet>
           <AssociationSet Name="FK_COLA_TIPO_CARGUE" Association="ENTURNADORModel.FK_COLA_TIPO_CARGUE">
             <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
             <End Role="COLA" EntitySet="COLA" />
@@ -379,6 +393,12 @@
             <End Role="ROL" EntitySet="ROL" />
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
+          <EntitySet Name="PUERTA" EntityType="ENTURNADORModel.PUERTA" />
+          <AssociationSet Name="FK_COLA_PUERTA" Association="ENTURNADORModel.FK_COLA_PUERTA">
+            <End Role="PUERTA" EntitySet="PUERTA" />
+            <End Role="COLA" EntitySet="COLA" />
+          </AssociationSet>
+          <EntitySet Name="CONFIGURACION" EntityType="ENTURNADORModel.CONFIGURACION" />
         </EntityContainer>
         <EntityType Name="CAMION">
           <Key>
@@ -400,12 +420,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idReader" Type="Int32" Nullable="false" />
           <Property Name="idTipoCargue" Type="Int32" Nullable="false" />
           <Property Name="placa" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="hora" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="READER" Relationship="ENTURNADORModel.FK_COLA_READER" FromRole="COLA" ToRole="READER" />
           <NavigationProperty Name="TIPO_CARGUE" Relationship="ENTURNADORModel.FK_COLA_TIPO_CARGUE" FromRole="COLA" ToRole="TIPO_CARGUE" />
+          <Property Type="Int32" Name="idPuerta" Nullable="false" />
+          <NavigationProperty Name="PUERTA" Relationship="ENTURNADORModel.FK_COLA_PUERTA" FromRole="COLA" ToRole="PUERTA" />
         </EntityType>
         <EntityType Name="LOG_AUTOMATICO">
           <Key>
@@ -468,7 +488,6 @@
           <Property Name="ip" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="puerta" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="COLA" Relationship="ENTURNADORModel.FK_COLA_READER" FromRole="READER" ToRole="COLA" />
           <NavigationProperty Name="LOG_AUTOMATICO" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_READER" FromRole="READER" ToRole="LOG_AUTOMATICO" />
         </EntityType>
         <EntityType Name="ROL">
@@ -544,18 +563,6 @@
             </Principal>
             <Dependent Role="LOG_MANUAL">
               <PropertyRef Name="idCamion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COLA_READER">
-          <End Role="READER" Type="ENTURNADORModel.READER" Multiplicity="1" />
-          <End Role="COLA" Type="ENTURNADORModel.COLA" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="READER">
-              <PropertyRef Name="idReader" />
-            </Principal>
-            <Dependent Role="COLA">
-              <PropertyRef Name="idReader" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -655,6 +662,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PUERTA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="puerta1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="generaTurno" Nullable="false" />
+          <NavigationProperty Name="COLA" Relationship="ENTURNADORModel.FK_COLA_PUERTA" FromRole="PUERTA" ToRole="COLA" />
+        </EntityType>
+        <Association Name="FK_COLA_PUERTA">
+          <End Type="ENTURNADORModel.PUERTA" Role="PUERTA" Multiplicity="1" />
+          <End Type="ENTURNADORModel.COLA" Role="COLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUERTA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="COLA">
+              <PropertyRef Name="idPuerta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CONFIGURACION">
+          <Key>
+            <PropertyRef Name="llave" />
+          </Key>
+          <Property Type="String" Name="llave" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="valor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -671,8 +707,8 @@
             <ScalarProperty Name="activo" ColumnName="activo" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="COLA"><EntityTypeMapping TypeName="ENTURNADORModel.COLA"><MappingFragment StoreEntitySet="COLA">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="idReader" ColumnName="idReader" />
+            <ScalarProperty Name="idPuerta" ColumnName="idPuerta" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="idTipoCargue" ColumnName="idTipoCargue" />
             <ScalarProperty Name="placa" ColumnName="placa" />
             <ScalarProperty Name="hora" ColumnName="hora" />
@@ -738,6 +774,24 @@
             <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
             <ScalarProperty Name="activo" ColumnName="activo" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PUERTA">
+            <EntityTypeMapping TypeName="ENTURNADORModel.PUERTA">
+              <MappingFragment StoreEntitySet="PUERTA">
+                <ScalarProperty Name="generaTurno" ColumnName="generaTurno" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="puerta1" ColumnName="puerta" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONFIGURACION">
+            <EntityTypeMapping TypeName="ENTURNADORModel.CONFIGURACION">
+              <MappingFragment StoreEntitySet="CONFIGURACION">
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="llave" ColumnName="llave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -760,7 +814,7 @@
     <Diagrams>
       <Diagram Name="Model1">
         <EntityTypeShape EntityType="ENTURNADORModel.CAMION" Width="1.5" PointX="6" PointY="4.125" Height="2.9417936197916656" IsExpanded="true" />
-        <EntityTypeShape EntityType="ENTURNADORModel.COLA" Width="1.5" PointX="6" PointY="0.75" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.COLA" Width="1.5" PointX="6" PointY="0.75" Height="2.3648893229166661" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.LOG_AUTOMATICO" Width="1.5" PointX="8.25" PointY="4.125" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.LOG_ERROR" Width="1.5" PointX="5.25" PointY="7.875" Height="2.5571907552083308" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.LOG_MANUAL" Width="1.5" PointX="8.25" PointY="9.25" Height="2.7494921874999996" IsExpanded="true" />
@@ -786,21 +840,10 @@
           <ConnectorPoint PointX="7.958333333333333" PointY="11.247091471354166" />
           <ConnectorPoint PointX="8.25" PointY="11.247091471354166" />
         </AssociationConnector>
-        <AssociationConnector Association="ENTURNADORModel.FK_COLA_READER" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="17.75" />
-          <ConnectorPoint PointX="4.5" PointY="12.710999348958335" />
-          <ConnectorPoint PointX="4.75" PointY="12.710999348958335" />
-          <ConnectorPoint PointX="4.75" PointY="7.3648893229166674" />
-          <ConnectorPoint PointX="5.5" PointY="7.3648893229166674" />
-          <ConnectorPoint PointX="5.5" PointY="1.9324446614583328" />
-          <ConnectorPoint PointX="6" PointY="1.9324446614583328" />
-        </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_COLA_TIPO_CARGUE" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="4.75" />
-          <ConnectorPoint PointX="4.5" PointY="2.5549194921874991" />
-          <ConnectorPoint PointX="5.416666666666667" PointY="2.5549194921874987" />
-          <ConnectorPoint PointX="5.583333333333333" PointY="2.5549194921874991" />
-          <ConnectorPoint PointX="6" PointY="2.5549194921874991" />
+          <ConnectorPoint PointX="4.5" PointY="1.4347081159243531" />
+          <ConnectorPoint PointX="6" PointY="1.4347081159243531" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_READER" ManuallyRouted="false">
           <ConnectorPoint PointX="5.25" PointY="17.751152846153843" />
@@ -811,8 +854,6 @@
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE" ManuallyRouted="false">
           <ConnectorPoint PointX="5.25" PointY="4.75" />
-          <ConnectorPoint PointX="5.4410744349011209" PointY="4.5589255650988783" />
-          <ConnectorPoint PointX="5.5589255650988791" PointY="4.4410744349011209" />
           <ConnectorPoint PointX="5.625" PointY="4.375" />
           <ConnectorPoint PointX="5.625" PointY="3.75" />
           <ConnectorPoint PointX="7.875" PointY="3.75" />
@@ -820,8 +861,6 @@
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_ERROR_USUARIO" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="9.5910953776041659" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="9.5910953776041659" />
-          <ConnectorPoint PointX="4.833333333333333" PointY="9.5910953776041659" />
           <ConnectorPoint PointX="5.25" PointY="9.5910953776041659" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_MANUAL_TIPO_CARGUE" ManuallyRouted="false">
@@ -834,10 +873,8 @@
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_MANUAL_USUARIO" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="10.80839111328125" />
-          <ConnectorPoint PointX="4.666666666666667" PointY="10.80839111328125" />
-          <ConnectorPoint PointX="4.833333333333333" PointY="10.80839111328125" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="10.80839111328125" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="7.447916666666667" PointY="10.80839111328125" />
+          <ConnectorPoint PointX="7.614583333333333" PointY="10.80839111328125" />
           <ConnectorPoint PointX="7.791666666666667" PointY="10.80839111328125" />
           <ConnectorPoint PointX="7.958333333333333" PointY="10.80839111328125" />
           <ConnectorPoint PointX="8.25" PointY="10.80839111328125" />
@@ -845,14 +882,20 @@
         <AssociationConnector Association="ENTURNADORModel.FK_NOTICIA_USUARIO" ManuallyRouted="false">
           <ConnectorPoint PointX="3.75" PointY="12.460999348958335" />
           <ConnectorPoint PointX="3.75" PointY="15.8362939453125" />
-          <ConnectorPoint PointX="4.416666666666667" PointY="15.8362939453125" />
-          <ConnectorPoint PointX="4.583333333333333" PointY="15.8362939453125" />
           <ConnectorPoint PointX="5.25" PointY="15.8362939453125" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_USUARIO_ROL" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="10.643992513020834" />
           <ConnectorPoint PointX="3" PointY="10.643992513020834" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="ENTURNADORModel.PUERTA" Width="1.5" PointX="0.75" PointY="0.875" Height="1.9802864583333353" />
+        <AssociationConnector Association="ENTURNADORModel.FK_COLA_PUERTA" >
+          <ConnectorPoint PointX="2.25" PointY="2.2074972871288443" />
+          <ConnectorPoint PointX="4.416666666666667" PointY="2.2074972871288439" />
+          <ConnectorPoint PointX="4.583333333333333" PointY="2.2074972871288443" />
+          <ConnectorPoint PointX="6" PointY="2.2074972871288443" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ENTURNADORModel.CONFIGURACION" Width="1.5" PointX="0.75" PointY="3.75" Height="1.4033821614583317" />
       </Diagram>
     </Diagrams>
   </Designer>
