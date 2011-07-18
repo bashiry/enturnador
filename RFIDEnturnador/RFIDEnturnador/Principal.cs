@@ -128,5 +128,19 @@ namespace RFIDEnturnador
                 MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnEnturnar_Click(object sender, EventArgs e)
+        {
+            if (this.ValidarPermiso(CGlobal.Formularios.ENTURNAR))
+            {
+                Form form = new admin.TurnoManual();
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
