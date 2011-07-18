@@ -25,6 +25,24 @@ namespace EnturnadorLIB.Enturnador
         public List<TIPO_CARGUE> GetListaTipoCargue()
         {
             return this.objDAO.GetListaTipoCargue();
+        }
+
+        /// <summary>
+        /// Retorna lista de roles
+        /// </summary>
+        /// <returns></returns>
+        public List<ROL> GetListaRoles()
+        {
+            return this.objDAO.GetRoles();
+        }
+
+        /// <summary>
+        /// Retorna lista de noticias
+        /// </summary>
+        /// <returns></returns>
+        public List<NOTICIA> GetListaNoticias()
+        {
+            return this.objDAO.GetNoticias();
         }        
 
     }
