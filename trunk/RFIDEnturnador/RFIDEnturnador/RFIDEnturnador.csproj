@@ -63,6 +63,12 @@
     <Compile Include="admin\Noticias.Designer.cs">
       <DependentUpon>Noticias.cs</DependentUpon>
     </Compile>
+    <Compile Include="admin\TurnoManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\TurnoManual.Designer.cs">
+      <DependentUpon>TurnoManual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin\Noticias.resx">
       <DependentUpon>Noticias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\TurnoManual.resx">
+      <DependentUpon>TurnoManual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
