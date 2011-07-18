@@ -35,6 +35,11 @@ namespace EnturnadorLIB.Seguridad
             if (usuario == null)
                 throw new Exception("El usuario no puede ser null");
 
+            //Se valida que no exista un usuario con el mismo login
+            USUARIO usu = this.GetByLogin(usuario.login);
+            if (usu != null)
+                throw new Exception("Ya existe un usuario con el mismo login");
+
             usuario.idModificador = idUsuario;
             usuario.fechaModificacion = DateTime.Now;
             usuario.activo = true;
@@ -50,6 +55,14 @@ namespace EnturnadorLIB.Seguridad
         {
             if (usuario == null)
                 throw new Exception("El usuario no puede ser null");
+
+            USUARIO usu = this.GetByLogin(usuario.login);
+            if (usu != null)
+            { 
+                if (usu.id != usuario.id)
+                    throw new Exception("Ya existe un usuario con el mismo login");
+            }
+                
 
             usuario.idModificador = idUsuario;
             usuario.fechaModificacion = DateTime.Now;
@@ -83,6 +96,16 @@ namespace EnturnadorLIB.Seguridad
         }
 
         /// <summary>
+        /// Retorna una usuario dado su login
+        /// </summary>
+        /// <param name="login">login del usuario a retornar</param>
+        /// <returns></returns>
+        public USUARIO GetByLogin(string login)
+        {
+            return (USUARIO)this.objUsuarioDAO.GetUsuarioByLogin(login);
+        }
+
+        /// <summary>
         /// Retorna datatable con los usuarios que cumplen los criterios de busqueda
         /// </summary>
         /// <returns></returns>
@@ -90,6 +113,8 @@ namespace EnturnadorLIB.Seguridad
         {
             return this.objUsuarioDAO.GetUsuarios(hashCriterios);
         }
+
+        
 
     }
 }

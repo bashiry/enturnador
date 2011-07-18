@@ -49,19 +49,44 @@ namespace EnturnadorDAO.DAO
                         notas = u.notas
                     };
 
+            DataTable dt = Utilidades.DAOUtil.ToDataTable(q);
+
+            DataView dw = dt.DefaultView;
+            string filtro = "";
+
             //Si llegan criterios para filtrar
             if (hashCriterios != null)
-            { 
+            {
                 if (hashCriterios.ContainsKey("nombre"))
-                    q = q.Where(u => u.nombre.Contains(hashCriterios["nombre"].ToString()));
+                    filtro += "nombre LIKE '%" + hashCriterios["nombre"].ToString() + "%' AND ";
                 if (hashCriterios.ContainsKey("login"))
-                    q = q.Where(u => u.login.Contains(hashCriterios["login"].ToString()));
+                    filtro += "login LIKE '%" + hashCriterios["login"].ToString() + "%' AND ";
                 if (hashCriterios.ContainsKey("idRol"))
-                    q = q.Where(u => u.idRol == Convert.ToInt32(hashCriterios["idRol"].ToString()));
+                    filtro += "idRol = " + Convert.ToInt32(hashCriterios["idRol"].ToString());                    
             }
 
-            return Utilidades.DAOUtil.ToDataTable(q);
-        }        
+            if (filtro.EndsWith("AND "))
+                filtro = filtro.Substring(0, filtro.Length - 4);
+
+            dw.RowFilter = filtro;
+
+            return dw.ToTable();
+        }
+
+        /// <summary>
+        /// Retorna un usuario dado su id
+        /// </summary>
+        /// <param name="login">login a buscar</param>
+        /// <returns></returns>
+        public USUARIO GetUsuarioByLogin(string login)
+        {
+            var q = (from u in this._ent.USUARIO
+                     where u.activo == true && u.login == login
+                     select u).SingleOrDefault();
+
+            return q;
+
+        }
 
     }
 }
