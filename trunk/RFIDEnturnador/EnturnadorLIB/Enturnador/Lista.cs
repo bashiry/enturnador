@@ -6,6 +6,9 @@ using EnturnadorDAO;
 
 namespace EnturnadorLIB.Enturnador
 {
+    /// <summary>
+    /// Clase que retorna listas
+    /// </summary>
     public class Lista
     {
         /// <summary>
@@ -43,7 +46,17 @@ namespace EnturnadorLIB.Enturnador
         public List<NOTICIA> GetListaNoticias()
         {
             return this.objDAO.GetNoticias();
-        }        
+        }
+
+        /// <summary>
+        /// Retorna lista de puertas que generan turno
+        /// </summary>
+        /// <returns></returns>
+        public List<PUERTA> GetPuertasTurno()
+        {
+            return this.objDAO.GetPuertasTurno();
+        }
+
 
     }
 }

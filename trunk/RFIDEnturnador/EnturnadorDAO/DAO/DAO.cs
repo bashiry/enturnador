@@ -129,6 +129,23 @@ namespace EnturnadorDAO.DAO
             this._ent.SaveChanges();
         }
 
+        /// <summary>
+        /// Retorna valor de configuracion de una llave
+        /// </summary>
+        /// <param name="llave"></param>
+        /// <returns></returns>
+        public string GetValorConfig(string llave)
+        { 
+            var q = (from c in this._ent.CONFIGURACION
+                    where c.llave == llave
+                    select c).SingleOrDefault();
+
+            if (q == null)
+                throw new Exception("No encontró el valor para le llave de configuración: '" + llave + "'");
+
+            return q.valor;            
+        }
+
         #region "Listas"
 
         /// <summary>
@@ -166,6 +183,19 @@ namespace EnturnadorDAO.DAO
         {
             var q = from t in this._ent.ROL
                     where t.activo == true
+                    select t;
+
+            return q.ToList();
+        }
+
+        /// <summary>
+        /// Retorna lista de puertas que generan turno
+        /// </summary>
+        /// <returns></returns>
+        public List<PUERTA> GetPuertasTurno()
+        {
+            var q = from t in this._ent.PUERTA
+                    where t.generaTurno == true
                     select t;
 
             return q.ToList();

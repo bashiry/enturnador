@@ -10,7 +10,14 @@ namespace RFIDEnturnador
     /// </summary>
     public static class CGlobal
     {
-        public static int IdUsuario = 2;
+        public static int IdUsuario;
+
+
+        /// <summary>
+        /// Declaracion de constantes
+        /// </summary>
+        public const string ID_PUERTA_E1 = "ID_PUERTA_E1";
+        public const string ID_PUERTA_E2 = "ID_PUERTA_E2";
 
         public enum Roles
         { 
