@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using EnturnadorDAO;
+using EnturnadorLIB;
 
 namespace RFIDEnturnador
 {
     public partial class Login : Form
     {
+        private USUARIO usu;
+
         public Login()
         {
             InitializeComponent();
@@ -25,11 +29,20 @@ namespace RFIDEnturnador
                 {
                     Cursor = Cursors.WaitCursor;
 
-                    Thread th1 = new Thread(new ThreadStart(Run));
-                    th1.Start();
+                    EnturnadorLIB.Seguridad.Usuario objUsuario = new EnturnadorLIB.Seguridad.Usuario();
 
-                    Cursor = Cursors.Default;
-                    this.Close();                    
+                    this.usu = objUsuario.GetByLoginPassword(this.txtUsuario.Text.Trim(), this.txtClave.Text.Trim());
+                    if (usu == null)
+                    {
+                        Cursor = Cursors.Default;
+                        MessageBox.Show("Usuario o clave inválida", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {                        
+                        Thread th1 = new Thread(new ThreadStart(Run));
+                        th1.Start();
+                        this.Close();                    
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -65,7 +78,7 @@ namespace RFIDEnturnador
 
         private void Run()
         { 
-            Application.Run(new Principal());
+            Application.Run(new Principal(this.usu));
         }
 
 

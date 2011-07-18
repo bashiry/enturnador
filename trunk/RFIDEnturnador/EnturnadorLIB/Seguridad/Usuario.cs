@@ -106,6 +106,17 @@ namespace EnturnadorLIB.Seguridad
         }
 
         /// <summary>
+        /// Retorna una usuario dado su login y password
+        /// </summary>
+        /// <param name="login">login del usuario a retornar</param>
+        /// <returns></returns>
+        public USUARIO GetByLoginPassword(string login, string password)
+        {
+            return (USUARIO)this.objUsuarioDAO.GetUsuarioByLoginPassword(login, password);
+        }
+        
+
+        /// <summary>
         /// Retorna datatable con los usuarios que cumplen los criterios de busqueda
         /// </summary>
         /// <returns></returns>
