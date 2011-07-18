@@ -12,5 +12,25 @@ namespace RFIDEnturnador
     {
         public static int IdUsuario = 2;
 
+        public enum Roles
+        { 
+            ADMINISTRADOR,
+            AUXILIAR,
+            ADT
+        }
+
+        /// <summary>
+        /// Enumeracion de los formularios de la app
+        /// </summary>
+        public enum Formularios
+        { 
+            USUARIOS = 0,
+            CAMIONES,
+            NOTICIAS,
+            READERS,
+            ENTURNAR,
+            VER_COLA
+        }
+
     }
 }

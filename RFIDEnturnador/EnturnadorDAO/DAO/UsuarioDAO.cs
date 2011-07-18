@@ -88,5 +88,20 @@ namespace EnturnadorDAO.DAO
 
         }
 
+        /// <summary>
+        /// Retorna un usuario dado su login y su password
+        /// </summary>
+        /// <param name="login">login a buscar</param>
+        /// <returns></returns>
+        public USUARIO GetUsuarioByLoginPassword(string login, string clave)
+        {
+            var q = (from u in this._ent.USUARIO
+                     where u.activo == true && u.login == login && u.clave == clave
+                     select u).SingleOrDefault();
+
+            return q;
+
+        }
+
     }
 }

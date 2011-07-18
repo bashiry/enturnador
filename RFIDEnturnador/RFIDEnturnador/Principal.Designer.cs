@@ -29,19 +29,22 @@
         private void InitializeComponent()
         {
             this.panelPrincipal = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btnMonitor = new System.Windows.Forms.Button();
             this.btnEnturnar = new System.Windows.Forms.Button();
             this.btnAdminReaders = new System.Windows.Forms.Button();
             this.btnAdminUsuarios = new System.Windows.Forms.Button();
             this.btnAdminNoticia = new System.Windows.Forms.Button();
             this.btnAdminCamiones = new System.Windows.Forms.Button();
-            this.panelLeft = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.panelPrincipal.SuspendLayout();
             this.panelLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -50,6 +53,8 @@
             // panelPrincipal
             // 
             this.panelPrincipal.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelPrincipal.Controls.Add(this.lblUsuario);
+            this.panelPrincipal.Controls.Add(this.pictureBox4);
             this.panelPrincipal.Controls.Add(this.btnMonitor);
             this.panelPrincipal.Controls.Add(this.btnEnturnar);
             this.panelPrincipal.Controls.Add(this.btnAdminReaders);
@@ -61,91 +66,8 @@
             this.panelPrincipal.Location = new System.Drawing.Point(0, 0);
             this.panelPrincipal.Margin = new System.Windows.Forms.Padding(2);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(756, 453);
+            this.panelPrincipal.Size = new System.Drawing.Size(814, 453);
             this.panelPrincipal.TabIndex = 1;
-            // 
-            // btnMonitor
-            // 
-            this.btnMonitor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMonitor.Image = global::RFIDEnturnador.Properties.Resources.monitor;
-            this.btnMonitor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMonitor.Location = new System.Drawing.Point(342, 342);
-            this.btnMonitor.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMonitor.Name = "btnMonitor";
-            this.btnMonitor.Size = new System.Drawing.Size(196, 55);
-            this.btnMonitor.TabIndex = 6;
-            this.btnMonitor.Text = "Ver colas";
-            this.btnMonitor.UseVisualStyleBackColor = true;
-            // 
-            // btnEnturnar
-            // 
-            this.btnEnturnar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnturnar.Image = global::RFIDEnturnador.Properties.Resources.enturnar;
-            this.btnEnturnar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnturnar.Location = new System.Drawing.Point(342, 282);
-            this.btnEnturnar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEnturnar.Name = "btnEnturnar";
-            this.btnEnturnar.Size = new System.Drawing.Size(196, 55);
-            this.btnEnturnar.TabIndex = 5;
-            this.btnEnturnar.Text = "Enturnar/Desenturnar";
-            this.btnEnturnar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEnturnar.UseVisualStyleBackColor = true;
-            // 
-            // btnAdminReaders
-            // 
-            this.btnAdminReaders.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminReaders.Image = global::RFIDEnturnador.Properties.Resources.antenna;
-            this.btnAdminReaders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminReaders.Location = new System.Drawing.Point(342, 222);
-            this.btnAdminReaders.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdminReaders.Name = "btnAdminReaders";
-            this.btnAdminReaders.Size = new System.Drawing.Size(196, 55);
-            this.btnAdminReaders.TabIndex = 4;
-            this.btnAdminReaders.Text = "Readers";
-            this.btnAdminReaders.UseVisualStyleBackColor = true;
-            // 
-            // btnAdminUsuarios
-            // 
-            this.btnAdminUsuarios.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminUsuarios.Image = global::RFIDEnturnador.Properties.Resources.Login_Manager;
-            this.btnAdminUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminUsuarios.Location = new System.Drawing.Point(342, 32);
-            this.btnAdminUsuarios.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdminUsuarios.Name = "btnAdminUsuarios";
-            this.btnAdminUsuarios.Size = new System.Drawing.Size(196, 55);
-            this.btnAdminUsuarios.TabIndex = 3;
-            this.btnAdminUsuarios.Text = "Usuarios";
-            this.btnAdminUsuarios.UseVisualStyleBackColor = true;
-            this.btnAdminUsuarios.Click += new System.EventHandler(this.btnAdminUsuarios_Click);
-            // 
-            // btnAdminNoticia
-            // 
-            this.btnAdminNoticia.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminNoticia.Image = global::RFIDEnturnador.Properties.Resources.News;
-            this.btnAdminNoticia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminNoticia.Location = new System.Drawing.Point(342, 153);
-            this.btnAdminNoticia.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdminNoticia.Name = "btnAdminNoticia";
-            this.btnAdminNoticia.Size = new System.Drawing.Size(196, 55);
-            this.btnAdminNoticia.TabIndex = 2;
-            this.btnAdminNoticia.Text = "Noticias";
-            this.btnAdminNoticia.UseVisualStyleBackColor = true;
-            this.btnAdminNoticia.Click += new System.EventHandler(this.btnAdminNoticia_Click);
-            // 
-            // btnAdminCamiones
-            // 
-            this.btnAdminCamiones.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdminCamiones.Image = global::RFIDEnturnador.Properties.Resources.camion6;
-            this.btnAdminCamiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminCamiones.Location = new System.Drawing.Point(342, 93);
-            this.btnAdminCamiones.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAdminCamiones.Name = "btnAdminCamiones";
-            this.btnAdminCamiones.Size = new System.Drawing.Size(196, 55);
-            this.btnAdminCamiones.TabIndex = 1;
-            this.btnAdminCamiones.Text = "              Camiones";
-            this.btnAdminCamiones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdminCamiones.UseVisualStyleBackColor = true;
-            this.btnAdminCamiones.Click += new System.EventHandler(this.btnAdminCamiones_Click);
             // 
             // panelLeft
             // 
@@ -159,7 +81,7 @@
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Margin = new System.Windows.Forms.Padding(2);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(314, 453);
+            this.panelLeft.Size = new System.Drawing.Size(331, 453);
             this.panelLeft.TabIndex = 0;
             // 
             // label1
@@ -173,6 +95,99 @@
             this.label1.Size = new System.Drawing.Size(288, 22);
             this.label1.TabIndex = 3;
             this.label1.Text = "Enturnador de camiones RFID";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::RFIDEnturnador.Properties.Resources.workerS;
+            this.pictureBox4.Location = new System.Drawing.Point(373, 1);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 7;
+            this.pictureBox4.TabStop = false;
+            // 
+            // btnMonitor
+            // 
+            this.btnMonitor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMonitor.Image = global::RFIDEnturnador.Properties.Resources.monitor;
+            this.btnMonitor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMonitor.Location = new System.Drawing.Point(573, 170);
+            this.btnMonitor.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMonitor.Name = "btnMonitor";
+            this.btnMonitor.Size = new System.Drawing.Size(196, 55);
+            this.btnMonitor.TabIndex = 6;
+            this.btnMonitor.Text = "  Ver colas";
+            this.btnMonitor.UseVisualStyleBackColor = true;
+            // 
+            // btnEnturnar
+            // 
+            this.btnEnturnar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnturnar.Image = global::RFIDEnturnador.Properties.Resources.enturnar;
+            this.btnEnturnar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEnturnar.Location = new System.Drawing.Point(373, 170);
+            this.btnEnturnar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEnturnar.Name = "btnEnturnar";
+            this.btnEnturnar.Size = new System.Drawing.Size(196, 55);
+            this.btnEnturnar.TabIndex = 5;
+            this.btnEnturnar.Text = "Enturnar/Desenturnar";
+            this.btnEnturnar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEnturnar.UseVisualStyleBackColor = true;
+            // 
+            // btnAdminReaders
+            // 
+            this.btnAdminReaders.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminReaders.Image = global::RFIDEnturnador.Properties.Resources.antenna;
+            this.btnAdminReaders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminReaders.Location = new System.Drawing.Point(573, 111);
+            this.btnAdminReaders.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdminReaders.Name = "btnAdminReaders";
+            this.btnAdminReaders.Size = new System.Drawing.Size(196, 55);
+            this.btnAdminReaders.TabIndex = 4;
+            this.btnAdminReaders.Text = "Readers";
+            this.btnAdminReaders.UseVisualStyleBackColor = true;
+            // 
+            // btnAdminUsuarios
+            // 
+            this.btnAdminUsuarios.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminUsuarios.Image = global::RFIDEnturnador.Properties.Resources.Login_Manager;
+            this.btnAdminUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminUsuarios.Location = new System.Drawing.Point(373, 52);
+            this.btnAdminUsuarios.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdminUsuarios.Name = "btnAdminUsuarios";
+            this.btnAdminUsuarios.Size = new System.Drawing.Size(196, 55);
+            this.btnAdminUsuarios.TabIndex = 3;
+            this.btnAdminUsuarios.Text = "Usuarios";
+            this.btnAdminUsuarios.UseVisualStyleBackColor = true;
+            this.btnAdminUsuarios.Click += new System.EventHandler(this.btnAdminUsuarios_Click);
+            // 
+            // btnAdminNoticia
+            // 
+            this.btnAdminNoticia.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminNoticia.Image = global::RFIDEnturnador.Properties.Resources.News;
+            this.btnAdminNoticia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminNoticia.Location = new System.Drawing.Point(373, 111);
+            this.btnAdminNoticia.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdminNoticia.Name = "btnAdminNoticia";
+            this.btnAdminNoticia.Size = new System.Drawing.Size(196, 55);
+            this.btnAdminNoticia.TabIndex = 2;
+            this.btnAdminNoticia.Text = "Noticias";
+            this.btnAdminNoticia.UseVisualStyleBackColor = true;
+            this.btnAdminNoticia.Click += new System.EventHandler(this.btnAdminNoticia_Click);
+            // 
+            // btnAdminCamiones
+            // 
+            this.btnAdminCamiones.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdminCamiones.Image = global::RFIDEnturnador.Properties.Resources.camion6;
+            this.btnAdminCamiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminCamiones.Location = new System.Drawing.Point(573, 52);
+            this.btnAdminCamiones.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdminCamiones.Name = "btnAdminCamiones";
+            this.btnAdminCamiones.Size = new System.Drawing.Size(196, 55);
+            this.btnAdminCamiones.TabIndex = 1;
+            this.btnAdminCamiones.Text = "                Camiones";
+            this.btnAdminCamiones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdminCamiones.UseVisualStyleBackColor = true;
+            this.btnAdminCamiones.Click += new System.EventHandler(this.btnAdminCamiones_Click);
             // 
             // pictureBox1
             // 
@@ -191,7 +206,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(14, 55);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(286, 271);
+            this.pictureBox3.Size = new System.Drawing.Size(293, 271);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
@@ -207,12 +222,22 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Location = new System.Drawing.Point(403, 6);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(69, 16);
+            this.lblUsuario.TabIndex = 8;
+            this.lblUsuario.Text = "lblUsuario";
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(756, 453);
+            this.ClientSize = new System.Drawing.Size(814, 453);
             this.Controls.Add(this.panelPrincipal);
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -221,8 +246,10 @@
             this.Text = "RFID Enturnador de camiones";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.panelPrincipal.ResumeLayout(false);
+            this.panelPrincipal.PerformLayout();
             this.panelLeft.ResumeLayout(false);
             this.panelLeft.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -244,5 +271,7 @@
         private System.Windows.Forms.Button btnAdminUsuarios;
         private System.Windows.Forms.Button btnEnturnar;
         private System.Windows.Forms.Button btnMonitor;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }

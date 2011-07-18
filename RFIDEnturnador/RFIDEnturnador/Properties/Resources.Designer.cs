@@ -193,6 +193,13 @@ namespace RFIDEnturnador.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap workerS {
+            get {
+                object obj = ResourceManager.GetObject("workerS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap xpLens {
             get {
                 object obj = ResourceManager.GetObject("xpLens", resourceCulture);
