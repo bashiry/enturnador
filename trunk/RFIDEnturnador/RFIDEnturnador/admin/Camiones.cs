@@ -402,7 +402,7 @@ namespace RFIDEnturnador.admin
                         mReader.Open(iReaders[0]);
                         //Now add reader response event handler
                         mReader.ReaderResponse += new dlReaderResponse(mReader_ReaderResponse);
-                        this.pictureLectora.Image = RFIDEnturnador.Properties.Resources.Ball_green_32;
+                        this.pictureLectora.Image = RFIDEnturnador.Properties.Resources.Ball_green_32;                        
                     }
 
                 }
