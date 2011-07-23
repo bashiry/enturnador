@@ -103,5 +103,19 @@ namespace EnturnadorLIB.Enturnador
             return resultado;        
         }
 
+
+        /// <summary>
+        /// Guarda log de las enturnaciones/desenturnaciones manuales
+        /// </summary>
+        /// <param name="idTipoCargue">id del tipo de cargue</param>
+        /// <param name="idCamion">id del camion</param>
+        /// <param name="idUsuario">id del usuario que realiza la operación</param>
+        /// <param name="hora">hora en la que se enturna/desenturna el camion</param>
+        /// <param name="idPuerta">id de la puerta donde se realiza la operacio</param>
+        public void RegistrarLog(int idTipoCargue, int idCamion, int idUsuario, DateTime hora, int idPuerta)
+        { 
+        
+        }
+
     }
 }

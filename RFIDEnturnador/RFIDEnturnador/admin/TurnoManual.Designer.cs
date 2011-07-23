@@ -57,16 +57,16 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(455, 70);
+            this.panel2.Size = new System.Drawing.Size(607, 85);
             this.panel2.TabIndex = 7;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::RFIDEnturnador.Properties.Resources.enturnar;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(80, 55);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -78,86 +78,93 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label1.Location = new System.Drawing.Point(89, 33);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(119, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(353, 22);
+            this.label1.Size = new System.Drawing.Size(435, 29);
             this.label1.TabIndex = 4;
             this.label1.Text = "Enturnar / Desenturnar manualmente";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(68, 146);
+            this.label3.Location = new System.Drawing.Point(91, 180);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(47, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "Placa:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(68, 185);
+            this.label4.Location = new System.Drawing.Point(91, 228);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.Size = new System.Drawing.Size(43, 17);
             this.label4.TabIndex = 10;
             this.label4.Text = "Hora:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(68, 224);
+            this.label5.Location = new System.Drawing.Point(91, 276);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 13);
+            this.label5.Size = new System.Drawing.Size(107, 17);
             this.label5.TabIndex = 11;
             this.label5.Text = "Observaciones:";
             // 
             // txtObservaciones
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(154, 224);
+            this.txtObservaciones.Location = new System.Drawing.Point(205, 276);
+            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(184, 80);
+            this.txtObservaciones.Size = new System.Drawing.Size(244, 98);
             this.txtObservaciones.TabIndex = 13;
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(154, 143);
+            this.txtPlaca.Location = new System.Drawing.Point(205, 176);
+            this.txtPlaca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Size = new System.Drawing.Size(184, 20);
+            this.txtPlaca.Size = new System.Drawing.Size(244, 22);
             this.txtPlaca.TabIndex = 14;
             // 
             // numHora
             // 
-            this.numHora.Location = new System.Drawing.Point(154, 183);
+            this.numHora.Location = new System.Drawing.Point(205, 225);
+            this.numHora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numHora.Maximum = new decimal(new int[] {
             24,
             0,
             0,
             0});
             this.numHora.Name = "numHora";
-            this.numHora.Size = new System.Drawing.Size(53, 20);
+            this.numHora.Size = new System.Drawing.Size(71, 22);
             this.numHora.TabIndex = 15;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(233, 185);
+            this.label6.Location = new System.Drawing.Point(311, 228);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.Size = new System.Drawing.Size(61, 17);
             this.label6.TabIndex = 16;
             this.label6.Text = "Minutos:";
             // 
             // numMinutos
             // 
-            this.numMinutos.Location = new System.Drawing.Point(286, 183);
+            this.numMinutos.Location = new System.Drawing.Point(381, 225);
+            this.numMinutos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numMinutos.Maximum = new decimal(new int[] {
             60,
             0,
             0,
             0});
             this.numMinutos.Name = "numMinutos";
-            this.numMinutos.Size = new System.Drawing.Size(53, 20);
+            this.numMinutos.Size = new System.Drawing.Size(71, 22);
             this.numMinutos.TabIndex = 17;
             // 
             // btnCancelar
@@ -165,9 +172,10 @@
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Image = global::RFIDEnturnador.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(263, 320);
+            this.btnCancelar.Location = new System.Drawing.Point(351, 394);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(100, 28);
             this.btnCancelar.TabIndex = 21;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -178,9 +186,10 @@
             // 
             this.btnListo.Image = global::RFIDEnturnador.Properties.Resources.chulo;
             this.btnListo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListo.Location = new System.Drawing.Point(182, 320);
+            this.btnListo.Location = new System.Drawing.Point(243, 394);
+            this.btnListo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnListo.Name = "btnListo";
-            this.btnListo.Size = new System.Drawing.Size(75, 23);
+            this.btnListo.Size = new System.Drawing.Size(100, 28);
             this.btnListo.TabIndex = 20;
             this.btnListo.Text = "Listo";
             this.btnListo.UseVisualStyleBackColor = true;
@@ -190,9 +199,10 @@
             // 
             this.rbtnEnturnar.AutoSize = true;
             this.rbtnEnturnar.Checked = true;
-            this.rbtnEnturnar.Location = new System.Drawing.Point(154, 84);
+            this.rbtnEnturnar.Location = new System.Drawing.Point(205, 103);
+            this.rbtnEnturnar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnEnturnar.Name = "rbtnEnturnar";
-            this.rbtnEnturnar.Size = new System.Drawing.Size(65, 17);
+            this.rbtnEnturnar.Size = new System.Drawing.Size(84, 21);
             this.rbtnEnturnar.TabIndex = 22;
             this.rbtnEnturnar.TabStop = true;
             this.rbtnEnturnar.Text = "Enturnar";
@@ -201,18 +211,19 @@
             // rbtnDesenturnar
             // 
             this.rbtnDesenturnar.AutoSize = true;
-            this.rbtnDesenturnar.Location = new System.Drawing.Point(154, 110);
+            this.rbtnDesenturnar.Location = new System.Drawing.Point(205, 135);
+            this.rbtnDesenturnar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnDesenturnar.Name = "rbtnDesenturnar";
-            this.rbtnDesenturnar.Size = new System.Drawing.Size(83, 17);
+            this.rbtnDesenturnar.Size = new System.Drawing.Size(108, 21);
             this.rbtnDesenturnar.TabIndex = 23;
             this.rbtnDesenturnar.Text = "Desenturnar";
             this.rbtnDesenturnar.UseVisualStyleBackColor = true;
             // 
             // TurnoManual
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 366);
+            this.ClientSize = new System.Drawing.Size(607, 450);
             this.Controls.Add(this.rbtnDesenturnar);
             this.Controls.Add(this.rbtnEnturnar);
             this.Controls.Add(this.btnCancelar);
@@ -227,6 +238,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "TurnoManual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
