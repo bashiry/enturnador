@@ -15,7 +15,7 @@ namespace EnturnadorLIB.Enturnador
         /// Objeto que provee el acceso a datos generico
         /// </summary>
         private EnturnadorDAO.DAO.DAO objDAO;
-        private EnturnadorDAO.DAO.CamionDAO objCamionDAO;
+        private EnturnadorDAO.DAO.CamionDAO objCamionDAO;        
 
         public Camion()
         {

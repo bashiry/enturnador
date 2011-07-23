@@ -46,6 +46,7 @@
     <Compile Include="Enturnador\Configuracion.cs" />
     <Compile Include="Enturnador\Lista.cs" />
     <Compile Include="Enturnador\Noticia.cs" />
+    <Compile Include="Enturnador\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RFID\Reader.cs" />
     <Compile Include="Seguridad\Usuario.cs" />
