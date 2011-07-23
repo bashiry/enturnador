@@ -163,16 +163,6 @@
     <None Include="Resources\monitor.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EnturnadorDAO\EnturnadorDAO.csproj">
-      <Project>{D027DB5B-F485-498A-BAA2-F506A4B128C7}</Project>
-      <Name>EnturnadorDAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EnturnadorLIB\EnturnadorLIB.csproj">
-      <Project>{6D2FF4FC-DD7E-4050-A0A9-E5CCAC7528EA}</Project>
-      <Name>EnturnadorLIB</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\agregar.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +194,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\workerS.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnturnadorDAO\EnturnadorDAO.csproj">
+      <Project>{D027DB5B-F485-498A-BAA2-F506A4B128C7}</Project>
+      <Name>EnturnadorDAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnturnadorLIB\EnturnadorLIB.csproj">
+      <Project>{6D2FF4FC-DD7E-4050-A0A9-E5CCAC7528EA}</Project>
+      <Name>EnturnadorLIB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
