@@ -21,6 +21,7 @@ namespace RFIDEnturnador.admin
     public partial class Camiones : Form
     {
         private EnturnadorLIB.Enturnador.Camion objCamion;
+        private EnturnadorLIB.Enturnador.Util objUtil;
         private int idCamion;
         List<TIPO_CARGUE> listaTipoCargue;
 
@@ -204,6 +205,10 @@ namespace RFIDEnturnador.admin
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudo guardar el camión: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                string inner = "";
+                if (ex.InnerException != null)
+                    inner = ex.InnerException.Message;
+                this.objUtil.LogError("Camiones", "Guardar", ex.Message, inner, CGlobal.IdUsuario);
             }
         }
 
@@ -271,6 +276,10 @@ namespace RFIDEnturnador.admin
             {
                 Cursor = Cursors.Default;
                 MessageBox.Show("Ocurrió un error al leer el archivo: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                string inner = "";
+                if (ex.InnerException != null)
+                    inner = ex.InnerException.Message;
+                this.objUtil.LogError("Camiones", "LeerArchivo", ex.Message, inner, CGlobal.IdUsuario);
             }            
         }
 
@@ -404,8 +413,11 @@ namespace RFIDEnturnador.admin
             }
             catch (Exception ex)
             {
-                //Consume Exception here
-                throw (ex);
+                MessageBox.Show("Ocurrió un error al conectarse a la lectora, por favor intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string inner = "";
+                if (ex.InnerException != null)
+                    inner = ex.InnerException.Message;
+                this.objUtil.LogError("Camiones", "LeerArchivo", ex.Message, inner, CGlobal.IdUsuario);
             }
         }
 
@@ -510,9 +522,12 @@ namespace RFIDEnturnador.admin
             }
             catch (Exception ex)
             {
-                //Handle exception properly.
-                throw (ex);
-
+                //Se guarda log del error
+                MessageBox.Show("Ocurrió un error durante la operación d electura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string inner = "";
+                if (ex.InnerException != null)
+                    inner = ex.InnerException.Message;
+                this.objUtil.LogError("Camiones", "ProcessReaderResponse", ex.Message, inner, CGlobal.IdUsuario);
             }
         }
 
@@ -544,8 +559,10 @@ namespace RFIDEnturnador.admin
             }
             catch (Exception ex)
             {
-                //Consume Exception here
-                throw (ex);
+                string inner = "";
+                if (ex.InnerException != null)
+                    inner = ex.InnerException.Message;
+                this.objUtil.LogError("Camiones", "DisconnectReader", ex.Message, inner, CGlobal.IdUsuario);
             }
         }
 
