@@ -30,6 +30,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_NOTICIA_USUARIO", "USUARIO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.USUARIO), "NOTICIA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.NOTICIA), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_USUARIO_ROL", "ROL", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.ROL), "USUARIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.USUARIO), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_COLA_PUERTA", "PUERTA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.PUERTA), "COLA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.COLA), true)]
+[assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_MANUAL_PUERTA", "PUERTA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.PUERTA), "LOG_MANUAL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_MANUAL), true)]
 
 #endregion
 
@@ -1589,8 +1590,8 @@ namespace EnturnadorDAO
         /// <param name="idCamion">Initial value of the idCamion property.</param>
         /// <param name="idUsuario">Initial value of the idUsuario property.</param>
         /// <param name="hora">Initial value of the hora property.</param>
-        /// <param name="puerta">Initial value of the puerta property.</param>
-        public static LOG_MANUAL CreateLOG_MANUAL(global::System.Int32 id, global::System.Int32 idTipoCargue, global::System.Int32 idCamion, global::System.Int32 idUsuario, global::System.DateTime hora, global::System.String puerta)
+        /// <param name="idPuerta">Initial value of the idPuerta property.</param>
+        public static LOG_MANUAL CreateLOG_MANUAL(global::System.Int32 id, global::System.Int32 idTipoCargue, global::System.Int32 idCamion, global::System.Int32 idUsuario, global::System.DateTime hora, global::System.Int32 idPuerta)
         {
             LOG_MANUAL lOG_MANUAL = new LOG_MANUAL();
             lOG_MANUAL.id = id;
@@ -1598,7 +1599,7 @@ namespace EnturnadorDAO
             lOG_MANUAL.idCamion = idCamion;
             lOG_MANUAL.idUsuario = idUsuario;
             lOG_MANUAL.hora = hora;
-            lOG_MANUAL.puerta = puerta;
+            lOG_MANUAL.idPuerta = idPuerta;
             return lOG_MANUAL;
         }
 
@@ -1733,24 +1734,24 @@ namespace EnturnadorDAO
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String puerta
+        public global::System.Int32 idPuerta
         {
             get
             {
-                return _puerta;
+                return _idPuerta;
             }
             set
             {
-                OnpuertaChanging(value);
-                ReportPropertyChanging("puerta");
-                _puerta = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("puerta");
-                OnpuertaChanged();
+                OnidPuertaChanging(value);
+                ReportPropertyChanging("idPuerta");
+                _idPuerta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idPuerta");
+                OnidPuertaChanged();
             }
         }
-        private global::System.String _puerta;
-        partial void OnpuertaChanging(global::System.String value);
-        partial void OnpuertaChanged();
+        private global::System.Int32 _idPuerta;
+        partial void OnidPuertaChanging(global::System.Int32 value);
+        partial void OnidPuertaChanged();
 
         #endregion
     
@@ -1866,6 +1867,44 @@ namespace EnturnadorDAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<USUARIO>("ENTURNADORModel.FK_LOG_MANUAL_USUARIO", "USUARIO", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_LOG_MANUAL_PUERTA", "PUERTA")]
+        public PUERTA PUERTA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PUERTA>("ENTURNADORModel.FK_LOG_MANUAL_PUERTA", "PUERTA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PUERTA>("ENTURNADORModel.FK_LOG_MANUAL_PUERTA", "PUERTA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PUERTA> PUERTAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PUERTA>("ENTURNADORModel.FK_LOG_MANUAL_PUERTA", "PUERTA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PUERTA>("ENTURNADORModel.FK_LOG_MANUAL_PUERTA", "PUERTA", value);
                 }
             }
         }
@@ -2222,6 +2261,28 @@ namespace EnturnadorDAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<COLA>("ENTURNADORModel.FK_COLA_PUERTA", "COLA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_LOG_MANUAL_PUERTA", "LOG_MANUAL")]
+        public EntityCollection<LOG_MANUAL> LOG_MANUAL
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<LOG_MANUAL>("ENTURNADORModel.FK_LOG_MANUAL_PUERTA", "LOG_MANUAL");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LOG_MANUAL>("ENTURNADORModel.FK_LOG_MANUAL_PUERTA", "LOG_MANUAL", value);
                 }
             }
         }
