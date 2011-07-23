@@ -1,0 +1,27 @@
+﻿<ADD_ROSPEC Version="1" MessageID="0">
+  <ROSpec>
+    <ROSpecID>1</ROSpecID>
+    <Priority>0</Priority>
+    <CurrentState>Disabled</CurrentState>
+    <ROBoundarySpec>
+      <ROSpecStartTrigger>
+        <ROSpecStartTriggerType>Null</ROSpecStartTriggerType>
+      </ROSpecStartTrigger>
+      <ROSpecStopTrigger>
+        <ROSpecStopTriggerType>Null</ROSpecStopTriggerType>
+        <DurationTriggerValue>0</DurationTriggerValue>
+      </ROSpecStopTrigger>
+    </ROBoundarySpec>
+    <AISpec>
+      <AntennaIDs>1</AntennaIDs>
+      <AISpecStopTrigger>
+        <AISpecStopTriggerType>Null</AISpecStopTriggerType>
+        <DurationTrigger>0</DurationTrigger>
+      </AISpecStopTrigger>
+      <InventoryParameterSpec>
+        <InventoryParameterSpecID>1</InventoryParameterSpecID>
+        <ProtocolID>EPCGlobalClass1Gen2</ProtocolID>
+      </InventoryParameterSpec>
+    </AISpec>
+  </ROSpec>
+</ADD_ROSPEC>

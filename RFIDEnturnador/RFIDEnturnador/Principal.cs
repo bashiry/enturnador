@@ -14,6 +14,7 @@ namespace RFIDEnturnador
     public partial class Principal : Form
     {
         private USUARIO usuario;
+        ClasesLLRP.LLRPReadControl ctrl = new ClasesLLRP.LLRPReadControl();
 
         public Principal()
         {
@@ -147,8 +148,14 @@ namespace RFIDEnturnador
         }
 
         private void IniciarLectura()
+        {            
+            string rutaConfig = @"configFiles\Devices.xml";
+            this.ctrl.Iniciar(3, rutaConfig);
+        }
+
+        private void Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            this.ctrl.Detener();
         }
 
     }
