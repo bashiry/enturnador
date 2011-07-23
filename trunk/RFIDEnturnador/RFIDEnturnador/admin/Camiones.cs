@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 using EnturnadorDAO;
 using EnturnadorLIB;
 
@@ -33,6 +34,9 @@ namespace RFIDEnturnador.admin
 
         private void Camiones_Load(object sender, EventArgs e)
         {
+            //Para poder abrir el dialogo para seleccionar el archivo y pode procesarlo en un hilo diferente
+            CheckForIllegalCrossThreadCalls = false;
+
             this.objCamion = new EnturnadorLIB.Enturnador.Camion();
 
             this.CambiarVista(Vista.LISTA);
@@ -91,7 +95,7 @@ namespace RFIDEnturnador.admin
             else if (vista == Vista.CARGUE)
             {
                 this.panelCargueMasivo.Visible = true;
-                this.panelCargueMasivo.Height = 390;
+                this.panelCargueMasivo.Height = 476;
             }
         }
 
@@ -341,6 +345,14 @@ namespace RFIDEnturnador.admin
             return error;
         }
 
+        private void AbrirDialogo()
+        {
+            //Se abre el dialogo para seleccionar el archivo con los datos a cargar
+            this.openFileDialog1.Filter = "Text files(*.txt)|*.txt";
+            this.openFileDialog1.Multiselect = false;
+            this.openFileDialog1.ShowDialog();
+        }
+
         #endregion
 
         #region "Eventos"
@@ -410,14 +422,16 @@ namespace RFIDEnturnador.admin
             this.CambiarVista(Vista.LISTA);
         }
 
+        [STAThread]
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            //Se abre el dialogo para seleccionar el archivo con los datos a cargar
-            this.openFileDialog1.Filter = "Text files(*.txt)|*.txt";
-            this.openFileDialog1.Multiselect = false;
-            this.openFileDialog1.ShowDialog();
+            Thread hilo = new Thread(AbrirDialogo);
+            hilo.IsBackground = true;
+            hilo.SetApartmentState(ApartmentState.STA);
+            hilo.Start();
         }
 
+        [STAThread]
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
             this.LeerArchivo(this.openFileDialog1.FileName);
