@@ -88,6 +88,20 @@ namespace RFIDEnturnador.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Ball_green_32 {
+            get {
+                object obj = ResourceManager.GetObject("Ball_green_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Ball_red_32 {
+            get {
+                object obj = ResourceManager.GetObject("Ball_red_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap camion {
             get {
                 object obj = ResourceManager.GetObject("camion", resourceCulture);

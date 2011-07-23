@@ -38,6 +38,12 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EpcisWriter">
+      <HintPath>..\..\RFIDBlock\Librerias\EpcisWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="RF1200">
+      <HintPath>..\..\RFIDBlock\Librerias\RF1200.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -49,6 +55,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UtilityClass">
+      <HintPath>..\..\RFIDBlock\Librerias\UtilityClass.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\Camiones.cs">
@@ -207,6 +216,12 @@
       <Project>{6D2FF4FC-DD7E-4050-A0A9-E5CCAC7528EA}</Project>
       <Name>EnturnadorLIB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ball-green-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ball-red-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

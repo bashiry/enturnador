@@ -8,8 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using System.Collections;
 using EnturnadorDAO;
 using EnturnadorLIB;
+using Ensyc;
+using Ensyc.RF1200;
+
 
 
 namespace RFIDEnturnador.admin
@@ -19,6 +23,12 @@ namespace RFIDEnturnador.admin
         private EnturnadorLIB.Enturnador.Camion objCamion;
         private int idCamion;
         List<TIPO_CARGUE> listaTipoCargue;
+
+        /// <summary>
+        /// Variables relacionadas con el manejo de la lectora
+        /// </summary>
+        private EReader mReader; //m stands for member variable
+        private delegate void dlProcessResponse(EReader.Response EResponse);        
 
         private enum Vista
         { 
@@ -91,6 +101,7 @@ namespace RFIDEnturnador.admin
                 splitContainer1.Panel1Collapsed = true;
                 splitContainer1.Panel2Collapsed = false;
                 this.panelCargueMasivo.Visible = false;
+                this.ConectarLectora();
             }
             else if (vista == Vista.CARGUE)
             {
@@ -355,6 +366,194 @@ namespace RFIDEnturnador.admin
 
         #endregion
 
+        #region "Lectora"
+
+        /// <summary>
+        /// Determina el estado de la lectora y coloca un icono verde o rojo que muestra el estado detectado
+        /// </summary>
+        private void ConectarLectora()
+        {
+            try
+            {
+                //Get an array of connected readers
+                int[] iReaders = Utility.GetConnectedReaders();
+                if (iReaders.Length > 0)
+                {
+                    //Now we found reader so lets connect it.
+                    if (iReaders.Length > 1)
+                    {
+                        //We have multiple reader connected to system. 
+                        //Handle this properly
+                    }
+                    else
+                    {
+                        //Create instance of the object
+                        mReader = new EReader();
+                        //Open virtula serial port reader is connected to.
+                        mReader.Open(iReaders[0]);
+                        //Now add reader response event handler
+                        mReader.ReaderResponse += new dlReaderResponse(mReader_ReaderResponse);
+                        this.pictureLectora.Image = RFIDEnturnador.Properties.Resources.Ball_green_32;
+                    }
+
+                }
+                else
+                {
+                    this.pictureLectora.Image = RFIDEnturnador.Properties.Resources.Ball_red_32;
+                }
+            }
+            catch (Exception ex)
+            {
+                //Consume Exception here
+                throw (ex);
+            }
+        }
+
+        void mReader_ReaderResponse(EReader.Response EResponse)
+        {
+            this.Invoke(new dlProcessResponse(ProcessReaderResponse), new object[] { EResponse });
+        }
+
+        /// <summary>
+        /// Manejador del evento de la respuesta de la lectora
+        /// </summary>
+        /// <param name="EResponse"></param>
+        void ProcessReaderResponse(EReader.Response EResponse)
+        {
+            try
+            {
+                //Now when reader response is MSG_OK we will process command.
+                //MSG_OK means reader received command successfully and command was executed successfully.
+                //It doesn't mean reader was able to read tag (in case of ReadTag() command). 
+                //It is just indicator of reader tried to read tag successfully.
+                //But if we have message other than MSG_OK, it indicates failure.
+
+                if (EResponse.ResponseCode == EReader.CommandCode.MSGOK)
+                {
+                    //Now parse response as we need
+                    //Now most of the command like write tag, write tag memory, set hardware information 
+                    //just needs confirmation of successfull execution so MSG_OK response indicates success for such commands.
+                    //Where as other commands like read tag, read tag memory, get hardware information, get firmware version
+                    //response comes back with some kind of data in response to issued command.
+                    //For such cases each command has different kind of response, so we need different way to parse it.
+                    //We have made this easy for developer by using response class for each specific command.
+                    //Here you will see how to use it.
+
+
+                    //We know the respone is MSG_OK (inside if ) so we can check for command specific response.
+                    //Here we have illustrated few commands. You can add more response as you need
+                    switch (EResponse.CommandEcho)
+                    {
+                        case EReader.Command.GET_FIRMWARE_VERSION:
+                            //If response is not null then
+                            if (EResponse.CommandSpecificResponse != null)
+                            {
+                                //Now we want to parse specific response as per GET_FIRMWARE_VERSION command
+                                //No problem
+                                EReader.FirmwareResponse specificRes = (EReader.FirmwareResponse)EResponse.CommandSpecificResponse; //This is easy
+                                //Now you can process values easily Try yourself by typing specificRes.
+                                //specificRes.MinorVersion 
+                            }
+                            break;
+                        case EReader.Command.READ_TAG:
+                            //If response is not null then
+                            if (EResponse.CommandSpecificResponse != null)
+                            {
+                                EReader.ReadTagResponse specificRes = (EReader.ReadTagResponse)EResponse.CommandSpecificResponse; //This is easy
+                                //Now for the case of read_tag command we have to see if we were able to find any tag or not before we can look for tag value
+                                if (specificRes.Decode == EReader.ReadTagResponse.TagDecode.GOOD_TAG)
+                                {
+                                    //Hurreyy..we found good tag now we can use tag value for business logic.
+                                    byte[] bTagData = specificRes.TagData; //Get tag data as an array
+                                    string sTagData = Utility.ToHex(specificRes.TagData);//convert tag data as string of Hex
+                                    string tag = Utility.ByteToString(bTagData);
+                                    tag.TrimStart();
+                                    tag = tag.Replace("\0", "");
+
+                                    //MessageBox.Show(this, "Hexa: " + sTagData + "\n" + "Barcode: " + tag, "Lectura", MessageBoxButtons.OK);
+                                    this.txtCodigoRFID.Text = sTagData;
+
+                                }
+                                else
+                                {
+                                    //MessageBox.Show("no tag found. Display proper message");
+                                    //no tag found. Display proper message.
+                                }
+
+                            }
+                            break;
+                        case EReader.Command.READ_TAG_MEMORY:
+                            //As per previous examples
+                            if (EResponse.CommandSpecificResponse != null)
+                            {
+                                EReader.ReadTagMemoryResponse specificRes = (EReader.ReadTagMemoryResponse)EResponse.CommandSpecificResponse; //This is easy
+                                //Now for the case of read_tag command we have to see if we were able to find any tag or not before we can look for tag value
+                                if (specificRes.Decode == EReader.ReadTagMemoryResponse.TagDecode.GOOD_TAG)
+                                {
+                                    //Hurreyy..we found good tag now we can use tag value for business logic.
+                                    byte[] bTagData = specificRes.TagData; //Get tag data as an array
+                                    string sTagData = Utility.ToHex(specificRes.TagData);//convert tag data as string of Hex
+                                }
+                                else
+                                {
+                                    //no tag found. Display proper message.
+                                }
+                            }
+                            break;
+                    }
+                }
+                else
+                {
+                    //Print error message only in debugging mode
+                    MessageBox.Show("Intente la operación nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                //Handle exception properly.
+                throw (ex);
+
+            }
+        }
+
+        /// <summary>
+        /// Lee la lectora en busca de un tag.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pictureLectora_Click(object sender, EventArgs e)
+        {
+            mReader.ReadTag();
+        }
+
+        //Procedure to close connection with reader. This is for safe practice only.
+        private void DisconnectReader()
+        {
+            try
+            {
+                //If reader instace is set then only close connection
+                if (mReader != null)
+                {
+                    //if reader is connected then only we can disconnect
+                    if (mReader.IsConnected == true)
+                    {
+                        mReader.Close();
+                        mReader.Dispose();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //Consume Exception here
+                throw (ex);
+            }
+        }
+
+
+
+        #endregion
+
+
         #region "Eventos"
 
 
@@ -383,12 +582,16 @@ namespace RFIDEnturnador.admin
         {
             this.Limpiar();            
             this.CambiarVista(Vista.LISTA);
+            this.DisconnectReader();
         }
 
         private void btnListo_Click(object sender, EventArgs e)
         {
             if (this.Validar())
+            {
                 this.Guardar();
+                this.DisconnectReader();
+            }                
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -437,8 +640,17 @@ namespace RFIDEnturnador.admin
             this.LeerArchivo(this.openFileDialog1.FileName);
         }
 
+        private void Camiones_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DisconnectReader();
+        }
+
 
         #endregion
+
+
+
+
 
 
 

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelCargueMasivo = new System.Windows.Forms.Panel();
             this.btnCancelarCarga = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@
             this.TIPOCARGUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.ELIMINAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.pictureLectora = new System.Windows.Forms.PictureBox();
             this.txtCodigoRFID = new System.Windows.Forms.TextBox();
             this.cboTipoCargue = new System.Windows.Forms.ComboBox();
             this.txtPlaca = new System.Windows.Forms.TextBox();
@@ -66,6 +68,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panelCargueMasivo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCargue)).BeginInit();
@@ -76,6 +79,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCamiones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLectora)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -101,7 +105,7 @@
             this.panelCargueMasivo.Controls.Add(this.label6);
             this.panelCargueMasivo.Controls.Add(this.grdCargue);
             this.panelCargueMasivo.Location = new System.Drawing.Point(16, 92);
-            this.panelCargueMasivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelCargueMasivo.Margin = new System.Windows.Forms.Padding(4);
             this.panelCargueMasivo.Name = "panelCargueMasivo";
             this.panelCargueMasivo.Size = new System.Drawing.Size(599, 33);
             this.panelCargueMasivo.TabIndex = 7;
@@ -113,7 +117,7 @@
             this.btnCancelarCarga.Image = global::RFIDEnturnador.Properties.Resources.back;
             this.btnCancelarCarga.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarCarga.Location = new System.Drawing.Point(437, 11);
-            this.btnCancelarCarga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelarCarga.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarCarga.Name = "btnCancelarCarga";
             this.btnCancelarCarga.Size = new System.Drawing.Size(100, 28);
             this.btnCancelarCarga.TabIndex = 24;
@@ -157,7 +161,7 @@
             this.btnSeleccionar.Image = global::RFIDEnturnador.Properties.Resources.folder;
             this.btnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSeleccionar.Location = new System.Drawing.Point(253, 11);
-            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(176, 28);
             this.btnSeleccionar.TabIndex = 20;
@@ -181,27 +185,27 @@
             this.grdCargue.AllowUserToDeleteRows = false;
             this.grdCargue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdCargue.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdCargue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdCargue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdCargue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCargue.Location = new System.Drawing.Point(12, 139);
-            this.grdCargue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdCargue.Margin = new System.Windows.Forms.Padding(4);
             this.grdCargue.Name = "grdCargue";
             this.grdCargue.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdCargue.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdCargue.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.grdCargue.RowHeadersVisible = false;
             this.grdCargue.RowHeadersWidth = 20;
             this.grdCargue.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.PaleGoldenrod;
@@ -260,9 +264,11 @@
             this.splitContainer1.Panel1.Controls.Add(this.label5);
             this.splitContainer1.Panel1.Controls.Add(this.btnNuevo);
             this.splitContainer1.Panel1.Controls.Add(this.grdCamiones);
+            this.splitContainer1.Panel1Collapsed = true;
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.pictureLectora);
             this.splitContainer1.Panel2.Controls.Add(this.txtCodigoRFID);
             this.splitContainer1.Panel2.Controls.Add(this.cboTipoCargue);
             this.splitContainer1.Panel2.Controls.Add(this.txtPlaca);
@@ -271,7 +277,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
-            this.splitContainer1.Panel2Collapsed = true;
             this.splitContainer1.Size = new System.Drawing.Size(600, 476);
             this.splitContainer1.SplitterDistance = 25;
             this.splitContainer1.TabIndex = 5;
@@ -304,7 +309,7 @@
             // txtBuscarPlaca
             // 
             this.txtBuscarPlaca.Location = new System.Drawing.Point(137, 62);
-            this.txtBuscarPlaca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscarPlaca.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscarPlaca.Name = "txtBuscarPlaca";
             this.txtBuscarPlaca.Size = new System.Drawing.Size(132, 22);
             this.txtBuscarPlaca.TabIndex = 20;
@@ -338,14 +343,14 @@
             this.grdCamiones.AllowUserToDeleteRows = false;
             this.grdCamiones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdCamiones.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdCamiones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdCamiones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grdCamiones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCamiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -355,17 +360,17 @@
             this.EDITAR,
             this.ELIMINAR});
             this.grdCamiones.Location = new System.Drawing.Point(13, 103);
-            this.grdCamiones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdCamiones.Margin = new System.Windows.Forms.Padding(4);
             this.grdCamiones.Name = "grdCamiones";
             this.grdCamiones.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdCamiones.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdCamiones.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.grdCamiones.RowHeadersVisible = false;
             this.grdCamiones.RowHeadersWidth = 20;
             this.grdCamiones.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.PaleGoldenrod;
@@ -422,6 +427,17 @@
             this.ELIMINAR.Name = "ELIMINAR";
             this.ELIMINAR.ReadOnly = true;
             // 
+            // pictureLectora
+            // 
+            this.pictureLectora.Image = global::RFIDEnturnador.Properties.Resources.Ball_green_32;
+            this.pictureLectora.Location = new System.Drawing.Point(470, 152);
+            this.pictureLectora.Name = "pictureLectora";
+            this.pictureLectora.Size = new System.Drawing.Size(32, 32);
+            this.pictureLectora.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureLectora.TabIndex = 23;
+            this.pictureLectora.TabStop = false;
+            this.pictureLectora.Click += new System.EventHandler(this.pictureLectora_Click);
+            // 
             // txtCodigoRFID
             // 
             this.txtCodigoRFID.Location = new System.Drawing.Point(207, 156);
@@ -454,7 +470,7 @@
             this.btnCancelar.Image = global::RFIDEnturnador.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelar.Location = new System.Drawing.Point(367, 199);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
             this.btnCancelar.TabIndex = 19;
@@ -468,7 +484,7 @@
             this.btnListo.Image = global::RFIDEnturnador.Properties.Resources.chulo;
             this.btnListo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnListo.Location = new System.Drawing.Point(259, 199);
-            this.btnListo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListo.Margin = new System.Windows.Forms.Padding(4);
             this.btnListo.Name = "btnListo";
             this.btnListo.Size = new System.Drawing.Size(100, 28);
             this.btnListo.TabIndex = 18;
@@ -508,6 +524,10 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            // 
             // Camiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -520,6 +540,7 @@
             this.Name = "Camiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Camiones";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Camiones_FormClosing);
             this.Load += new System.EventHandler(this.Camiones_Load);
             this.panel1.ResumeLayout(false);
             this.panelCargueMasivo.ResumeLayout(false);
@@ -535,6 +556,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCamiones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureLectora)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -575,6 +597,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnVerCargue;
         internal System.Windows.Forms.Button btnCancelarCarga;
+        private System.Windows.Forms.PictureBox pictureLectora;
+        private System.Windows.Forms.Timer timer1;
 
     }
 }
