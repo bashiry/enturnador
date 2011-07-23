@@ -42,6 +42,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panelReaderControl = new System.Windows.Forms.Panel();
             this.panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panelLeft.SuspendLayout();
@@ -53,6 +54,7 @@
             // panelPrincipal
             // 
             this.panelPrincipal.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelPrincipal.Controls.Add(this.panelReaderControl);
             this.panelPrincipal.Controls.Add(this.lblUsuario);
             this.panelPrincipal.Controls.Add(this.pictureBox4);
             this.panelPrincipal.Controls.Add(this.btnMonitor);
@@ -84,7 +86,7 @@
             // 
             this.pictureBox4.Image = global::RFIDEnturnador.Properties.Resources.workerS;
             this.pictureBox4.Location = new System.Drawing.Point(497, 1);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(32, 30);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -234,6 +236,13 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
+            // panelReaderControl
+            // 
+            this.panelReaderControl.Location = new System.Drawing.Point(514, 336);
+            this.panelReaderControl.Name = "panelReaderControl";
+            this.panelReaderControl.Size = new System.Drawing.Size(498, 87);
+            this.panelReaderControl.TabIndex = 9;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -275,5 +284,6 @@
         private System.Windows.Forms.Button btnMonitor;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Panel panelReaderControl;
     }
 }
