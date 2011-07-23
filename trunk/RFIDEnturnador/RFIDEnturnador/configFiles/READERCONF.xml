@@ -1,0 +1,53 @@
+﻿<SET_READER_CONFIG Version="1" MessageID="0">
+	<ResetToFactoryDefault>False</ResetToFactoryDefault>
+	<AntennaConfiguration>
+		<AntennaID>0</AntennaID>
+		<RFReceiver>
+			<ReceiverSensitivity>22</ReceiverSensitivity>
+		</RFReceiver>
+		<RFTransmitter>
+			<HopTableID>1</HopTableID>
+			<ChannelIndex>1</ChannelIndex>
+			<TransmitPower>60</TransmitPower>
+		</RFTransmitter>
+		<C1G2InventoryCommand>
+			<TagInventoryStateAware>False</TagInventoryStateAware>
+			<C1G2RFControl>
+				<ModeIndex>2</ModeIndex>
+				<Tari>0</Tari>
+			</C1G2RFControl>
+			<C1G2SingulationControl>
+				<Session>1</Session>
+				<TagPopulation>0</TagPopulation>
+				<TagTransitTime>1000</TagTransitTime>
+			</C1G2SingulationControl>
+			<Impinj:ImpinjInventorySearchMode xmlns:Impinj="http://www.Impinj.com">
+				<InventorySearchMode>Reader_Selected</InventorySearchMode>
+			</Impinj:ImpinjInventorySearchMode>
+		</C1G2InventoryCommand>
+	</AntennaConfiguration>
+	<ROReportSpec>
+		<ROReportTrigger>Upon_N_Tags_Or_End_Of_ROSpec</ROReportTrigger>
+		<N>1</N>
+		<TagReportContentSelector>
+			<EnableROSpecID>True</EnableROSpecID>
+			<EnableSpecIndex>True</EnableSpecIndex>
+			<EnableInventoryParameterSpecID>True</EnableInventoryParameterSpecID>
+			<EnableAntennaID>True</EnableAntennaID>
+			<EnableChannelIndex>True</EnableChannelIndex>
+			<EnablePeakRSSI>True</EnablePeakRSSI>
+			<EnableFirstSeenTimestamp>True</EnableFirstSeenTimestamp>
+			<EnableLastSeenTimestamp>True</EnableLastSeenTimestamp>
+			<EnableTagSeenCount>True</EnableTagSeenCount>
+			<EnableAccessSpecID>True</EnableAccessSpecID>
+			<C1G2EPCMemorySelector>
+				<EnableCRC>True</EnableCRC>
+				<EnablePCBits>True</EnablePCBits>
+			</C1G2EPCMemorySelector>
+		</TagReportContentSelector>
+		<Impinj:ImpinjTagDirectionReporting xmlns:Impinj="http://www.Impinj.com">
+			<EnableTagDirection>True</EnableTagDirection>
+			<AntennaConfiguration>Dual_Antenna</AntennaConfiguration>
+		</Impinj:ImpinjTagDirectionReporting>
+	</ROReportSpec>
+</SET_READER_CONFIG>

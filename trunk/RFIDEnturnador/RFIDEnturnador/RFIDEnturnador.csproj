@@ -11,7 +11,8 @@
     <RootNamespace>RFIDEnturnador</RootNamespace>
     <AssemblyName>RFIDEnturnador</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -38,11 +39,18 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EpcisWriter">
-      <HintPath>..\..\RFIDBlock\Librerias\EpcisWriter.dll</HintPath>
+    <Reference Include="LLRP">
+      <HintPath>..\..\LLRDllTestInterface1.0.4\bin\Debug\LLRP.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\LLRDllTestInterface1.0.4\bin\Release\log4net.dll</HintPath>
+    <Reference Include="LLRP.Impinj">
+      <HintPath>..\..\LLRDllTestInterface1.0.4\bin\Debug\LLRP.Impinj.dll</HintPath>
+    </Reference>
+    <Reference Include="LLRPDlll1.0.4">
+      <HintPath>..\..\..\..\..\Desktop\LLRPDlll1.0.4.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\LLRDllTestInterface1.0.4\bin\Debug\log4net.dll</HintPath>
     </Reference>
     <Reference Include="RF1200">
       <HintPath>..\..\RFIDBlock\Librerias\RF1200.dll</HintPath>
@@ -81,6 +89,7 @@
     <Compile Include="admin\TurnoManual.Designer.cs">
       <DependentUpon>TurnoManual.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClasesLLRP\LLRPReadControl.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -229,6 +238,13 @@
     <Content Include="bin\Debug\RFIDEnturnador.pdb" />
     <Content Include="bin\Debug\RFIDEnturnador.vshost.exe" />
     <Content Include="bin\Debug\UtilityClass.dll" />
+    <Content Include="configFiles\ACCESS_SPEC.xml" />
+    <Content Include="configFiles\Devices.xml" />
+    <Content Include="configFiles\READERCONF.xml" />
+    <Content Include="configFiles\ROSPEC2ANNTDIFTX.xml" />
+    <Content Include="configFiles\ROSPEC_CONTINUO.xml" />
+    <Content Include="configFiles\ROSPEC_CONTINUO2.xml" />
+    <Content Include="configFiles\WRITE_ACCES_SPEC.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
