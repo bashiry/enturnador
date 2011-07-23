@@ -41,16 +41,6 @@
     <Reference Include="EpcisWriter">
       <HintPath>..\..\RFIDBlock\Librerias\EpcisWriter.dll</HintPath>
     </Reference>
-    <Reference Include="LLRP">
-      <HintPath>..\..\LLRDllTestInterface1.0.4\bin\Release\LLRP.dll</HintPath>
-    </Reference>
-    <Reference Include="LLRP.Impinj">
-      <HintPath>..\..\LLRDllTestInterface1.0.4\bin\Release\LLRP.Impinj.dll</HintPath>
-    </Reference>
-    <Reference Include="LLRPDlll1.0.4, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\RFID Reader\librerias\LLRPDlll1.0.4.dll</HintPath>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\LLRDllTestInterface1.0.4\bin\Release\log4net.dll</HintPath>
     </Reference>
@@ -124,14 +114,6 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="obj\x86\Debug\RFIDEnturnador.admin.Camiones.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\RFIDEnturnador.admin.Noticias.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\RFIDEnturnador.admin.TurnoManual.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\RFIDEnturnador.llrp.LLRPReadControl.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\RFIDEnturnador.Login.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\RFIDEnturnador.Principal.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\RFIDEnturnador.Properties.Resources.resources" />
-    <EmbeddedResource Include="obj\x86\Debug\RFIDEnturnador.seguridad.Usuarios.resources" />
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,12 +134,6 @@
     <None Include="bin\Debug\RFIDEnturnador.exe.config" />
     <None Include="bin\Debug\RFIDEnturnador.vshost.exe.config" />
     <None Include="bin\Debug\RFIDEnturnador.vshost.exe.manifest" />
-    <None Include="obj\x86\Debug\build.force" />
-    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\x86\Debug\GenerateResource.read.1.tlog" />
-    <None Include="obj\x86\Debug\GenerateResource.write.1.tlog" />
-    <None Include="obj\x86\Debug\ResolveAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -253,8 +229,6 @@
     <Content Include="bin\Debug\RFIDEnturnador.pdb" />
     <Content Include="bin\Debug\RFIDEnturnador.vshost.exe" />
     <Content Include="bin\Debug\UtilityClass.dll" />
-    <Content Include="obj\x86\Debug\RFIDEnturnador.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\x86\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
