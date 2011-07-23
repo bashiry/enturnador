@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using EnturnadorDAO;
 
+
 namespace RFIDEnturnador
 {
     public partial class Principal : Form
@@ -30,6 +31,9 @@ namespace RFIDEnturnador
         private void Principal_Load(object sender, EventArgs e)
         {            
             this.Controls[this.Controls.Count - 1].BackColor = System.Drawing.Color.WhiteSmoke;
+
+            //Se inicia lectura de los readers
+            this.IniciarLectura();
         }
 
         /// <summary>
@@ -140,6 +144,13 @@ namespace RFIDEnturnador
             {
                 MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void IniciarLectura()
+        {
+            RFIDEnturnador.llrp.LLRPReadControl ctrlReader = new RFIDEnturnador.llrp.LLRPReadControl();
+            this.panelReaderControl.Controls.Add(ctrlReader);
+
         }
 
     }
