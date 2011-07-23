@@ -148,9 +148,7 @@ namespace RFIDEnturnador
 
         private void IniciarLectura()
         {
-            RFIDEnturnador.llrp.LLRPReadControl ctrlReader = new RFIDEnturnador.llrp.LLRPReadControl();
-            this.panelReaderControl.Controls.Add(ctrlReader);
-
+            
         }
 
     }
