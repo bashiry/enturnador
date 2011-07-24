@@ -22,7 +22,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_CAMION", "CAMION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.CAMION), "LOG_AUTOMATICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_AUTOMATICO), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_MANUAL_CAMION", "CAMION", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.CAMION), "LOG_MANUAL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_MANUAL), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_COLA_TIPO_CARGUE", "TIPO_CARGUE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.TIPO_CARGUE), "COLA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.COLA), true)]
-[assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_READER", "READER", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.READER), "LOG_AUTOMATICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_AUTOMATICO), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_TIPO_CARGUE", "TIPO_CARGUE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.TIPO_CARGUE), "LOG_AUTOMATICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_AUTOMATICO), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_ERROR_USUARIO", "USUARIO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.USUARIO), "LOG_ERROR", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_ERROR), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_MANUAL_TIPO_CARGUE", "TIPO_CARGUE", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.TIPO_CARGUE), "LOG_MANUAL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_MANUAL), true)]
@@ -31,6 +30,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_USUARIO_ROL", "ROL", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.ROL), "USUARIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.USUARIO), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_COLA_PUERTA", "PUERTA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.PUERTA), "COLA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.COLA), true)]
 [assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_MANUAL_PUERTA", "PUERTA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.PUERTA), "LOG_MANUAL", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_MANUAL), true)]
+[assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_ANTENA_PUERTA", "PUERTA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.PUERTA), "ANTENA", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.ANTENA), true)]
+[assembly: EdmRelationshipAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_ANTENA", "ANTENA", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(EnturnadorDAO.ANTENA), "LOG_AUTOMATICO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(EnturnadorDAO.LOG_AUTOMATICO), true)]
 
 #endregion
 
@@ -181,22 +182,6 @@ namespace EnturnadorDAO
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<READER> READER
-        {
-            get
-            {
-                if ((_READER == null))
-                {
-                    _READER = base.CreateObjectSet<READER>("READER");
-                }
-                return _READER;
-            }
-        }
-        private ObjectSet<READER> _READER;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<ROL> ROL
         {
             get
@@ -273,6 +258,22 @@ namespace EnturnadorDAO
             }
         }
         private ObjectSet<CONFIGURACION> _CONFIGURACION;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ANTENA> ANTENA
+        {
+            get
+            {
+                if ((_ANTENA == null))
+                {
+                    _ANTENA = base.CreateObjectSet<ANTENA>("ANTENA");
+                }
+                return _ANTENA;
+            }
+        }
+        private ObjectSet<ANTENA> _ANTENA;
 
         #endregion
         #region AddTo Methods
@@ -326,14 +327,6 @@ namespace EnturnadorDAO
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the READER EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToREADER(READER rEADER)
-        {
-            base.AddObject("READER", rEADER);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the ROL EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToROL(ROL rOL)
@@ -372,6 +365,14 @@ namespace EnturnadorDAO
         {
             base.AddObject("CONFIGURACION", cONFIGURACION);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ANTENA EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToANTENA(ANTENA aNTENA)
+        {
+            base.AddObject("ANTENA", aNTENA);
+        }
 
         #endregion
     }
@@ -380,6 +381,228 @@ namespace EnturnadorDAO
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ENTURNADORModel", Name="ANTENA")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ANTENA : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ANTENA object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="ip">Initial value of the ip property.</param>
+        /// <param name="idAntena">Initial value of the idAntena property.</param>
+        /// <param name="idPuerta">Initial value of the idPuerta property.</param>
+        /// <param name="activo">Initial value of the activo property.</param>
+        public static ANTENA CreateANTENA(global::System.Int32 id, global::System.String ip, global::System.String idAntena, global::System.Int32 idPuerta, global::System.Boolean activo)
+        {
+            ANTENA aNTENA = new ANTENA();
+            aNTENA.id = id;
+            aNTENA.ip = ip;
+            aNTENA.idAntena = idAntena;
+            aNTENA.idPuerta = idPuerta;
+            aNTENA.activo = activo;
+            return aNTENA;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ip
+        {
+            get
+            {
+                return _ip;
+            }
+            set
+            {
+                OnipChanging(value);
+                ReportPropertyChanging("ip");
+                _ip = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ip");
+                OnipChanged();
+            }
+        }
+        private global::System.String _ip;
+        partial void OnipChanging(global::System.String value);
+        partial void OnipChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String idAntena
+        {
+            get
+            {
+                return _idAntena;
+            }
+            set
+            {
+                OnidAntenaChanging(value);
+                ReportPropertyChanging("idAntena");
+                _idAntena = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("idAntena");
+                OnidAntenaChanged();
+            }
+        }
+        private global::System.String _idAntena;
+        partial void OnidAntenaChanging(global::System.String value);
+        partial void OnidAntenaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idPuerta
+        {
+            get
+            {
+                return _idPuerta;
+            }
+            set
+            {
+                OnidPuertaChanging(value);
+                ReportPropertyChanging("idPuerta");
+                _idPuerta = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idPuerta");
+                OnidPuertaChanged();
+            }
+        }
+        private global::System.Int32 _idPuerta;
+        partial void OnidPuertaChanging(global::System.Int32 value);
+        partial void OnidPuertaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean activo
+        {
+            get
+            {
+                return _activo;
+            }
+            set
+            {
+                OnactivoChanging(value);
+                ReportPropertyChanging("activo");
+                _activo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("activo");
+                OnactivoChanged();
+            }
+        }
+        private global::System.Boolean _activo;
+        partial void OnactivoChanging(global::System.Boolean value);
+        partial void OnactivoChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_ANTENA_PUERTA", "PUERTA")]
+        public PUERTA PUERTA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PUERTA>("ENTURNADORModel.FK_ANTENA_PUERTA", "PUERTA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PUERTA>("ENTURNADORModel.FK_ANTENA_PUERTA", "PUERTA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<PUERTA> PUERTAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<PUERTA>("ENTURNADORModel.FK_ANTENA_PUERTA", "PUERTA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<PUERTA>("ENTURNADORModel.FK_ANTENA_PUERTA", "PUERTA", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_ANTENA", "LOG_AUTOMATICO")]
+        public EntityCollection<LOG_AUTOMATICO> LOG_AUTOMATICO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<LOG_AUTOMATICO>("ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA", "LOG_AUTOMATICO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LOG_AUTOMATICO>("ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA", "LOG_AUTOMATICO", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -1008,22 +1231,22 @@ namespace EnturnadorDAO
         /// Create a new LOG_AUTOMATICO object.
         /// </summary>
         /// <param name="id">Initial value of the id property.</param>
-        /// <param name="idReader">Initial value of the idReader property.</param>
         /// <param name="idTipoCargue">Initial value of the idTipoCargue property.</param>
         /// <param name="idCamion">Initial value of the idCamion property.</param>
         /// <param name="puerta">Initial value of the puerta property.</param>
         /// <param name="codigoRFID">Initial value of the codigoRFID property.</param>
         /// <param name="hora">Initial value of the hora property.</param>
-        public static LOG_AUTOMATICO CreateLOG_AUTOMATICO(global::System.Int32 id, global::System.Int32 idReader, global::System.Int32 idTipoCargue, global::System.Int32 idCamion, global::System.String puerta, global::System.String codigoRFID, global::System.DateTime hora)
+        /// <param name="idAntena">Initial value of the idAntena property.</param>
+        public static LOG_AUTOMATICO CreateLOG_AUTOMATICO(global::System.Int32 id, global::System.Int32 idTipoCargue, global::System.Int32 idCamion, global::System.String puerta, global::System.String codigoRFID, global::System.DateTime hora, global::System.Int32 idAntena)
         {
             LOG_AUTOMATICO lOG_AUTOMATICO = new LOG_AUTOMATICO();
             lOG_AUTOMATICO.id = id;
-            lOG_AUTOMATICO.idReader = idReader;
             lOG_AUTOMATICO.idTipoCargue = idTipoCargue;
             lOG_AUTOMATICO.idCamion = idCamion;
             lOG_AUTOMATICO.puerta = puerta;
             lOG_AUTOMATICO.codigoRFID = codigoRFID;
             lOG_AUTOMATICO.hora = hora;
+            lOG_AUTOMATICO.idAntena = idAntena;
             return lOG_AUTOMATICO;
         }
 
@@ -1056,30 +1279,6 @@ namespace EnturnadorDAO
         private global::System.Int32 _id;
         partial void OnidChanging(global::System.Int32 value);
         partial void OnidChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idReader
-        {
-            get
-            {
-                return _idReader;
-            }
-            set
-            {
-                OnidReaderChanging(value);
-                ReportPropertyChanging("idReader");
-                _idReader = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idReader");
-                OnidReaderChanged();
-            }
-        }
-        private global::System.Int32 _idReader;
-        partial void OnidReaderChanging(global::System.Int32 value);
-        partial void OnidReaderChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -1200,6 +1399,30 @@ namespace EnturnadorDAO
         private global::System.DateTime _hora;
         partial void OnhoraChanging(global::System.DateTime value);
         partial void OnhoraChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idAntena
+        {
+            get
+            {
+                return _idAntena;
+            }
+            set
+            {
+                OnidAntenaChanging(value);
+                ReportPropertyChanging("idAntena");
+                _idAntena = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idAntena");
+                OnidAntenaChanged();
+            }
+        }
+        private global::System.Int32 _idAntena;
+        partial void OnidAntenaChanging(global::System.Int32 value);
+        partial void OnidAntenaChanged();
 
         #endregion
     
@@ -1249,44 +1472,6 @@ namespace EnturnadorDAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_READER", "READER")]
-        public READER READER
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<READER>("ENTURNADORModel.FK_LOG_AUTOMATICO_READER", "READER").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<READER>("ENTURNADORModel.FK_LOG_AUTOMATICO_READER", "READER").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<READER> READERReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<READER>("ENTURNADORModel.FK_LOG_AUTOMATICO_READER", "READER");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<READER>("ENTURNADORModel.FK_LOG_AUTOMATICO_READER", "READER", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_TIPO_CARGUE", "TIPO_CARGUE")]
         public TIPO_CARGUE TIPO_CARGUE
         {
@@ -1315,6 +1500,44 @@ namespace EnturnadorDAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<TIPO_CARGUE>("ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE", "TIPO_CARGUE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_ANTENA", "ANTENA")]
+        public ANTENA ANTENA
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ANTENA>("ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA", "ANTENA").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ANTENA>("ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA", "ANTENA").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ANTENA> ANTENAReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ANTENA>("ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA", "ANTENA");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ANTENA>("ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA", "ANTENA", value);
                 }
             }
         }
@@ -2286,142 +2509,6 @@ namespace EnturnadorDAO
                 }
             }
         }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="ENTURNADORModel", Name="READER")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class READER : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new READER object.
-        /// </summary>
-        /// <param name="idReader">Initial value of the idReader property.</param>
-        /// <param name="ip">Initial value of the ip property.</param>
-        /// <param name="puerta">Initial value of the puerta property.</param>
-        /// <param name="activo">Initial value of the activo property.</param>
-        public static READER CreateREADER(global::System.Int32 idReader, global::System.String ip, global::System.String puerta, global::System.Boolean activo)
-        {
-            READER rEADER = new READER();
-            rEADER.idReader = idReader;
-            rEADER.ip = ip;
-            rEADER.puerta = puerta;
-            rEADER.activo = activo;
-            return rEADER;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idReader
-        {
-            get
-            {
-                return _idReader;
-            }
-            set
-            {
-                if (_idReader != value)
-                {
-                    OnidReaderChanging(value);
-                    ReportPropertyChanging("idReader");
-                    _idReader = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idReader");
-                    OnidReaderChanged();
-                }
-            }
-        }
-        private global::System.Int32 _idReader;
-        partial void OnidReaderChanging(global::System.Int32 value);
-        partial void OnidReaderChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String ip
-        {
-            get
-            {
-                return _ip;
-            }
-            set
-            {
-                OnipChanging(value);
-                ReportPropertyChanging("ip");
-                _ip = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("ip");
-                OnipChanged();
-            }
-        }
-        private global::System.String _ip;
-        partial void OnipChanging(global::System.String value);
-        partial void OnipChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String puerta
-        {
-            get
-            {
-                return _puerta;
-            }
-            set
-            {
-                OnpuertaChanging(value);
-                ReportPropertyChanging("puerta");
-                _puerta = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("puerta");
-                OnpuertaChanged();
-            }
-        }
-        private global::System.String _puerta;
-        partial void OnpuertaChanging(global::System.String value);
-        partial void OnpuertaChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Boolean activo
-        {
-            get
-            {
-                return _activo;
-            }
-            set
-            {
-                OnactivoChanging(value);
-                ReportPropertyChanging("activo");
-                _activo = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("activo");
-                OnactivoChanged();
-            }
-        }
-        private global::System.Boolean _activo;
-        partial void OnactivoChanging(global::System.Boolean value);
-        partial void OnactivoChanged();
-
-        #endregion
-    
-        #region Navigation Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2429,18 +2516,18 @@ namespace EnturnadorDAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_LOG_AUTOMATICO_READER", "LOG_AUTOMATICO")]
-        public EntityCollection<LOG_AUTOMATICO> LOG_AUTOMATICO
+        [EdmRelationshipNavigationPropertyAttribute("ENTURNADORModel", "FK_ANTENA_PUERTA", "ANTENA")]
+        public EntityCollection<ANTENA> ANTENA
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<LOG_AUTOMATICO>("ENTURNADORModel.FK_LOG_AUTOMATICO_READER", "LOG_AUTOMATICO");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ANTENA>("ENTURNADORModel.FK_ANTENA_PUERTA", "ANTENA");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<LOG_AUTOMATICO>("ENTURNADORModel.FK_LOG_AUTOMATICO_READER", "LOG_AUTOMATICO", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ANTENA>("ENTURNADORModel.FK_ANTENA_PUERTA", "ANTENA", value);
                 }
             }
         }
