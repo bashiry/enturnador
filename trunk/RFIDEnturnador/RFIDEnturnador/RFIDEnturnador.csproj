@@ -147,6 +147,9 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Monitor.resx">
+      <DependentUpon>Monitor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +278,7 @@
     <Content Include="configFiles\ROSPEC_CONTINUO.xml" />
     <Content Include="configFiles\ROSPEC_CONTINUO2.xml" />
     <Content Include="configFiles\WRITE_ACCES_SPEC.xml" />
+    <None Include="Resources\camionPequeno.gif" />
     <None Include="Resources\Excel_icon.gif" />
     <None Include="Resources\trazabilidad.png" />
     <None Include="Resources\ReporteManual.png" />
