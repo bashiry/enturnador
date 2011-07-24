@@ -226,6 +226,8 @@ namespace EnturnadorLIB.Enturnador
             objLog.idUsuario = idUsuario;
             objLog.hora = hora;
             objLog.idPuerta = idPuerta;
+
+            this.objDAO.Crear(Enumeraciones.Entidad.LOG_MANUAL, objLog);
         }
 
     }

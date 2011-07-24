@@ -65,5 +65,27 @@ namespace EnturnadorLIB.Reportes
             return dt;
         }
 
+        /// <summary>
+        /// Retorna datatable con los resultados del reporte de enturnamientos/desenturnamientos manuales
+        /// </summary>
+        /// <param name="hashFiltros">Hashtable con los filtros que se deben aplicar</param>
+        /// <returns></returns>
+        public DataTable GetReporteManuales(Hashtable hashFiltros, int idPuertaEnturna, int idPuertaDesenturna)
+        {
+            DataTable dt = this.objReporteDAO.GetReporteManuales(hashFiltros);
+            dt.Columns.Add("tipoProceso");
+
+            //Recorre la tabla y asigna el tipo de proceso (enturnado o desenturnado)
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (dt.Rows[i]["idPuerta"].ToString() == idPuertaEnturna.ToString())
+                    dt.Rows[i]["tipoProceso"] = "ENTURNADO";
+                else
+                    dt.Rows[i]["tipoProceso"] = "DESENTURNADO";
+            }
+
+            return dt;
+        }
+
     }
 }

@@ -73,5 +73,49 @@ namespace EnturnadorDAO.DAO
             return Utilidades.DAOUtil.ToDataTable(q);
         }
 
+        /// <summary>
+        /// Retorna datatable con los resultados del reporte de enturnamientos/desenturnamientos manuales
+        /// </summary>
+        /// <param name="hashFiltros">Hashtable con los filtros que se deben aplicar</param>
+        /// <returns></returns>
+        public DataTable GetReporteManuales(Hashtable hashFiltros)
+        {
+            var q = from l in this._ent.LOG_MANUAL
+                    join c in this._ent.CAMION on l.idCamion equals c.id
+                    join t in this._ent.TIPO_CARGUE on c.idTipoCargue equals t.id
+                    join p in this._ent.PUERTA on l.idPuerta equals p.id
+                    orderby l.idCamion, l.hora
+                    select new
+                    {
+                        id = l.id,
+                        placa = c.placa,
+                        idTipoCargue = l.idTipoCargue,
+                        tipoCargue = t.tipoCargue,
+                        puerta = p.puerta1,
+                        idPuerta = l.idPuerta,
+                        hora = l.hora
+                    };
+
+            //Se agregan los filtros que llegan
+            if (hashFiltros.ContainsKey("fechaInicial"))
+            {
+                DateTime fecha1 = Convert.ToDateTime(hashFiltros["fechaInicial"].ToString());
+                q = q.Where(l => l.hora >= fecha1);
+            }
+            if (hashFiltros.ContainsKey("fechaFinal"))
+            {
+                DateTime fecha2 = Convert.ToDateTime(hashFiltros["fechaFinal"].ToString());
+                q = q.Where(l => l.hora <= fecha2);
+            }
+
+            if (hashFiltros.ContainsKey("placas"))
+            {
+                string[] placas = hashFiltros["placas"].ToString().Split(',');
+                q = q.Where(l => placas.Contains(l.placa));
+            }
+
+            return Utilidades.DAOUtil.ToDataTable(q);        
+        }
+
     }
 }
