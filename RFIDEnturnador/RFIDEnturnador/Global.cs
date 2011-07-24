@@ -36,9 +36,11 @@ namespace RFIDEnturnador
             USUARIOS = 0,
             CAMIONES,
             NOTICIAS,
-            READERS,
-            ENTURNAR,
-            VER_COLA
+            CONFIGURACION,
+            ENTURNAR,            
+            REPORTE_TRAZABILIDAD,
+            REPORTE_MANUALES,
+            MONITOR
         }
 
     }

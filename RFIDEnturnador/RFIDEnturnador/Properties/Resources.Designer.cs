@@ -67,6 +67,13 @@ namespace RFIDEnturnador.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap advancedsettings {
+            get {
+                object obj = ResourceManager.GetObject("advancedsettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap agregar {
             get {
                 object obj = ResourceManager.GetObject("agregar", resourceCulture);
@@ -210,6 +217,20 @@ namespace RFIDEnturnador.Properties {
         internal static System.Drawing.Bitmap Principal {
             get {
                 object obj = ResourceManager.GetObject("Principal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ReporteManual {
+            get {
+                object obj = ResourceManager.GetObject("ReporteManual", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap trazabilidad {
+            get {
+                object obj = ResourceManager.GetObject("trazabilidad", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
