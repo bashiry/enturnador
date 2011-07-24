@@ -117,7 +117,7 @@
             // txtObservaciones
             // 
             this.txtObservaciones.Location = new System.Drawing.Point(205, 276);
-            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtObservaciones.Margin = new System.Windows.Forms.Padding(4);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(244, 98);
@@ -126,7 +126,7 @@
             // txtPlaca
             // 
             this.txtPlaca.Location = new System.Drawing.Point(205, 176);
-            this.txtPlaca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPlaca.Margin = new System.Windows.Forms.Padding(4);
             this.txtPlaca.Name = "txtPlaca";
             this.txtPlaca.Size = new System.Drawing.Size(244, 22);
             this.txtPlaca.TabIndex = 14;
@@ -134,9 +134,9 @@
             // numHora
             // 
             this.numHora.Location = new System.Drawing.Point(205, 225);
-            this.numHora.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numHora.Margin = new System.Windows.Forms.Padding(4);
             this.numHora.Maximum = new decimal(new int[] {
-            24,
+            23,
             0,
             0,
             0});
@@ -157,9 +157,9 @@
             // numMinutos
             // 
             this.numMinutos.Location = new System.Drawing.Point(381, 225);
-            this.numMinutos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numMinutos.Margin = new System.Windows.Forms.Padding(4);
             this.numMinutos.Maximum = new decimal(new int[] {
-            60,
+            59,
             0,
             0,
             0});
@@ -173,7 +173,7 @@
             this.btnCancelar.Image = global::RFIDEnturnador.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelar.Location = new System.Drawing.Point(351, 394);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
             this.btnCancelar.TabIndex = 21;
@@ -187,7 +187,7 @@
             this.btnListo.Image = global::RFIDEnturnador.Properties.Resources.chulo;
             this.btnListo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnListo.Location = new System.Drawing.Point(243, 394);
-            this.btnListo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListo.Margin = new System.Windows.Forms.Padding(4);
             this.btnListo.Name = "btnListo";
             this.btnListo.Size = new System.Drawing.Size(100, 28);
             this.btnListo.TabIndex = 20;
@@ -200,7 +200,7 @@
             this.rbtnEnturnar.AutoSize = true;
             this.rbtnEnturnar.Checked = true;
             this.rbtnEnturnar.Location = new System.Drawing.Point(205, 103);
-            this.rbtnEnturnar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtnEnturnar.Margin = new System.Windows.Forms.Padding(4);
             this.rbtnEnturnar.Name = "rbtnEnturnar";
             this.rbtnEnturnar.Size = new System.Drawing.Size(84, 21);
             this.rbtnEnturnar.TabIndex = 22;
@@ -212,7 +212,7 @@
             // 
             this.rbtnDesenturnar.AutoSize = true;
             this.rbtnDesenturnar.Location = new System.Drawing.Point(205, 135);
-            this.rbtnDesenturnar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbtnDesenturnar.Margin = new System.Windows.Forms.Padding(4);
             this.rbtnDesenturnar.Name = "rbtnDesenturnar";
             this.rbtnDesenturnar.Size = new System.Drawing.Size(108, 21);
             this.rbtnDesenturnar.TabIndex = 23;
@@ -238,7 +238,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "TurnoManual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

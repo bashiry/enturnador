@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.IO;
 using EnturnadorDAO;
 using EnturnadorLIB;
 
@@ -16,6 +17,7 @@ namespace RFIDEnturnador.reportes
     public partial class ReporteTrazabilidad : Form
     {
         private EnturnadorLIB.Reportes.Reportes objReporte;
+        DataTable dt;
 
         public ReporteTrazabilidad()
         {
@@ -26,6 +28,10 @@ namespace RFIDEnturnador.reportes
         {
             this.objReporte = new EnturnadorLIB.Reportes.Reportes();
             this.LlenarComboTipoCargue();
+
+            //La hora final por defecto son las 24
+            this.numHoraFinal.Value = 23;
+            this.numMinutosFinal.Value = 59;
         }
 
         #region "Métodos privados"
@@ -82,13 +88,76 @@ namespace RFIDEnturnador.reportes
             if (this.txtPlacas.Text.Trim().Length > 0)
                 filtros.Add("placas", this.txtPlacas.Text.Trim());
 
-            DataTable dt = this.objReporte.GetReporteTrazabilidad(filtros);
+            this.dt = this.objReporte.GetReporteTrazabilidad(filtros);
             this.grd.AutoGenerateColumns = false;
             this.grd.DataSource = dt;
 
             if (dt.Rows.Count == 0)
                 MessageBox.Show("No se encontraron registros con los criterios seleccionados", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
+        }
+
+        private void Exportar()
+        {            
+            if (this.dt == null)
+            {
+                MessageBox.Show("No hay resultados para exportar", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                StringBuilder rep = new StringBuilder();
+                rep.Append("<table border='1'>");
+
+                //Agrega fila con los títulos de las columnas
+                rep.Append("<tr>");
+                rep.Append("<td align='center'><strong>PLACA</strong></td>");
+                rep.Append("<td align='center'><strong>TIPO DE CARGUE</strong></td>");
+                rep.Append("<td align='center'><strong>FECHA</strong></td>");
+                rep.Append("<td align='center'><strong>PTO. SENSADO</strong></td>");
+                rep.Append("</tr>");
+
+                //Recorre el datatable y construye taba html con los resultados
+                for (int i = 0; i < this.dt.Rows.Count; i++)
+                {
+                    rep.Append("<tr>");
+                    rep.Append("<td>" + dt.Rows[i]["placa"].ToString() + "</td>");
+                    rep.Append("<td>" + dt.Rows[i]["tipoCargue"].ToString() + "</td>");
+                    rep.Append("<td>" + dt.Rows[i]["hora"].ToString() + "</td>");
+                    rep.Append("<td>" + dt.Rows[i]["puerta"].ToString() + "</td>");
+                    rep.Append("</tr>");
+                }
+
+                rep.Append("</table>");
+
+                //Nombre del archivo            
+                //24/07/2011 11:27:24 a.m.
+                string strHora = DateTime.Now.ToString();
+                strHora = strHora.Replace("/", "");
+                strHora = strHora.Replace(":", "_");
+                strHora = strHora.Replace(".", "");
+                string nombre = "ReporteTrazabilidad_" + strHora + ".xls";
+
+                string ruta = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), nombre);
+
+                StreamWriter sw = new StreamWriter(ruta);
+                sw.WriteLine(rep.ToString());
+                sw.Close();
+
+                MessageBox.Show("El archivo se ha creado en el escritorio, con el siguiente nombre: '" + nombre + "'", "Archivo creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error al crear el archivo, por favor intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //Se guarda log del error
+                string inner = "";
+                if (ex.InnerException != null)
+                    inner = ex.InnerException.Message;
+
+                EnturnadorLIB.Enturnador.Util objUtil = new EnturnadorLIB.Enturnador.Util();
+                objUtil.LogError("ReporteTrazabilidad", "Exportar", ex.Message, inner, CGlobal.IdUsuario);
+            }
         }
 
         #endregion
@@ -101,7 +170,13 @@ namespace RFIDEnturnador.reportes
                 this.GenerarReporte();
         }
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            this.Exportar();                
+        }
+
         #endregion
+
 
     }
 }
