@@ -158,6 +158,13 @@ namespace RFIDEnturnador.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Excel_icon {
+            get {
+                object obj = ResourceManager.GetObject("Excel_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap folder {
             get {
                 object obj = ResourceManager.GetObject("folder", resourceCulture);
