@@ -48,6 +48,7 @@
     <Compile Include="DAO\CamionDAO.cs" />
     <Compile Include="DAO\ColaDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
+    <Compile Include="DAO\ReporteDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="Model1.Designer.cs">

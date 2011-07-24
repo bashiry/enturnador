@@ -220,7 +220,7 @@ namespace RFIDEnturnador
         private void IniciarLectura()
         {            
             string rutaConfig = @"configFiles\Devices.xml";
-            this.ctrl.Iniciar(3, rutaConfig);
+            //this.ctrl.Iniciar(3, rutaConfig);
         }
 
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)

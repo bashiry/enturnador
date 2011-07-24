@@ -48,12 +48,11 @@
     <Compile Include="Enturnador\Noticia.cs" />
     <Compile Include="Enturnador\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\Reportes.cs" />
     <Compile Include="RFID\Reader.cs" />
     <Compile Include="Seguridad\Usuario.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reportes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\EnturnadorDAO\EnturnadorDAO.csproj">
       <Project>{D027DB5B-F485-498A-BAA2-F506A4B128C7}</Project>
