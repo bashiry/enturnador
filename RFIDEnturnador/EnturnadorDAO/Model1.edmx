@@ -6,6 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="ENTURNADORModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ENTURNADORModelStoreContainer">
+          <EntitySet Name="ANTENA" EntityType="ENTURNADORModel.Store.ANTENA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CAMION" EntityType="ENTURNADORModel.Store.CAMION" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="COLA" EntityType="ENTURNADORModel.Store.COLA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CONFIGURACION" EntityType="ENTURNADORModel.Store.CONFIGURACION" store:Type="Tables" Schema="dbo" />
@@ -14,10 +15,13 @@
           <EntitySet Name="LOG_MANUAL" EntityType="ENTURNADORModel.Store.LOG_MANUAL" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="NOTICIA" EntityType="ENTURNADORModel.Store.NOTICIA" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PUERTA" EntityType="ENTURNADORModel.Store.PUERTA" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="READER" EntityType="ENTURNADORModel.Store.READER" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ROL" EntityType="ENTURNADORModel.Store.ROL" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TIPO_CARGUE" EntityType="ENTURNADORModel.Store.TIPO_CARGUE" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="USUARIO" EntityType="ENTURNADORModel.Store.USUARIO" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ANTENA_PUERTA" Association="ENTURNADORModel.Store.FK_ANTENA_PUERTA">
+            <End Role="PUERTA" EntitySet="PUERTA" />
+            <End Role="ANTENA" EntitySet="ANTENA" />
+          </AssociationSet>
           <AssociationSet Name="FK_CAMION_TIPO_CARGUE" Association="ENTURNADORModel.Store.FK_CAMION_TIPO_CARGUE">
             <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
             <End Role="CAMION" EntitySet="CAMION" />
@@ -30,12 +34,12 @@
             <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
             <End Role="COLA" EntitySet="COLA" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOG_AUTOMATICO_CAMION" Association="ENTURNADORModel.Store.FK_LOG_AUTOMATICO_CAMION">
-            <End Role="CAMION" EntitySet="CAMION" />
+          <AssociationSet Name="FK_LOG_AUTOMATICO_ANTENA" Association="ENTURNADORModel.Store.FK_LOG_AUTOMATICO_ANTENA">
+            <End Role="ANTENA" EntitySet="ANTENA" />
             <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
           </AssociationSet>
-          <AssociationSet Name="FK_LOG_AUTOMATICO_READER" Association="ENTURNADORModel.Store.FK_LOG_AUTOMATICO_READER">
-            <End Role="READER" EntitySet="READER" />
+          <AssociationSet Name="FK_LOG_AUTOMATICO_CAMION" Association="ENTURNADORModel.Store.FK_LOG_AUTOMATICO_CAMION">
+            <End Role="CAMION" EntitySet="CAMION" />
             <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
           </AssociationSet>
           <AssociationSet Name="FK_LOG_AUTOMATICO_TIPO_CARGUE" Association="ENTURNADORModel.Store.FK_LOG_AUTOMATICO_TIPO_CARGUE">
@@ -71,6 +75,16 @@
             <End Role="USUARIO" EntitySet="USUARIO" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ANTENA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ip" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="idAntena" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="idPuerta" Type="int" Nullable="false" />
+          <Property Name="activo" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="CAMION">
           <Key>
             <PropertyRef Name="id" />
@@ -105,7 +119,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="idReader" Type="int" Nullable="false" />
+          <Property Name="idAntena" Type="int" Nullable="false" />
           <Property Name="idTipoCargue" Type="int" Nullable="false" />
           <Property Name="idCamion" Type="int" Nullable="false" />
           <Property Name="puerta" Type="varchar" Nullable="false" MaxLength="50" />
@@ -154,15 +168,6 @@
           <Property Name="descripcion" Type="varchar" MaxLength="200" />
           <Property Name="generaTurno" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="READER">
-          <Key>
-            <PropertyRef Name="idReader" />
-          </Key>
-          <Property Name="idReader" Type="int" Nullable="false" />
-          <Property Name="ip" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="puerta" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="activo" Type="bit" Nullable="false" />
-        </EntityType>
         <EntityType Name="ROL">
           <Key>
             <PropertyRef Name="id" />
@@ -194,6 +199,18 @@
           <Property Name="fechaModificacion" Type="datetime" Nullable="false" />
           <Property Name="activo" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_ANTENA_PUERTA">
+          <End Role="PUERTA" Type="ENTURNADORModel.Store.PUERTA" Multiplicity="1" />
+          <End Role="ANTENA" Type="ENTURNADORModel.Store.ANTENA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUERTA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ANTENA">
+              <PropertyRef Name="idPuerta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CAMION_TIPO_CARGUE">
           <End Role="TIPO_CARGUE" Type="ENTURNADORModel.Store.TIPO_CARGUE" Multiplicity="1" />
           <End Role="CAMION" Type="ENTURNADORModel.Store.CAMION" Multiplicity="*" />
@@ -230,6 +247,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LOG_AUTOMATICO_ANTENA">
+          <End Role="ANTENA" Type="ENTURNADORModel.Store.ANTENA" Multiplicity="1" />
+          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.Store.LOG_AUTOMATICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ANTENA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_AUTOMATICO">
+              <PropertyRef Name="idAntena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LOG_AUTOMATICO_CAMION">
           <End Role="CAMION" Type="ENTURNADORModel.Store.CAMION" Multiplicity="1" />
           <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.Store.LOG_AUTOMATICO" Multiplicity="*" />
@@ -239,18 +268,6 @@
             </Principal>
             <Dependent Role="LOG_AUTOMATICO">
               <PropertyRef Name="idCamion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LOG_AUTOMATICO_READER">
-          <End Role="READER" Type="ENTURNADORModel.Store.READER" Multiplicity="1" />
-          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.Store.LOG_AUTOMATICO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="READER">
-              <PropertyRef Name="idReader" />
-            </Principal>
-            <Dependent Role="LOG_AUTOMATICO">
-              <PropertyRef Name="idReader" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -361,7 +378,6 @@
           <EntitySet Name="LOG_ERROR" EntityType="ENTURNADORModel.LOG_ERROR" />
           <EntitySet Name="LOG_MANUAL" EntityType="ENTURNADORModel.LOG_MANUAL" />
           <EntitySet Name="NOTICIA" EntityType="ENTURNADORModel.NOTICIA" />
-          <EntitySet Name="READER" EntityType="ENTURNADORModel.READER" />
           <EntitySet Name="ROL" EntityType="ENTURNADORModel.ROL" />
           <EntitySet Name="TIPO_CARGUE" EntityType="ENTURNADORModel.TIPO_CARGUE" />
           <EntitySet Name="USUARIO" EntityType="ENTURNADORModel.USUARIO" />
@@ -380,10 +396,6 @@
           <AssociationSet Name="FK_COLA_TIPO_CARGUE" Association="ENTURNADORModel.FK_COLA_TIPO_CARGUE">
             <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
             <End Role="COLA" EntitySet="COLA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LOG_AUTOMATICO_READER" Association="ENTURNADORModel.FK_LOG_AUTOMATICO_READER">
-            <End Role="READER" EntitySet="READER" />
-            <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
           </AssociationSet>
           <AssociationSet Name="FK_LOG_AUTOMATICO_TIPO_CARGUE" Association="ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE">
             <End Role="TIPO_CARGUE" EntitySet="TIPO_CARGUE" />
@@ -419,6 +431,15 @@
             <End Role="PUERTA" EntitySet="PUERTA" />
             <End Role="LOG_MANUAL" EntitySet="LOG_MANUAL" />
           </AssociationSet>
+          <EntitySet Name="ANTENA" EntityType="ENTURNADORModel.ANTENA" />
+          <AssociationSet Name="FK_ANTENA_PUERTA" Association="ENTURNADORModel.FK_ANTENA_PUERTA">
+            <End Role="PUERTA" EntitySet="PUERTA" />
+            <End Role="ANTENA" EntitySet="ANTENA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_AUTOMATICO_ANTENA" Association="ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA">
+            <End Role="ANTENA" EntitySet="ANTENA" />
+            <End Role="LOG_AUTOMATICO" EntitySet="LOG_AUTOMATICO" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CAMION">
           <Key>
@@ -452,15 +473,15 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idReader" Type="Int32" Nullable="false" />
           <Property Name="idTipoCargue" Type="Int32" Nullable="false" />
           <Property Name="idCamion" Type="Int32" Nullable="false" />
           <Property Name="puerta" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="codigoRFID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="hora" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="CAMION" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_CAMION" FromRole="LOG_AUTOMATICO" ToRole="CAMION" />
-          <NavigationProperty Name="READER" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_READER" FromRole="LOG_AUTOMATICO" ToRole="READER" />
           <NavigationProperty Name="TIPO_CARGUE" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE" FromRole="LOG_AUTOMATICO" ToRole="TIPO_CARGUE" />
+          <Property Type="Int32" Name="idAntena" Nullable="false" />
+          <NavigationProperty Name="ANTENA" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA" FromRole="LOG_AUTOMATICO" ToRole="ANTENA" />
         </EntityType>
         <EntityType Name="LOG_ERROR">
           <Key>
@@ -500,16 +521,6 @@
           <Property Name="fechaModificacion" Type="DateTime" Nullable="false" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="USUARIO" Relationship="ENTURNADORModel.FK_NOTICIA_USUARIO" FromRole="NOTICIA" ToRole="USUARIO" />
-        </EntityType>
-        <EntityType Name="READER">
-          <Key>
-            <PropertyRef Name="idReader" />
-          </Key>
-          <Property Name="idReader" Type="Int32" Nullable="false" />
-          <Property Name="ip" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="puerta" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="LOG_AUTOMATICO" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_READER" FromRole="READER" ToRole="LOG_AUTOMATICO" />
         </EntityType>
         <EntityType Name="ROL">
           <Key>
@@ -599,18 +610,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LOG_AUTOMATICO_READER">
-          <End Role="READER" Type="ENTURNADORModel.READER" Multiplicity="1" />
-          <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.LOG_AUTOMATICO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="READER">
-              <PropertyRef Name="idReader" />
-            </Principal>
-            <Dependent Role="LOG_AUTOMATICO">
-              <PropertyRef Name="idReader" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_LOG_AUTOMATICO_TIPO_CARGUE">
           <End Role="TIPO_CARGUE" Type="ENTURNADORModel.TIPO_CARGUE" Multiplicity="1" />
           <End Role="LOG_AUTOMATICO" Type="ENTURNADORModel.LOG_AUTOMATICO" Multiplicity="*" />
@@ -693,6 +692,7 @@
           <Property Type="Boolean" Name="generaTurno" Nullable="false" />
           <NavigationProperty Name="COLA" Relationship="ENTURNADORModel.FK_COLA_PUERTA" FromRole="PUERTA" ToRole="COLA" />
           <NavigationProperty Name="LOG_MANUAL" Relationship="ENTURNADORModel.FK_LOG_MANUAL_PUERTA" FromRole="PUERTA" ToRole="LOG_MANUAL" />
+          <NavigationProperty Name="ANTENA" Relationship="ENTURNADORModel.FK_ANTENA_PUERTA" FromRole="PUERTA" ToRole="ANTENA" />
         </EntityType>
         <Association Name="FK_COLA_PUERTA">
           <End Type="ENTURNADORModel.PUERTA" Role="PUERTA" Multiplicity="1" />
@@ -725,6 +725,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ANTENA">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ip" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="idAntena" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="idPuerta" Nullable="false" />
+          <Property Type="Boolean" Name="activo" Nullable="false" />
+          <NavigationProperty Name="PUERTA" Relationship="ENTURNADORModel.FK_ANTENA_PUERTA" FromRole="ANTENA" ToRole="PUERTA" />
+          <NavigationProperty Name="LOG_AUTOMATICO" Relationship="ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA" FromRole="ANTENA" ToRole="LOG_AUTOMATICO" />
+        </EntityType>
+        <Association Name="FK_ANTENA_PUERTA">
+          <End Type="ENTURNADORModel.PUERTA" Role="PUERTA" Multiplicity="1" />
+          <End Type="ENTURNADORModel.ANTENA" Role="ANTENA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PUERTA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ANTENA">
+              <PropertyRef Name="idPuerta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_AUTOMATICO_ANTENA">
+          <End Type="ENTURNADORModel.ANTENA" Role="ANTENA" Multiplicity="1" />
+          <End Type="ENTURNADORModel.LOG_AUTOMATICO" Role="LOG_AUTOMATICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ANTENA">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="LOG_AUTOMATICO">
+              <PropertyRef Name="idAntena" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -748,8 +784,8 @@
             <ScalarProperty Name="hora" ColumnName="hora" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="LOG_AUTOMATICO"><EntityTypeMapping TypeName="ENTURNADORModel.LOG_AUTOMATICO"><MappingFragment StoreEntitySet="LOG_AUTOMATICO">
-            <ScalarProperty Name="id" ColumnName="id" />
-            <ScalarProperty Name="idReader" ColumnName="idReader" />
+            <ScalarProperty Name="idAntena" ColumnName="idAntena" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="idTipoCargue" ColumnName="idTipoCargue" />
             <ScalarProperty Name="idCamion" ColumnName="idCamion" />
             <ScalarProperty Name="puerta" ColumnName="puerta" />
@@ -778,12 +814,6 @@
             <ScalarProperty Name="noticia1" ColumnName="noticia" />
             <ScalarProperty Name="idModifcador" ColumnName="idModifcador" />
             <ScalarProperty Name="fechaModificacion" ColumnName="fechaModificacion" />
-            <ScalarProperty Name="activo" ColumnName="activo" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="READER"><EntityTypeMapping TypeName="ENTURNADORModel.READER"><MappingFragment StoreEntitySet="READER">
-            <ScalarProperty Name="idReader" ColumnName="idReader" />
-            <ScalarProperty Name="ip" ColumnName="ip" />
-            <ScalarProperty Name="puerta" ColumnName="puerta" />
             <ScalarProperty Name="activo" ColumnName="activo" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="ROL"><EntityTypeMapping TypeName="ENTURNADORModel.ROL"><MappingFragment StoreEntitySet="ROL">
@@ -826,6 +856,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ANTENA">
+            <EntityTypeMapping TypeName="ENTURNADORModel.ANTENA">
+              <MappingFragment StoreEntitySet="ANTENA">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="idPuerta" ColumnName="idPuerta" />
+                <ScalarProperty Name="idAntena" ColumnName="idAntena" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -849,11 +890,10 @@
       <Diagram Name="Model1">
         <EntityTypeShape EntityType="ENTURNADORModel.CAMION" Width="1.5" PointX="6" PointY="4.125" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.COLA" Width="1.5" PointX="6" PointY="0.75" Height="2.3648893229166661" IsExpanded="true" />
-        <EntityTypeShape EntityType="ENTURNADORModel.LOG_AUTOMATICO" Width="1.5" PointX="8.25" PointY="4.125" Height="2.9417936197916656" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTURNADORModel.LOG_AUTOMATICO" Width="1.5" PointX="8.25" PointY="4.125" Height="3.1340950520833317" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.LOG_ERROR" Width="1.5" PointX="5.25" PointY="7.875" Height="2.5571907552083308" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.LOG_MANUAL" Width="1.5" PointX="8.25" PointY="9.25" Height="2.9417936197916656" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.NOTICIA" Width="1.5" PointX="5.25" PointY="14.75" Height="2.1725878906249996" IsExpanded="true" />
-        <EntityTypeShape EntityType="ENTURNADORModel.READER" Width="1.5" PointX="3.75" PointY="17.75" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.ROL" Width="1.5" PointX="0.75" PointY="9.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.TIPO_CARGUE" Width="1.5" PointX="3.75" PointY="4.75" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="ENTURNADORModel.USUARIO" Width="1.5" PointX="3" PointY="8.75" Height="3.7109993489583353" IsExpanded="true" />
@@ -864,39 +904,28 @@
           <ConnectorPoint PointX="6" PointY="5.9083968098958328" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_CAMION" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="5.5958968098958328" />
-          <ConnectorPoint PointX="7.854166666666667" PointY="5.5958968098958319" />
-          <ConnectorPoint PointX="8.0208333333333339" PointY="5.5958968098958328" />
-          <ConnectorPoint PointX="8.25" PointY="5.5958968098958328" />
+          <ConnectorPoint PointX="7.5" PointY="5.6752246679687506" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="5.67522466796875" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="5.6752246679687506" />
+          <ConnectorPoint PointX="8.25" PointY="5.6752246679687506" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_MANUAL_CAMION" ManuallyRouted="false">
           <ConnectorPoint PointX="7.15625" PointY="7.0667936197916656" />
           <ConnectorPoint PointX="7.15625" PointY="11.598404460074518" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="11.598404460074518" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="11.598404460074518" />
           <ConnectorPoint PointX="8.25" PointY="11.598404460074518" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_COLA_TIPO_CARGUE" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="4.75" />
-          <ConnectorPoint PointX="4.5" PointY="1.4347081159243531" />
-          <ConnectorPoint PointX="6" PointY="1.4347081159243531" />
-        </AssociationConnector>
-        <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_READER" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.25" PointY="17.751152846153843" />
-          <ConnectorPoint PointX="5.6261528461538433" PointY="17.375" />
-          <ConnectorPoint PointX="7.875" PointY="17.375" />
-          <ConnectorPoint PointX="7.875" PointY="7.4417936197916656" />
-          <ConnectorPoint PointX="7.8785744349011209" PointY="7.4382191848905439" />
-          <ConnectorPoint PointX="7.9964255650988791" PointY="7.3203680546927865" />
-          <ConnectorPoint PointX="8.25" PointY="7.0667936197916656" />
+          <ConnectorPoint PointX="4.8749975" PointY="4.75" />
+          <ConnectorPoint PointX="4.8749975" PointY="0.78125" />
+          <ConnectorPoint PointX="6" PointY="0.78125" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_TIPO_CARGUE" ManuallyRouted="false">
           <ConnectorPoint PointX="5.25" PointY="4.75" />
           <ConnectorPoint PointX="5.625" PointY="4.375" />
           <ConnectorPoint PointX="5.625" PointY="3.75" />
           <ConnectorPoint PointX="7.875" PointY="3.75" />
-          <ConnectorPoint PointX="7.8785744349011217" PointY="3.7535744349011204" />
-          <ConnectorPoint PointX="7.9964255650988791" PointY="3.8714255650988791" />
+          <ConnectorPoint PointX="7.9410744349011217" PointY="3.8160744349011204" />
+          <ConnectorPoint PointX="8.0589255650988783" PointY="3.9339255650988791" />
           <ConnectorPoint PointX="8.25" PointY="4.125" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_ERROR_USUARIO" ManuallyRouted="false">
@@ -908,17 +937,14 @@
           <ConnectorPoint PointX="5.625" PointY="7.4898893229166674" />
           <ConnectorPoint PointX="7.072916666666667" PointY="7.4898893229166665" />
           <ConnectorPoint PointX="7.239583333333333" PointY="7.4898893229166674" />
-          <ConnectorPoint PointX="7.854166666666667" PointY="7.4898893229166665" />
-          <ConnectorPoint PointX="8.0208333333333339" PointY="7.4898893229166674" />
-          <ConnectorPoint PointX="9" PointY="7.4898893229166674" />
-          <ConnectorPoint PointX="9" PointY="9.25" />
+          <ConnectorPoint PointX="7.9375" PointY="7.4898893229166674" />
+          <ConnectorPoint PointX="7.9375" PointY="8.9617307692307691" />
+          <ConnectorPoint PointX="8.25" PointY="9.2742307692307691" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_MANUAL_USUARIO" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="10.984047607641426" />
           <ConnectorPoint PointX="7.072916666666667" PointY="10.984047607641426" />
           <ConnectorPoint PointX="7.239583333333333" PointY="10.984047607641426" />
-          <ConnectorPoint PointX="7.791666666666667" PointY="10.984047607641426" />
-          <ConnectorPoint PointX="7.958333333333333" PointY="10.984047607641426" />
           <ConnectorPoint PointX="8.25" PointY="10.984047607641426" />
         </AssociationConnector>
         <AssociationConnector Association="ENTURNADORModel.FK_NOTICIA_USUARIO" ManuallyRouted="false">
@@ -932,20 +958,37 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="ENTURNADORModel.PUERTA" Width="1.5" PointX="0.75" PointY="0.875" Height="1.9802864583333353" />
         <AssociationConnector Association="ENTURNADORModel.FK_COLA_PUERTA" >
-          <ConnectorPoint PointX="2.25" PointY="2.3036480032746764" />
-          <ConnectorPoint PointX="4.416666666666667" PointY="2.303648003274676" />
-          <ConnectorPoint PointX="4.583333333333333" PointY="2.3036480032746764" />
-          <ConnectorPoint PointX="6" PointY="2.3036480032746764" />
+          <ConnectorPoint PointX="2.25" PointY="0.87615284615384614" />
+          <ConnectorPoint PointX="2.625" PointY="0.50115284615384592" />
+          <ConnectorPoint PointX="2.625" PointY="0.375" />
+          <ConnectorPoint PointX="5.6261528461538459" PointY="0.375" />
+          <ConnectorPoint PointX="6.0011528461538459" PointY="0.75" />
         </AssociationConnector>
         <EntityTypeShape EntityType="ENTURNADORModel.CONFIGURACION" Width="1.5" PointX="0.75" PointY="3.75" Height="1.4033821614583317" />
         <AssociationConnector Association="ENTURNADORModel.FK_LOG_MANUAL_PUERTA" >
-          <ConnectorPoint PointX="2.2500000000000004" PointY="3.047587890625" />
-          <ConnectorPoint PointX="2.625" PointY="3.4225878906249996" />
-          <ConnectorPoint PointX="4.416666666666667" PointY="3.4225878906249991" />
-          <ConnectorPoint PointX="4.583333333333333" PointY="3.4225878906249996" />
-          <ConnectorPoint PointX="7.9375" PointY="3.4225878906249996" />
-          <ConnectorPoint PointX="7.9375" PointY="8.9375" />
+          <ConnectorPoint PointX="2.2499999999999996" PointY="3.239889322916667" />
+          <ConnectorPoint PointX="2.625" PointY="3.6148893229166674" />
+          <ConnectorPoint PointX="4.7916641666666671" PointY="3.614889322916667" />
+          <ConnectorPoint PointX="4.9583308333333331" PointY="3.6148893229166674" />
+          <ConnectorPoint PointX="7.875" PointY="3.6148893229166674" />
+          <ConnectorPoint PointX="7.875" PointY="8.875" />
           <ConnectorPoint PointX="8.25" PointY="9.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ENTURNADORModel.ANTENA" Width="1.5" PointX="3" PointY="0.875" Height="2.3648893229166674" />
+        <AssociationConnector Association="ENTURNADORModel.FK_ANTENA_PUERTA" >
+          <ConnectorPoint PointX="2.25" PointY="2.0580210845352562" />
+          <ConnectorPoint PointX="3" PointY="2.0580210845352562" />
+        </AssociationConnector>
+        <AssociationConnector Association="ENTURNADORModel.FK_LOG_AUTOMATICO_ANTENA" >
+          <ConnectorPoint PointX="3.34375" PointY="3.2398893229166674" />
+          <ConnectorPoint PointX="3.34375" PointY="7.2278425520833309" />
+          <ConnectorPoint PointX="5.2796198958333305" PointY="7.22784255208333" />
+          <ConnectorPoint PointX="5.4462865624999965" PointY="7.2278425520833309" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="7.22784255208333" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="7.2278425520833309" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="7.22784255208333" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="7.2278425520833309" />
+          <ConnectorPoint PointX="8.25" PointY="7.2278425520833309" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

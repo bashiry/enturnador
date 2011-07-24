@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constantes.cs" />
+    <Compile Include="DAO\AntenaDAO.cs" />
     <Compile Include="DAO\CamionDAO.cs" />
     <Compile Include="DAO\ColaDAO.cs" />
     <Compile Include="DAO\DAO.cs" />

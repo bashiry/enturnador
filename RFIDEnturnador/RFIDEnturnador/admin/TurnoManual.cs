@@ -29,8 +29,8 @@ namespace RFIDEnturnador.admin
 
             //Obtiene el id de la puerta para enturnar y para desenturnar
             EnturnadorLIB.Enturnador.Configuracion objConfig = new EnturnadorLIB.Enturnador.Configuracion();
-            this.idPuertaEnturnar = Convert.ToInt32(objConfig.GetValorConfig(CGlobal.ID_PUERTA_E1));
-            this.idPuertaDesenturnar = Convert.ToInt32(objConfig.GetValorConfig(CGlobal.ID_PUERTA_E2));
+            this.idPuertaEnturnar = CGlobal.ID_PUERTA_E1;
+            this.idPuertaDesenturnar = CGlobal.ID_PUERTA_E2;
         }
 
         #region "Metodos privados"
@@ -68,7 +68,7 @@ namespace RFIDEnturnador.admin
             {
                 //Se construye la hora de los valores seleccionados en los controles numericupDown
                 DateTime hora = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, Convert.ToInt32(this.numHora.Value), Convert.ToInt32(this.numMinutos.Value), 0);
-                string resultado = this.objCola.Enturnar(this.idPuertaEnturnar, this.txtPlaca.Text.Trim(), hora);
+                string resultado = this.objCola.EnturnarManual(this.idPuertaEnturnar, this.txtPlaca.Text.Trim(), hora, CGlobal.IdUsuario);
 
                 if (resultado.Length == 0)
                 {
@@ -91,7 +91,7 @@ namespace RFIDEnturnador.admin
             {
                 //Se construye la hora de los valores seleccionados en los controles numericupDown
                 DateTime hora = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, Convert.ToInt32(this.numHora.Value), Convert.ToInt32(this.numMinutos.Value), 0);
-                string resultado = this.objCola.Desenturnar(this.idPuertaDesenturnar, this.txtPlaca.Text.Trim(), hora);
+                string resultado = this.objCola.DesenturnarManual(this.idPuertaDesenturnar, this.txtPlaca.Text.Trim(), hora, CGlobal.IdUsuario);
 
                 if (resultado.Length == 0)
                 {

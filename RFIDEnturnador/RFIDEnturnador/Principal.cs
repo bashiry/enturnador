@@ -15,6 +15,8 @@ namespace RFIDEnturnador
     {
         private USUARIO usuario;
         ClasesLLRP.LLRPReadControl ctrl = new ClasesLLRP.LLRPReadControl();
+        private const string LLAVE_PUERTA_E1 = "ID_PUERTA_E1";  //Llave que se busca en la base de datos apra obtener el id de la puerta que enturna
+        private const string LLAVE_PUERTA_E2 = "ID_PUERTA_E2";  //Llave que se busca en la base de datos apra obtener el id de la puerta que desenturna        
 
         public Principal()
         {
@@ -27,6 +29,11 @@ namespace RFIDEnturnador
             this.usuario = objUsuario;
             CGlobal.IdUsuario = this.usuario.id;
             this.lblUsuario.Text = "Usuario: " + this.usuario.nombre;
+
+            //Se obtienen los ids de las puertas que enturnan y desenturnan
+            EnturnadorLIB.Enturnador.Configuracion objConfig = new EnturnadorLIB.Enturnador.Configuracion();
+            CGlobal.ID_PUERTA_E1 = Convert.ToInt32(objConfig.GetValorConfig(LLAVE_PUERTA_E1));
+            CGlobal.ID_PUERTA_E2 = Convert.ToInt32(objConfig.GetValorConfig(LLAVE_PUERTA_E2));
         }
 
         private void Principal_Load(object sender, EventArgs e)

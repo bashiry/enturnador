@@ -9,3 +9,15 @@ C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnad
 C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\RFIDEnturnador.exe.config
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\RFIDEnturnador.exe
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\RFIDEnturnador.pdb
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\EnturnadorDAO.dll
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\EnturnadorLIB.dll
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\LLRP.dll
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\LLRP.Impinj.dll
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\LLRPDlll1.0.4.dll
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\log4net.dll
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\EnturnadorDAO.pdb
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\bin\Debug\EnturnadorLIB.pdb
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\obj\x86\Debug\RFIDEnturnador.exe
+C:\Users\Mario\Documents\Visual Studio 2010\Projects\RFIDEnturnador\RFIDEnturnador\obj\x86\Debug\RFIDEnturnador.pdb

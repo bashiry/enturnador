@@ -14,10 +14,12 @@ namespace RFIDEnturnador
 
 
         /// <summary>
-        /// Declaracion de constantes
+        /// Variables estáticas que son visibles en toda la aplicación
         /// </summary>
-        public const string ID_PUERTA_E1 = "ID_PUERTA_E1";
-        public const string ID_PUERTA_E2 = "ID_PUERTA_E2";
+        public static int ID_PUERTA_E1;
+        public static int ID_PUERTA_E2;
+
+
 
         public enum Roles
         { 

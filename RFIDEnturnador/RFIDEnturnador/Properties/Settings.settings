@@ -2,8 +2,29 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RFIDEnturnador.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SecondsToReport" Type="System.Double" Scope="Application">
+    <Setting Name="SerialBits" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">38</Value>
+    </Setting>
+    <Setting Name="PartitionType" Type="System.String" Scope="Application">
       <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="CheckingInterval" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="com_port" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">COM1</Value>
+    </Setting>
+    <Setting Name="SecondsToReport" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="PathDevicesXml" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">configFiles\Devices.xml</Value>
+    </Setting>
+    <Setting Name="PathWirteSpecValidation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">configFiles\WriteAccesSpec.xml</Value>
+    </Setting>
+    <Setting Name="PathWriteSpecNOvalidation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">configFiles\WriteAccesSpec.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

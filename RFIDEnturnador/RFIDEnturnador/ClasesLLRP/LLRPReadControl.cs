@@ -5,9 +5,11 @@ using System.Text;
 using System.Collections;
 using System.Windows.Forms;
 using RFIDEnturnador.Properties;
+using EnturnadorLIB;
 using LLRP.src.core.server;
 using LLRP.src.util;
 using LLRP_Middleware.src.core.taginfo;
+
 
 
 
@@ -18,10 +20,15 @@ namespace RFIDEnturnador.ClasesLLRP
         private IServerLLRP myServer;
         private int state = 0;
         public Hashtable tags;
+        private EnturnadorLIB.Enturnador.Cola obJCola;
+        private EnturnadorLIB.Enturnador.Util objUtil;
+        
 
         public LLRPReadControl()
         {
             tags = new Hashtable();
+            this.obJCola = new EnturnadorLIB.Enturnador.Cola();
+            this.objUtil = new EnturnadorLIB.Enturnador.Util();
         }
 
         /// <summary>
@@ -70,23 +77,27 @@ namespace RFIDEnturnador.ClasesLLRP
         {
             try
             {
-                object[] row = new object[5];
-                row[0] = tag.TagReportData;
-                row[1] = tag.IdAntenna;
-                row[2] = tag.IsEpc;
-                row[3] = tag.IpReader;
-                row[4] = tag.Epc;
+                //object[] row = new object[5];
+                //row[0] = tag.TagReportData;
+                //row[1] = tag.IdAntenna;
+                //row[2] = tag.IsEpc;
+                //row[3] = tag.IpReader;
+                //row[4] = tag.Epc;
 
-                if (!tags.ContainsKey(tag.Epc))
-                {
-                    //this.dgvTags.Rows.Insert(0, row);
-                    tags.Add(tag.Epc, tag);
-                    //showCount(tags.Count.ToString());
-                }
+                this.obJCola.RegistrarLectura(tag.IdAntenna, tag.IpReader, tag.Epc, CGlobal.ID_PUERTA_E1, CGlobal.ID_PUERTA_E2);
+                //if (!tags.ContainsKey(tag.Epc))
+                //{                    
+                //    tags.Add(tag.Epc, tag);                    
+                //}
             }
             catch (Exception exc)
             {
                 Console.WriteLine(exc.Message);
+                //Registra el error
+                string inner = "";
+                if (exc.InnerException != null)
+                    inner = exc.InnerException.Message;
+                this.objUtil.LogError("LLRPReadControl", "UpdateTags", exc.Message, inner, CGlobal.IdUsuario);
             }
             
         }
@@ -114,7 +125,7 @@ namespace RFIDEnturnador.ClasesLLRP
         public void updateOnLine(LLRP.src.core.llrp.IConnection connection)
         {
             Console.WriteLine("La reader con IP " + connection.Ip + " se ha CONECTADO!!!");
-            MessageBox.Show("La reader con IP " + connection.Ip + " se ha CONECTADO!!!");
+            //MessageBox.Show("La reader con IP " + connection.Ip + " se ha CONECTADO!!!");
         }
 
         /// <summary>
@@ -124,7 +135,7 @@ namespace RFIDEnturnador.ClasesLLRP
         public void updateOffLine(LLRP.src.core.llrp.IConnection connection)
         {
             Console.WriteLine("La reader con IP " + connection.Ip + " se ha DESCONECTADO!!!");
-            MessageBox.Show("La reader con IP " + connection.Ip + " se ha DESCONECTADO!!!");
+            //MessageBox.Show("La reader con IP " + connection.Ip + " se ha DESCONECTADO!!!");
         }
 
         #endregion

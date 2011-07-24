@@ -25,10 +25,73 @@ namespace RFIDEnturnador.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("38")]
+        public string SerialBits {
+            get {
+                return ((string)(this["SerialBits"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public string PartitionType {
+            get {
+                return ((string)(this["PartitionType"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public string CheckingInterval {
+            get {
+                return ((string)(this["CheckingInterval"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM1")]
+        public string com_port {
+            get {
+                return ((string)(this["com_port"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public double SecondsToReport {
             get {
                 return ((double)(this["SecondsToReport"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("configFiles\\Devices.xml")]
+        public string PathDevicesXml {
+            get {
+                return ((string)(this["PathDevicesXml"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("configFiles\\WriteAccesSpec.xml")]
+        public string PathWirteSpecValidation {
+            get {
+                return ((string)(this["PathWirteSpecValidation"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("configFiles\\WriteAccesSpec.xml")]
+        public string PathWriteSpecNOvalidation {
+            get {
+                return ((string)(this["PathWriteSpecNOvalidation"]));
             }
         }
     }
