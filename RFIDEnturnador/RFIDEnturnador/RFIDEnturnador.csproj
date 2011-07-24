@@ -160,6 +160,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="reportes\ReporteTrazabilidad.resx">
+      <DependentUpon>ReporteTrazabilidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="seguridad\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +272,7 @@
     <Content Include="configFiles\ROSPEC_CONTINUO.xml" />
     <Content Include="configFiles\ROSPEC_CONTINUO2.xml" />
     <Content Include="configFiles\WRITE_ACCES_SPEC.xml" />
+    <None Include="Resources\Excel_icon.gif" />
     <None Include="Resources\trazabilidad.png" />
     <None Include="Resources\ReporteManual.png" />
     <None Include="Resources\advancedsettings.png" />
