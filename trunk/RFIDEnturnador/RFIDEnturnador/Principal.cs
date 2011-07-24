@@ -83,7 +83,7 @@ namespace RFIDEnturnador
                     if (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString()))
                         retorno = true;
                     break;
-                case CGlobal.Formularios.READERS:
+                case CGlobal.Formularios.CONFIGURACION:
                     if ((this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString())) || (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADT.ToString())))
                         retorno = true;
                     break;
@@ -91,9 +91,18 @@ namespace RFIDEnturnador
                     if (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString()))
                         retorno = true;
                     break;
-                case CGlobal.Formularios.VER_COLA:                    
+                case CGlobal.Formularios.MONITOR:                    
                         retorno = true;
                     break;
+                case CGlobal.Formularios.REPORTE_TRAZABILIDAD:
+                    if (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString()))
+                        retorno = true;
+                    break;
+                case CGlobal.Formularios.REPORTE_MANUALES:
+                    if (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString()))
+                        retorno = true;
+                    break;
+
             }
 
 
@@ -140,6 +149,60 @@ namespace RFIDEnturnador
                 MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnAdminConfiguracion_Click(object sender, EventArgs e)
+        {
+            if (this.ValidarPermiso(CGlobal.Formularios.CONFIGURACION))
+            {
+                Form form = new admin.Configuracion();
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnMonitor_Click(object sender, EventArgs e)
+        {
+            if (this.ValidarPermiso(CGlobal.Formularios.MONITOR))
+            {
+                Form form = new Monitor();
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnReporteTrazabilidad_Click(object sender, EventArgs e)
+        {
+            if (this.ValidarPermiso(CGlobal.Formularios.REPORTE_TRAZABILIDAD))
+            {
+                Form form = new reportes.ReporteTrazabilidad();
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnReporteManual_Click(object sender, EventArgs e)
+        {
+            if (this.ValidarPermiso(CGlobal.Formularios.REPORTE_MANUALES))
+            {
+                Form form = new reportes.ReporteManuales();
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
 
         private void btnEnturnar_Click(object sender, EventArgs e)
         {
