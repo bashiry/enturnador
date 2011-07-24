@@ -160,6 +160,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="reportes\ReporteManuales.resx">
+      <DependentUpon>ReporteManuales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="reportes\ReporteTrazabilidad.resx">
       <DependentUpon>ReporteTrazabilidad.cs</DependentUpon>
     </EmbeddedResource>
