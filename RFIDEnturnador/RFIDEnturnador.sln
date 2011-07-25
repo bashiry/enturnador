@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupRFIDEnturnador", "SetupRFIDEnturnador\SetupRFIDEnturnador.vdproj", "{F3A5CAD3-2BE7-4E27-B288-C494B58F5F74}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -73,6 +75,12 @@ Global
 		{C75E793B-AC16-4627-8C31-0BD8E1C4EE2B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C75E793B-AC16-4627-8C31-0BD8E1C4EE2B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C75E793B-AC16-4627-8C31-0BD8E1C4EE2B}.Release|x86.ActiveCfg = Release|Any CPU
+		{F3A5CAD3-2BE7-4E27-B288-C494B58F5F74}.Debug|Any CPU.ActiveCfg = Debug
+		{F3A5CAD3-2BE7-4E27-B288-C494B58F5F74}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{F3A5CAD3-2BE7-4E27-B288-C494B58F5F74}.Debug|x86.ActiveCfg = Debug
+		{F3A5CAD3-2BE7-4E27-B288-C494B58F5F74}.Release|Any CPU.ActiveCfg = Release
+		{F3A5CAD3-2BE7-4E27-B288-C494B58F5F74}.Release|Mixed Platforms.ActiveCfg = Release
+		{F3A5CAD3-2BE7-4E27-B288-C494B58F5F74}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
