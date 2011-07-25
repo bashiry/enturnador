@@ -35,15 +35,8 @@ namespace RFIDEnturnador
         }
 
         private void Monitor_Load(object sender, EventArgs e)
-        {            
-            //Configuraciones iniciales de UI
+        {                        
             //WindowState = FormWindowState.Maximized;
-            this.grd1.Columns[0].Width = 90;
-            this.grd1.Columns[1].Width = 180;
-            this.grd1.Columns[2].Width = 280;
-            this.grd2.Columns[0].Width = 90;
-            this.grd2.Columns[1].Width = 180;
-            this.grd2.Columns[2].Width = 280;
 
             //Se obtiene la lista de tipos de cargue
             EnturnadorLIB.Enturnador.Lista objLista = new EnturnadorLIB.Enturnador.Lista();
@@ -60,9 +53,10 @@ namespace RFIDEnturnador
 
 
             this.objCola = new EnturnadorLIB.Enturnador.Cola();
-            this.timerLista.Interval = tiempoLista * 1000;
-            //this.timerLista.Enabled = true;   
             this.ProcesarTickLista();
+            this.timerLista.Interval = tiempoLista * 1000;
+            this.timerLista.Enabled = true;                           
+            //this.ProcesarTickLista();
 
             
             //Se cargan las noticias
@@ -153,9 +147,19 @@ namespace RFIDEnturnador
         /// Carga las grillas de las colas, de acuerdo al datatable actual con los datos y a la pagina que se debe mostrar
         /// </summary>
         private void CargarGrillas()
-        { 
+        {
+            this.lblTipoCargue.Text = "Cola para: " + this.listaTipoCargue[this.indiceLista].tipoCargue;
+            this.lblHoraActual.Text = "Hora: " + DateTime.Now.ToShortTimeString();
+
             //Se construye un dataview para cada grilla
-            int registroInicial = (this.cantidadLista * (this.paginaActual - 1)) + 1;            
+            int registroInicial = (this.cantidadLista * (this.paginaActual - 1)) + 1;
+
+            if (this.dtCola.Rows.Count == 0)
+            {
+                this.grd1.DataSource = this.dtCola;
+                this.grd2.DataSource = this.dtCopia;
+                return;
+            }
 
             this.dw1 = this.dtCola.DefaultView;
             this.dw2 = this.dtCopia.DefaultView;
@@ -178,9 +182,29 @@ namespace RFIDEnturnador
                     this.grd2.Rows[i].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
             }
 
+            this.FormatearGrillas();
+        }
 
-            this.lblTipoCargue.Text = "Tipo de Cargue: " + this.listaTipoCargue[this.indiceLista].tipoCargue;
-            this.lblHoraActual.Text = "Hora: " + DateTime.Now.ToShortTimeString();
+        private void FormatearGrillas()
+        {
+            this.grd1.Columns[0].HeaderText = "No.";
+            this.grd1.Columns[1].HeaderText = "PLACA";
+            this.grd1.Columns[2].HeaderText = "HORA";
+            this.grd1.Columns[2].DefaultCellStyle.Format = "t";
+            this.grd1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            this.grd2.Columns[0].HeaderText = "No.";
+            this.grd2.Columns[1].HeaderText = "PLACA";
+            this.grd2.Columns[2].HeaderText = "HORA";
+            this.grd2.Columns[2].DefaultCellStyle.Format = "t";
+            this.grd2.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            this.grd1.Columns[0].Width = 90;
+            this.grd1.Columns[1].Width = 180;
+            this.grd1.Columns[2].Width = 280;
+            this.grd2.Columns[0].Width = 90;
+            this.grd2.Columns[1].Width = 180;
+            this.grd2.Columns[2].Width = 280;
         }
 
         #endregion
