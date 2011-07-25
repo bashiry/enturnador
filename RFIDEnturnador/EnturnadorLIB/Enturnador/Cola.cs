@@ -230,5 +230,23 @@ namespace EnturnadorLIB.Enturnador
             this.objDAO.Crear(Enumeraciones.Entidad.LOG_MANUAL, objLog);
         }
 
+        /// <summary>
+        /// Retorna Datatable con la cola actual de un tipo de cargue
+        /// </summary>
+        /// <param name="idTipoCargue">id del tipo de cargue cuya cola se desea consultar</param>
+        /// <returns></returns>
+        public DataTable GetCola(int idTipoCargue)
+        {
+            DataTable dt = this.objCola.GetCola(idTipoCargue);
+
+            //Recorre la cola y asigna la posición a cada placa
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dt.Rows[i]["no"] = i + 1;                
+            }
+
+            return dt;
+        }
+
     }
 }

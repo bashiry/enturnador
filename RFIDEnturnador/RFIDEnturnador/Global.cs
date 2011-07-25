@@ -19,7 +19,9 @@ namespace RFIDEnturnador
         public static int ID_PUERTA_E1;
         public static int ID_PUERTA_E2;
 
-
+        //Llaves que son constantes para la busqueda de valores de configuracion
+        public const string TIEMPO_LISTA = "TIEMPO_LISTA";
+        public const string CANTIDAD_LISTA = "CANTIDAD_LISTA";
 
         public enum Roles
         { 

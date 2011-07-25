@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace EnturnadorDAO.DAO
 {
@@ -53,6 +54,27 @@ namespace EnturnadorDAO.DAO
 
             return q.ToList();
         }
+
+        /// <summary>
+        /// Retorna Datatable con la cola actual de un tipo de cargue
+        /// </summary>
+        /// <param name="idTipoCargue">id del tipo de cargue cuya cola se desea consultar</param>
+        /// <returns></returns>
+        public DataTable GetCola(int idTipoCargue)
+        {
+            var q = from c in this._ent.COLA
+                    where c.idTipoCargue == idTipoCargue
+                    orderby c.hora
+                    select new
+                    {
+                        no = 0,
+                        placa = c.placa,
+                        hora = c.hora
+                    };
+
+            return Utilidades.DAOUtil.ToDataTable(q);
+        }
+
 
     }
 }
