@@ -138,6 +138,9 @@
     <EmbeddedResource Include="admin\Camiones.resx">
       <DependentUpon>Camiones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="admin\Configuracion.resx">
+      <DependentUpon>Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="admin\Noticias.resx">
       <DependentUpon>Noticias.cs</DependentUpon>
     </EmbeddedResource>

@@ -24,7 +24,8 @@ namespace EnturnadorDAO
             READER,
             ROL,
             TIPO_CARGUE,
-            USUARIO
+            USUARIO,
+            CONFIGURACION
         }
 
         /// <summary>
