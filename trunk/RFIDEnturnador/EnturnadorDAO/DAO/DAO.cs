@@ -146,6 +146,24 @@ namespace EnturnadorDAO.DAO
             return q.valor;            
         }
 
+        /// <summary>
+        /// Actualiza un registro de configuracion
+        /// </summary>
+        /// <param name="llave">Llave a actualizar</param>
+        /// <param name="valor">Nuevo valor de la llave</param>
+        public void ActualizarValorConfig(string llave, string valor)
+        {
+            var q = (from c in this._ent.CONFIGURACION
+                     where c.llave == llave
+                     select c).SingleOrDefault();
+
+            if (q == null)
+                throw new Exception("No se encontró el calor de configuración con llave '" + llave + "'");
+
+            q.valor = valor;
+            this._ent.SaveChanges();
+        }
+
         #region "Listas"
 
         /// <summary>

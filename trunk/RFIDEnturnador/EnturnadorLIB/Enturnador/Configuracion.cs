@@ -27,6 +27,16 @@ namespace EnturnadorLIB.Enturnador
             return this.objDAO.GetValorConfig(llave);
         }
 
+        /// <summary>
+        /// Actualiza un registro de configuracion
+        /// </summary>
+        /// <param name="llave">Llave a actualizar</param>
+        /// <param name="valor">Nuevo valor de la llave</param>
+        public void Actualizar(string llave, string valor)
+        {
+            this.objDAO.ActualizarValorConfig(llave, valor);
+        }
+
 
     }
 }
