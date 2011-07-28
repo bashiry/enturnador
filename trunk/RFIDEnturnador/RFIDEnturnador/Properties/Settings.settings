@@ -26,5 +26,8 @@
     <Setting Name="PathWriteSpecNOvalidation" Type="System.String" Scope="Application">
       <Value Profile="(Default)">configFiles\WriteAccesSpec.xml</Value>
     </Setting>
+    <Setting Name="TiempoVerificacion" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

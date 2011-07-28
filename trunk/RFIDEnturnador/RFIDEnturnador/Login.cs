@@ -32,17 +32,19 @@ namespace RFIDEnturnador
                     EnturnadorLIB.Seguridad.Usuario objUsuario = new EnturnadorLIB.Seguridad.Usuario();
 
                     this.usu = objUsuario.GetByLoginPassword(this.txtUsuario.Text.Trim(), this.txtClave.Text.Trim());
-                    if (usu == null)
+
+                    //Si el usuario escribio login o password y no se encontró el usuario
+                    if ((usu == null) && ((this.txtUsuario.Text.Trim().Length > 0) || (this.txtClave.Text.Trim().Length > 0)))
                     {
                         Cursor = Cursors.Default;
                         MessageBox.Show("Usuario o clave inválida", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
                     }
-                    else
-                    {                        
-                        Thread th1 = new Thread(new ThreadStart(Run));
-                        th1.Start();
-                        this.Close();                    
-                    }
+
+                    Thread th1 = new Thread(new ThreadStart(Run));
+                    th1.Start();
+                    this.Close();                    
+
                 }
                 catch (Exception ex)
                 {
@@ -59,19 +61,21 @@ namespace RFIDEnturnador
 
         private bool Validar()
         {
-            string mensaje = "";
+            /****No es necesario validar eata info porque los usuarios pueden ingresar son loguearse****/
 
-            if (this.txtUsuario.Text.Trim().Length == 0)
-                mensaje += "- Debe escribir el usuario\n";
+            //string mensaje = "";
 
-            if (this.txtClave.Text.Trim().Length == 0)
-                mensaje += "- Debe escribir la clave\n";
+            //if (this.txtUsuario.Text.Trim().Length == 0)
+            //    mensaje += "- Debe escribir el usuario\n";
 
-            if (mensaje.Length > 0)
-            {
-                MessageBox.Show(mensaje, "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return false;
-            }
+            //if (this.txtClave.Text.Trim().Length == 0)
+            //    mensaje += "- Debe escribir la clave\n";
+
+            //if (mensaje.Length > 0)
+            //{
+            //    MessageBox.Show(mensaje, "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    return false;
+            //}
 
             return true;        
         }
@@ -79,6 +83,13 @@ namespace RFIDEnturnador
         private void Run()
         { 
             Application.Run(new Principal(this.usu));
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            //Screen scr = Screen.FromControl(this);
+            //MessageBox.Show(scr.WorkingArea.Height.ToString());
+            //MessageBox.Show(scr.WorkingArea.Width.ToString());
         }
 
 

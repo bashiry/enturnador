@@ -26,6 +26,16 @@ namespace RFIDEnturnador
         public Principal(USUARIO objUsuario)
         {
             InitializeComponent();
+
+            //Si el usuario llega en null, se inicializa la variable y se ponen valores por defecto
+            if (objUsuario == null)
+            {
+                objUsuario = new USUARIO();
+                objUsuario.id = 0;
+                objUsuario.nombre = "Sin identificar";
+                objUsuario.idRol = 0;                
+            }
+
             this.usuario = objUsuario;
             CGlobal.IdUsuario = this.usuario.id;
             this.lblUsuario.Text = "Usuario: " + this.usuario.nombre;
@@ -84,7 +94,7 @@ namespace RFIDEnturnador
                         retorno = true;
                     break;
                 case CGlobal.Formularios.CONFIGURACION:
-                    if ((this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString())) || (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADT.ToString())))
+                    if (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString()))
                         retorno = true;
                     break;
                 case CGlobal.Formularios.USUARIOS:
@@ -219,8 +229,9 @@ namespace RFIDEnturnador
 
         private void IniciarLectura()
         {            
-            string rutaConfig = @"configFiles\Devices.xml";
-            this.ctrl.Iniciar(10, rutaConfig);
+            //string rutaConfig = @"configFiles\Devices.xml";
+            string rutaConfig = RFIDEnturnador.Properties.Settings.Default.PathDevicesXml;
+            this.ctrl.Iniciar(RFIDEnturnador.Properties.Settings.Default.TiempoVerificacion, rutaConfig);
         }
 
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)

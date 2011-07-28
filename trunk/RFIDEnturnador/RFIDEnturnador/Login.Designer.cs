@@ -43,10 +43,9 @@
             this.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancel.Image = global::RFIDEnturnador.Properties.Resources.cancelar;
             this.Cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Cancel.Location = new System.Drawing.Point(343, 164);
-            this.Cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Cancel.Location = new System.Drawing.Point(257, 133);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(115, 30);
+            this.Cancel.Size = new System.Drawing.Size(86, 24);
             this.Cancel.TabIndex = 12;
             this.Cancel.Text = "   &Cancelar";
             this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
@@ -55,47 +54,42 @@
             // 
             this.OK.Image = global::RFIDEnturnador.Properties.Resources.chulo;
             this.OK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.OK.Location = new System.Drawing.Point(220, 164);
-            this.OK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OK.Location = new System.Drawing.Point(165, 133);
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(115, 30);
+            this.OK.Size = new System.Drawing.Size(86, 24);
             this.OK.TabIndex = 11;
             this.OK.Text = "   &Ingresar";
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(219, 110);
-            this.txtClave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtClave.Location = new System.Drawing.Point(164, 89);
             this.txtClave.Name = "txtClave";
             this.txtClave.PasswordChar = '*';
-            this.txtClave.Size = new System.Drawing.Size(237, 22);
+            this.txtClave.Size = new System.Drawing.Size(179, 20);
             this.txtClave.TabIndex = 10;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(219, 39);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUsuario.Location = new System.Drawing.Point(164, 32);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(237, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(179, 20);
             this.txtUsuario.TabIndex = 8;
             // 
             // PasswordLabel
             // 
-            this.PasswordLabel.Location = new System.Drawing.Point(216, 85);
-            this.PasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PasswordLabel.Location = new System.Drawing.Point(162, 69);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(293, 28);
+            this.PasswordLabel.Size = new System.Drawing.Size(220, 23);
             this.PasswordLabel.TabIndex = 9;
             this.PasswordLabel.Text = "Clave";
             this.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // UsernameLabel
             // 
-            this.UsernameLabel.Location = new System.Drawing.Point(216, 15);
-            this.UsernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.UsernameLabel.Location = new System.Drawing.Point(162, 12);
             this.UsernameLabel.Name = "UsernameLabel";
-            this.UsernameLabel.Size = new System.Drawing.Size(293, 28);
+            this.UsernameLabel.Size = new System.Drawing.Size(220, 23);
             this.UsernameLabel.TabIndex = 6;
             this.UsernameLabel.Text = "Usuario";
             this.UsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -103,19 +97,18 @@
             // LogoPictureBox
             // 
             this.LogoPictureBox.Image = global::RFIDEnturnador.Properties.Resources._lock;
-            this.LogoPictureBox.Location = new System.Drawing.Point(16, 15);
-            this.LogoPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LogoPictureBox.Location = new System.Drawing.Point(12, 12);
             this.LogoPictureBox.Name = "LogoPictureBox";
-            this.LogoPictureBox.Size = new System.Drawing.Size(175, 178);
+            this.LogoPictureBox.Size = new System.Drawing.Size(131, 145);
             this.LogoPictureBox.TabIndex = 7;
             this.LogoPictureBox.TabStop = false;
             // 
             // Login
             // 
             this.AcceptButton = this.OK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(519, 229);
+            this.ClientSize = new System.Drawing.Size(389, 186);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.txtClave);
@@ -124,12 +117,12 @@
             this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.LogoPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

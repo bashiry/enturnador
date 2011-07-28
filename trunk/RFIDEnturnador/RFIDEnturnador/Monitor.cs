@@ -35,9 +35,11 @@ namespace RFIDEnturnador
         }
 
         private void Monitor_Load(object sender, EventArgs e)
-        {                        
-            //WindowState = FormWindowState.Maximized;
-
+        {   
+            //Se maximiza el formulario         
+            WindowState = FormWindowState.Maximized;
+            this.UbicarGrillas();
+            
             //Se obtiene la lista de tipos de cargue
             EnturnadorLIB.Enturnador.Lista objLista = new EnturnadorLIB.Enturnador.Lista();
             this.listaTipoCargue = objLista.GetListaTipoCargue();
@@ -67,6 +69,31 @@ namespace RFIDEnturnador
         }
 
         #region "Métodos privados"
+
+        /// <summary>
+        /// Asigna la ubicación y el tamaño de las grillas dependiendo del tamaño de su panel contenedor
+        /// </summary>
+        private void UbicarGrillas()
+        {            
+            int altoGrilla = Convert.ToInt32(this.panelGrillas.Height * 0.9);
+            int anchoGrilla = Convert.ToInt32(this.panelGrillas.Width * 0.45);
+
+            //Se obtienen los puntos X y Y, dejando un 10% de margenes
+            int x1 = Convert.ToInt32(this.panelGrillas.Width * 0.1);
+            int y1 = Convert.ToInt32(this.panelGrillas.Height * 0.1);
+            int x2 = Convert.ToInt32(this.panelGrillas.Width * 0.1) + anchoGrilla + 5;
+            int y2 = Convert.ToInt32(this.panelGrillas.Height * 0.1);
+
+            //Ubicacion de las grillas
+            this.grd1.Location = new Point(x1, y1);
+            this.grd2.Location = new Point(x2, y2);
+
+            //Tamaño de las grillas
+            this.grd1.Height = altoGrilla;
+            this.grd1.Width = anchoGrilla;
+            this.grd2.Height = altoGrilla;
+            this.grd2.Width = anchoGrilla;
+        }
 
         private void GetCola()
         { 
@@ -199,12 +226,12 @@ namespace RFIDEnturnador
             this.grd2.Columns[2].DefaultCellStyle.Format = "t";
             this.grd2.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            this.grd1.Columns[0].Width = 90;
-            this.grd1.Columns[1].Width = 180;
-            this.grd1.Columns[2].Width = 280;
-            this.grd2.Columns[0].Width = 90;
-            this.grd2.Columns[1].Width = 180;
-            this.grd2.Columns[2].Width = 280;
+            //this.grd1.Columns[0].Width = 90;
+            //this.grd1.Columns[1].Width = 180;
+            //this.grd1.Columns[2].Width = 280;
+            //this.grd2.Columns[0].Width = 90;
+            //this.grd2.Columns[1].Width = 180;
+            //this.grd2.Columns[2].Width = 280;
         }
 
         #endregion
