@@ -402,7 +402,7 @@ namespace RFIDEnturnador.admin
                         mReader.Open(iReaders[0]);
                         //Now add reader response event handler
                         mReader.ReaderResponse += new dlReaderResponse(mReader_ReaderResponse);
-                        this.pictureLectora.Image = RFIDEnturnador.Properties.Resources.Ball_green_32;                        
+                        this.pictureLectora.Image = RFIDEnturnador.Properties.Resources.Ball_green_32;
                     }
 
                 }
@@ -538,7 +538,14 @@ namespace RFIDEnturnador.admin
         /// <param name="e"></param>
         private void pictureLectora_Click(object sender, EventArgs e)
         {
-            mReader.ReadTag();
+            //la lectora debe estar conectada
+            if (mReader != null)
+            { 
+                if (mReader.IsConnected == true)
+                    mReader.ReadTag();
+                else
+                    MessageBox.Show("No se puede hacer la lectura porque la lectora está desconectada", "Lectora desconectada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }    
         }
 
         //Procedure to close connection with reader. This is for safe practice only.
