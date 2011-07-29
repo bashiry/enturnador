@@ -33,7 +33,10 @@ namespace RFIDEnturnador
                 objUsuario = new USUARIO();
                 objUsuario.id = 0;
                 objUsuario.nombre = "Sin identificar";
-                objUsuario.idRol = 0;                
+                objUsuario.idRol = 0;
+
+                objUsuario.ROL = new ROL();
+                objUsuario.ROL.rol1 = "";
             }
 
             this.usuario = objUsuario;

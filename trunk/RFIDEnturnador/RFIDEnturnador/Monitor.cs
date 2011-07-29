@@ -23,7 +23,7 @@ namespace RFIDEnturnador
         List<TIPO_CARGUE> listaTipoCargue;
         private int indiceLista;        
         private int cantidadLista;
-        private int paginaActual;
+        private int paginaActual;        
         private DataTable dtCola = new DataTable();
         private DataTable dtCopia = new DataTable();
         DataView dw1;
@@ -75,13 +75,13 @@ namespace RFIDEnturnador
         /// </summary>
         private void UbicarGrillas()
         {            
-            int altoGrilla = Convert.ToInt32(this.panelGrillas.Height * 0.9);
+            int altoGrilla = Convert.ToInt32(this.panelGrillas.Height * 0.85);
             int anchoGrilla = Convert.ToInt32(this.panelGrillas.Width * 0.45);
 
             //Se obtienen los puntos X y Y, dejando un 10% de margenes
-            int x1 = Convert.ToInt32(this.panelGrillas.Width * 0.1);
+            int x1 = Convert.ToInt32(this.panelGrillas.Width * 0.05);
             int y1 = Convert.ToInt32(this.panelGrillas.Height * 0.1);
-            int x2 = Convert.ToInt32(this.panelGrillas.Width * 0.1) + anchoGrilla + 5;
+            int x2 = Convert.ToInt32(this.panelGrillas.Width * 0.05) + anchoGrilla + 40;
             int y2 = Convert.ToInt32(this.panelGrillas.Height * 0.1);
 
             //Ubicacion de las grillas
@@ -93,6 +93,10 @@ namespace RFIDEnturnador
             this.grd1.Width = anchoGrilla;
             this.grd2.Height = altoGrilla;
             this.grd2.Width = anchoGrilla;
+
+            //Ubicacion de los labels de paginacion
+            this.lblPag1.Location = new Point(x1, 10);
+            this.lblPag2.Location = new Point(x2, 10);
         }
 
         private void GetCola()
@@ -159,7 +163,7 @@ namespace RFIDEnturnador
                 //No hay registros para esta cola, se pasa a la siguiente y se reinicia el contador de las paginas
                 this.SumarIndiceLista();
                 this.paginaActual = 1;
-            }        
+            }
         }
 
         private void SumarIndiceLista()
@@ -178,6 +182,31 @@ namespace RFIDEnturnador
             this.lblTipoCargue.Text = "Cola para: " + this.listaTipoCargue[this.indiceLista].tipoCargue;
             this.lblHoraActual.Text = "Hora: " + DateTime.Now.ToShortTimeString();
 
+            int cantidadPaginas = 0;
+            if (this.dtCola.Rows.Count > 0)
+            { 
+                if ((this.dtCola.Rows.Count % this.cantidadLista) == 0)
+                    cantidadPaginas = (this.dtCola.Rows.Count / this.cantidadLista);
+                else
+                    cantidadPaginas = (this.dtCola.Rows.Count / this.cantidadLista) + 1;
+            }                
+
+            //Texto de los labels de paginacion
+            if (cantidadPaginas == 0)
+            {
+                this.lblPag1.Text = "Pág. 0 de 0 ";
+                this.lblPag2.Text = "";
+            }
+            else
+            {
+                this.lblPag1.Text = "Pag. " + this.paginaActual.ToString() + " de " + cantidadPaginas.ToString();
+                if (cantidadPaginas >= (this.paginaActual + 1))
+                    this.lblPag2.Text = "Pag. " + (this.paginaActual + 1).ToString() + " de " + cantidadPaginas.ToString();
+                else
+                    this.lblPag2.Text = "";
+            }
+
+
             //Se construye un dataview para cada grilla
             int registroInicial = (this.cantidadLista * (this.paginaActual - 1)) + 1;
 
@@ -191,8 +220,8 @@ namespace RFIDEnturnador
             this.dw1 = this.dtCola.DefaultView;
             this.dw2 = this.dtCopia.DefaultView;
 
-            dw1.RowFilter = "no >= " + registroInicial.ToString() + " AND no <= " + (registroInicial + 4).ToString();
-            dw2.RowFilter = "no >= " + (registroInicial + 5).ToString() + " AND no <= " + (registroInicial + 9).ToString();
+            dw1.RowFilter = "no >= " + registroInicial.ToString() + " AND no <= " + (registroInicial + this.cantidadLista - 1).ToString();
+            dw2.RowFilter = "no >= " + (registroInicial + this.cantidadLista).ToString() + " AND no <= " + (registroInicial + (this.cantidadLista * 2) - 1).ToString();
 
             this.grd1.DataSource = dw1.ToTable();
             this.grd2.DataSource = dw2.ToTable();
@@ -201,15 +230,15 @@ namespace RFIDEnturnador
             for (int i = 0; i < this.grd1.Rows.Count; i++)
             {
                 if ((i % 2) == 0)
-                    this.grd1.Rows[i].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                    this.grd1.Rows[i].DefaultCellStyle.BackColor = Color.LightSteelBlue;
             }
             for (int i = 0; i < this.grd2.Rows.Count; i++)
             {
                 if ((i % 2) == 0)
-                    this.grd2.Rows[i].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                    this.grd2.Rows[i].DefaultCellStyle.BackColor = Color.LightSteelBlue;
             }
 
-            this.FormatearGrillas();
+            this.FormatearGrillas();            
         }
 
         private void FormatearGrillas()
@@ -225,6 +254,9 @@ namespace RFIDEnturnador
             this.grd2.Columns[2].HeaderText = "HORA";
             this.grd2.Columns[2].DefaultCellStyle.Format = "t";
             this.grd2.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            this.grd1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            this.grd2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             //this.grd1.Columns[0].Width = 90;
             //this.grd1.Columns[1].Width = 180;
