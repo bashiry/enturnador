@@ -546,6 +546,8 @@ namespace RFIDEnturnador.admin
                 else
                     MessageBox.Show("No se puede hacer la lectura porque la lectora está desconectada", "Lectora desconectada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }    
+            else
+                MessageBox.Show("No se puede hacer la lectura porque la lectora está desconectada", "Lectora desconectada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Procedure to close connection with reader. This is for safe practice only.

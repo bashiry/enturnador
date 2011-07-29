@@ -80,22 +80,24 @@ namespace EnturnadorLIB.Enturnador
         /// <param name="idPuerta">id de la puerta donde se detectó el camión</param>
         private void EnturnarAutomatico(CAMION camion, int idPuerta)
         {
-            //Si el camion esta en la cola no puede enturnar
+            //Si el camion esta en la cola lo que se hace es actualizar la hora en la que se lee
             List<COLA> listaCola = this.objCola.GetColaByPlaca(camion.placa);
             if (listaCola.Count > 0)
             {
-                if (listaCola.First().idPuerta == idPuerta)
-                    return;
+                listaCola.First().hora = DateTime.Now;
+                this.objDAO.Actualizar(Enumeraciones.Entidad.COLA, listaCola.First(), listaCola.First().id, null);
             }
-            
-            COLA objCola = new COLA();
-            objCola.idPuerta = idPuerta;
-            objCola.idTipoCargue = camion.idTipoCargue;
-            objCola.placa = camion.placa;
-            objCola.hora = DateTime.Now;
+            else
+            {
+                //El camion no esta en la cola, se ingresa
+                COLA objCola = new COLA();
+                objCola.idPuerta = idPuerta;
+                objCola.idTipoCargue = camion.idTipoCargue;
+                objCola.placa = camion.placa;
+                objCola.hora = DateTime.Now;
 
-            this.objDAO.Crear(Enumeraciones.Entidad.COLA, objCola);
-            
+                this.objDAO.Crear(Enumeraciones.Entidad.COLA, objCola);            
+            }                        
         }
 
         /// <summary>
