@@ -175,7 +175,9 @@
     <EmbeddedResource Include="seguridad\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="bin\Debug\RFIDEnturnador.exe.config" />
     <None Include="bin\Debug\RFIDEnturnador.vshost.exe.config" />
     <None Include="bin\Debug\RFIDEnturnador.vshost.exe.manifest" />
