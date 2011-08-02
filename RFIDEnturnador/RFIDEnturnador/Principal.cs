@@ -122,7 +122,8 @@ namespace RFIDEnturnador
             return retorno;
         }
 
-        
+        #region "Eventos de los botones"
+
         private void btnAdminCamiones_Click(object sender, EventArgs e)
         {
             if (this.ValidarPermiso(CGlobal.Formularios.CAMIONES))
@@ -215,8 +216,6 @@ namespace RFIDEnturnador
             }
         }
 
-
-
         private void btnEnturnar_Click(object sender, EventArgs e)
         {
             if (this.ValidarPermiso(CGlobal.Formularios.ENTURNAR))
@@ -229,6 +228,8 @@ namespace RFIDEnturnador
                 MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        #endregion
 
         private void IniciarLectura()
         {            
