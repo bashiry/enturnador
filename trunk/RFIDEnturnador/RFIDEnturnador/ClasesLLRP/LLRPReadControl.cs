@@ -38,17 +38,21 @@ namespace RFIDEnturnador.ClasesLLRP
         /// <param name="pathXmlReaders">Xml con la configuración de los readers</param>
         public void Iniciar(double time, String pathXmlReaders)
         {
+            Console.WriteLine("******************************************Iniciar");
             if (state == 0)
             {
                 if (myServer == null)
                 {
+                    Console.WriteLine("new ServerLLRP");
                     myServer = new ServerLLRP(time, pathXmlReaders, Settings.Default.SecondsToReport);
                     myServer.AddObserverLLRP(this);
                     myServer.AddObserverTag(this);
+                    Console.WriteLine("******************************************Termino de iniciar");
                 }
 
                 myServer.Start();
                 state = 1;
+                Console.WriteLine("******************************************myServer.Start");
             }
         }
 
@@ -62,6 +66,7 @@ namespace RFIDEnturnador.ClasesLLRP
                 if (myServer != null)
                 {
                     myServer.Stop();
+                    Console.WriteLine("******************************************myServer.Stop");
                 }
                 state = 0;
             }
@@ -74,7 +79,7 @@ namespace RFIDEnturnador.ClasesLLRP
         /// </summary>
         /// <param name="tag">tag recibido</param>
         private void UpdateTags(Tag tag)
-        {
+        {            
             try
             {
                 //object[] row = new object[5];
@@ -83,8 +88,8 @@ namespace RFIDEnturnador.ClasesLLRP
                 //row[2] = tag.IsEpc;
                 //row[3] = tag.IpReader;
                 //row[4] = tag.Epc;
-
-                this.obJCola.RegistrarLectura(tag.IdAntenna, tag.IpReader, tag.Epc, CGlobal.ID_PUERTA_E1, CGlobal.ID_PUERTA_E2);
+                
+                this.obJCola.RegistrarLectura(tag.IdAntenna, tag.IpReader, tag.Epc, CGlobal.ID_PUERTA_E1, CGlobal.ID_PUERTA_E2);                
                 //if (!tags.ContainsKey(tag.Epc))
                 //{                    
                 //    tags.Add(tag.Epc, tag);                    

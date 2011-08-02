@@ -86,7 +86,7 @@ namespace RFIDEnturnador
         }
 
         private void Login_Load(object sender, EventArgs e)
-        {
+        {            
             //Screen scr = Screen.FromControl(this);
             //MessageBox.Show(scr.WorkingArea.Height.ToString());
             //MessageBox.Show(scr.WorkingArea.Width.ToString());
