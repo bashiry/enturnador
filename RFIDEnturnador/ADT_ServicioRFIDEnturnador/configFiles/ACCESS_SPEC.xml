@@ -1,0 +1,34 @@
+﻿<ADD_ACCESSSPEC Version="1" MessageID="0">
+	<AccessSpec>
+		<AccessSpecID>101</AccessSpecID>
+		<AntennaID>1</AntennaID>
+		<ProtocolID>EPCGlobalClass1Gen2</ProtocolID>
+		<CurrentState>Disabled</CurrentState>
+		<ROSpecID>123</ROSpecID>
+		<AccessSpecStopTrigger>
+			<AccessSpecStopTrigger>Null</AccessSpecStopTrigger>
+			<OperationCountValue>3</OperationCountValue>
+		</AccessSpecStopTrigger>
+		<AccessCommand>
+			<C1G2TagSpec>
+				<C1G2TargetTag>
+					<MB>2</MB>
+					<Match>True</Match>
+					<Pointer>32</Pointer>
+					<TagMask>FFFF</TagMask>
+					<TagData>6666</TagData>
+				</C1G2TargetTag>
+			</C1G2TagSpec>
+			<C1G2Write>
+				<OpSpecID>111</OpSpecID>
+				<AccessPassword>0</AccessPassword>
+				<MB>1</MB>
+				<WordPointer>2</WordPointer>
+				<WriteData>EEEE11112222333344445555</WriteData>
+			</C1G2Write>
+		</AccessCommand>
+		<AccessReportSpec>
+			<AccessReportTrigger>End_Of_AccessSpec</AccessReportTrigger>
+		</AccessReportSpec>
+	</AccessSpec>
+</ADD_ACCESSSPEC>

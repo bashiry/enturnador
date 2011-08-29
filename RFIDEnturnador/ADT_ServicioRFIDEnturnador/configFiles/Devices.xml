@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReadersRFID>
+  <ip address="10.44.130.21" manufacture="IPJ-1000" enableExtension="True" >
+    <Configuration>
+      <pathROSpec path="configFiles\ROSPEC2ANNTDIFTX.xml" enable="True"/>
+      <pathAccessSpec path="configFiles\ACCESS_SPEC.xml" enable="False"/>
+      <pathConfig path="configFiles\READERCONF.xml" enable="True" />
+    </Configuration>
+  </ip>
+</ReadersRFID>
