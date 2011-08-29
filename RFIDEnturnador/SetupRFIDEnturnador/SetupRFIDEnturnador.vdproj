@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_0C3EAB00101D4B3DB5CFB916DE3F67CE"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_339A1EEC2A3215621D3CE2318333A816"
         "OwnerKey" = "8:_3619DF2A5F724A52B15C2619BD70075C"
         "MsmSig" = "8:_UNDEFINED"
@@ -28,18 +22,6 @@
         "Entry"
         {
         "MsmKey" = "8:_3619DF2A5F724A52B15C2619BD70075C"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4C98EF21BAEE43D79982E6805C227219"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_528085A5CD024BBB93D662223DFF033D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -53,24 +35,6 @@
         {
         "MsmKey" = "8:_6FC8FEB06D57179330D54164BD61CB02"
         "OwnerKey" = "8:_ED6E6B4EB13B9465E1E951BCE6413E02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_80C35C2BD8CD4A899A1E50A4CB3866F2"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_930ED5063C594A8C9C219FE59B564323"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B3DA9F1DF7A94E7D9EA93BFC8DCA0AE0"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -107,12 +71,6 @@
         {
         "MsmKey" = "8:_DBD79AF682268A699575B8AC25F6DA62"
         "OwnerKey" = "8:_339A1EEC2A3215621D3CE2318333A816"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E3FF54187C1B4CD096B1972106422C23"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,37 +112,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CC1EC1679FEFCD4B023C39F890D80E3E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E7DB19B31DC50482BF6C2843387AD199"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ED6E6B4EB13B9465E1E951BCE6413E02"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_339A1EEC2A3215621D3CE2318333A816"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DBD79AF682268A699575B8AC25F6DA62"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E7BACE10D6B157EB8B5C69650CE07B28"
+        "OwnerKey" = "8:_D8C683F48F8F5C0EF1156C9FD4D9D300"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -196,7 +124,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D8C683F48F8F5C0EF1156C9FD4D9D300"
+        "OwnerKey" = "8:_E7BACE10D6B157EB8B5C69650CE07B28"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DBD79AF682268A699575B8AC25F6DA62"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_339A1EEC2A3215621D3CE2318333A816"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_ED6E6B4EB13B9465E1E951BCE6413E02"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E7DB19B31DC50482BF6C2843387AD199"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_CC1EC1679FEFCD4B023C39F890D80E3E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -261,6 +219,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -291,26 +262,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0C3EAB00101D4B3DB5CFB916DE3F67CE"
-            {
-            "SourcePath" = "8:..\\RFIDEnturnador\\configFiles\\Devices.xml"
-            "TargetName" = "8:Devices.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_743ADF8995CE4CE3B7CFCFF8682BE710"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_339A1EEC2A3215621D3CE2318333A816"
             {
             "AssemblyRegister" = "3:1"
@@ -318,11 +269,6 @@
             "AssemblyAsmDisplayName" = "8:EnturnadorLIB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_339A1EEC2A3215621D3CE2318333A816"
-                    {
-                    "Name" = "8:EnturnadorLIB.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:EnturnadorLIB.dll"
             "TargetName" = "8:"
@@ -342,46 +288,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C98EF21BAEE43D79982E6805C227219"
-            {
-            "SourcePath" = "8:..\\RFIDEnturnador\\configFiles\\ROSPEC_CONTINUO2.xml"
-            "TargetName" = "8:ROSPEC_CONTINUO2.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_743ADF8995CE4CE3B7CFCFF8682BE710"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_528085A5CD024BBB93D662223DFF033D"
-            {
-            "SourcePath" = "8:..\\RFIDEnturnador\\configFiles\\ROSPEC_CONTINUO.xml"
-            "TargetName" = "8:ROSPEC_CONTINUO.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_743ADF8995CE4CE3B7CFCFF8682BE710"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6FC8FEB06D57179330D54164BD61CB02"
             {
             "AssemblyRegister" = "3:1"
@@ -389,11 +295,6 @@
             "AssemblyAsmDisplayName" = "8:LLRP.Impinj, Version=10.4.0.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_6FC8FEB06D57179330D54164BD61CB02"
-                    {
-                    "Name" = "8:LLRP.Impinj.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:LLRP.Impinj.dll"
             "TargetName" = "8:"
@@ -411,66 +312,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_80C35C2BD8CD4A899A1E50A4CB3866F2"
-            {
-            "SourcePath" = "8:..\\RFIDEnturnador\\configFiles\\ACCESS_SPEC.xml"
-            "TargetName" = "8:ACCESS_SPEC.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_743ADF8995CE4CE3B7CFCFF8682BE710"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_930ED5063C594A8C9C219FE59B564323"
-            {
-            "SourcePath" = "8:..\\RFIDEnturnador\\configFiles\\WRITE_ACCES_SPEC.xml"
-            "TargetName" = "8:WRITE_ACCES_SPEC.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_743ADF8995CE4CE3B7CFCFF8682BE710"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B3DA9F1DF7A94E7D9EA93BFC8DCA0AE0"
-            {
-            "SourcePath" = "8:..\\RFIDEnturnador\\configFiles\\ROSPEC2ANNTDIFTX.xml"
-            "TargetName" = "8:ROSPEC2ANNTDIFTX.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_743ADF8995CE4CE3B7CFCFF8682BE710"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BD91627D9A8845F989084072B40D5202"
@@ -500,11 +341,6 @@
             "AssemblyAsmDisplayName" = "8:RF1200, Version=0.2.0.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_CC1EC1679FEFCD4B023C39F890D80E3E"
-                    {
-                    "Name" = "8:RF1200.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:RF1200.dll"
             "TargetName" = "8:"
@@ -531,11 +367,6 @@
             "AssemblyAsmDisplayName" = "8:LLRP, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D8C683F48F8F5C0EF1156C9FD4D9D300"
-                    {
-                    "Name" = "8:LLRP.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:LLRP.dll"
             "TargetName" = "8:"
@@ -562,11 +393,6 @@
             "AssemblyAsmDisplayName" = "8:EnturnadorDAO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DBD79AF682268A699575B8AC25F6DA62"
-                    {
-                    "Name" = "8:EnturnadorDAO.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:EnturnadorDAO.dll"
             "TargetName" = "8:"
@@ -586,26 +412,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E3FF54187C1B4CD096B1972106422C23"
-            {
-            "SourcePath" = "8:..\\RFIDEnturnador\\configFiles\\READERCONF.xml"
-            "TargetName" = "8:READERCONF.xml"
-            "Tag" = "8:"
-            "Folder" = "8:_743ADF8995CE4CE3B7CFCFF8682BE710"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E7BACE10D6B157EB8B5C69650CE07B28"
             {
             "AssemblyRegister" = "3:1"
@@ -613,11 +419,6 @@
             "AssemblyAsmDisplayName" = "8:log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E7BACE10D6B157EB8B5C69650CE07B28"
-                    {
-                    "Name" = "8:log4net.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:log4net.dll"
             "TargetName" = "8:"
@@ -644,11 +445,6 @@
             "AssemblyAsmDisplayName" = "8:UtilityClass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E7DB19B31DC50482BF6C2843387AD199"
-                    {
-                    "Name" = "8:UtilityClass.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:UtilityClass.dll"
             "TargetName" = "8:"
@@ -675,11 +471,6 @@
             "AssemblyAsmDisplayName" = "8:LLRPDlll1.0.4, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_ED6E6B4EB13B9465E1E951BCE6413E02"
-                    {
-                    "Name" = "8:LLRPDlll1.0.4.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:LLRPDlll1.0.4.dll"
             "TargetName" = "8:"
@@ -715,17 +506,6 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_743ADF8995CE4CE3B7CFCFF8682BE710"
-                    {
-                    "Name" = "8:configFiles"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_3E0C7A4F32F8430D80D8B4DE6281CD4A"
-                        "Folders"
-                        {
-                        }
-                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_66A3FE0060F84F73A163B46479CB39E5"
