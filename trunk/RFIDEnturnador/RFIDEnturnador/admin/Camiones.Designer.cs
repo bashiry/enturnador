@@ -69,6 +69,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelCargueMasivo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCargue)).BeginInit();
@@ -105,7 +106,7 @@
             this.panelCargueMasivo.Controls.Add(this.label6);
             this.panelCargueMasivo.Controls.Add(this.grdCargue);
             this.panelCargueMasivo.Location = new System.Drawing.Point(16, 92);
-            this.panelCargueMasivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelCargueMasivo.Margin = new System.Windows.Forms.Padding(4);
             this.panelCargueMasivo.Name = "panelCargueMasivo";
             this.panelCargueMasivo.Size = new System.Drawing.Size(599, 33);
             this.panelCargueMasivo.TabIndex = 7;
@@ -117,7 +118,7 @@
             this.btnCancelarCarga.Image = global::RFIDEnturnador.Properties.Resources.back;
             this.btnCancelarCarga.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelarCarga.Location = new System.Drawing.Point(437, 11);
-            this.btnCancelarCarga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelarCarga.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelarCarga.Name = "btnCancelarCarga";
             this.btnCancelarCarga.Size = new System.Drawing.Size(100, 28);
             this.btnCancelarCarga.TabIndex = 24;
@@ -161,7 +162,7 @@
             this.btnSeleccionar.Image = global::RFIDEnturnador.Properties.Resources.folder;
             this.btnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSeleccionar.Location = new System.Drawing.Point(253, 11);
-            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(176, 28);
             this.btnSeleccionar.TabIndex = 20;
@@ -195,7 +196,7 @@
             this.grdCargue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdCargue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCargue.Location = new System.Drawing.Point(12, 139);
-            this.grdCargue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdCargue.Margin = new System.Windows.Forms.Padding(4);
             this.grdCargue.Name = "grdCargue";
             this.grdCargue.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -258,6 +259,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblTotalRegistros);
             this.splitContainer1.Panel1.Controls.Add(this.btnVerCargue);
             this.splitContainer1.Panel1.Controls.Add(this.btnBuscar);
             this.splitContainer1.Panel1.Controls.Add(this.txtBuscarPlaca);
@@ -309,7 +311,7 @@
             // txtBuscarPlaca
             // 
             this.txtBuscarPlaca.Location = new System.Drawing.Point(137, 62);
-            this.txtBuscarPlaca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscarPlaca.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscarPlaca.Name = "txtBuscarPlaca";
             this.txtBuscarPlaca.Size = new System.Drawing.Size(132, 22);
             this.txtBuscarPlaca.TabIndex = 20;
@@ -359,8 +361,8 @@
             this.TIPOCARGUE,
             this.EDITAR,
             this.ELIMINAR});
-            this.grdCamiones.Location = new System.Drawing.Point(13, 103);
-            this.grdCamiones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grdCamiones.Location = new System.Drawing.Point(13, 120);
+            this.grdCamiones.Margin = new System.Windows.Forms.Padding(4);
             this.grdCamiones.Name = "grdCamiones";
             this.grdCamiones.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -375,7 +377,7 @@
             this.grdCamiones.RowHeadersWidth = 20;
             this.grdCamiones.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.grdCamiones.RowTemplate.Height = 24;
-            this.grdCamiones.Size = new System.Drawing.Size(571, 357);
+            this.grdCamiones.Size = new System.Drawing.Size(571, 340);
             this.grdCamiones.TabIndex = 17;
             this.grdCamiones.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCamiones_CellDoubleClick);
             // 
@@ -472,7 +474,7 @@
             this.btnCancelar.Image = global::RFIDEnturnador.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancelar.Location = new System.Drawing.Point(367, 199);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(100, 28);
             this.btnCancelar.TabIndex = 19;
@@ -486,7 +488,7 @@
             this.btnListo.Image = global::RFIDEnturnador.Properties.Resources.chulo;
             this.btnListo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnListo.Location = new System.Drawing.Point(259, 199);
-            this.btnListo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListo.Margin = new System.Windows.Forms.Padding(4);
             this.btnListo.Name = "btnListo";
             this.btnListo.Size = new System.Drawing.Size(100, 28);
             this.btnListo.TabIndex = 18;
@@ -525,6 +527,16 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // lblTotalRegistros
+            // 
+            this.lblTotalRegistros.AutoSize = true;
+            this.lblTotalRegistros.Location = new System.Drawing.Point(10, 99);
+            this.lblTotalRegistros.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotalRegistros.Name = "lblTotalRegistros";
+            this.lblTotalRegistros.Size = new System.Drawing.Size(140, 17);
+            this.lblTotalRegistros.TabIndex = 23;
+            this.lblTotalRegistros.Text = "Total de camiones: 0";
             // 
             // Camiones
             // 
@@ -597,6 +609,7 @@
         internal System.Windows.Forms.Button btnCancelarCarga;
         private System.Windows.Forms.PictureBox pictureLectora;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lblTotalRegistros;
 
     }
 }
