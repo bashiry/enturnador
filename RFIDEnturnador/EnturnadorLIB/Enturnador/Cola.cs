@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.Objects.DataClasses;
 using System.Data.Objects;
+using System.Collections;
 using EnturnadorDAO;
 
 namespace EnturnadorLIB.Enturnador
@@ -46,13 +47,13 @@ namespace EnturnadorLIB.Enturnador
                 resultado = "No se encontró el camión con placa '" + placa + "'";
                 return resultado;
             }
-                        
+
             //Si el camion esta en alguna cola no puede enturnar
             List<COLA> listaCola = this.objCola.GetColaByPlaca(placa);
             if (listaCola.Count > 0)
             {
                 if (listaCola.First().idPuerta == idPuerta)
-                    resultado = "No se puede enturnar el camión porque ya está en la cola";                
+                    resultado = "No se puede enturnar el camión porque ya está en la cola";
             }
 
             //Si todas las validacines estan OK
@@ -62,7 +63,7 @@ namespace EnturnadorLIB.Enturnador
                 objCola.idPuerta = idPuerta;
                 objCola.idTipoCargue = camion.idTipoCargue;
                 objCola.placa = placa;
-                objCola.hora = hora;                
+                objCola.hora = hora;
 
                 this.objDAO.Crear(Enumeraciones.Entidad.COLA, objCola);
 
@@ -80,24 +81,21 @@ namespace EnturnadorLIB.Enturnador
         /// <param name="idPuerta">id de la puerta donde se detectó el camión</param>
         private void EnturnarAutomatico(CAMION camion, int idPuerta)
         {
-            //Si el camion esta en la cola lo que se hace es actualizar la hora en la que se lee
+            //Si el camion esta en la cola no puede enturnar
             List<COLA> listaCola = this.objCola.GetColaByPlaca(camion.placa);
             if (listaCola.Count > 0)
             {
-                listaCola.First().hora = DateTime.Now;
-                this.objDAO.Actualizar(Enumeraciones.Entidad.COLA, listaCola.First(), listaCola.First().id, null);
+                if (listaCola.First().idPuerta == idPuerta)
+                    return;
             }
-            else
-            {
-                //El camion no esta en la cola, se ingresa
-                COLA objCola = new COLA();
-                objCola.idPuerta = idPuerta;
-                objCola.idTipoCargue = camion.idTipoCargue;
-                objCola.placa = camion.placa;
-                objCola.hora = DateTime.Now;
 
-                this.objDAO.Crear(Enumeraciones.Entidad.COLA, objCola);            
-            }                        
+            COLA objCola = new COLA();
+            objCola.idPuerta = idPuerta;
+            objCola.idTipoCargue = camion.idTipoCargue;
+            objCola.placa = camion.placa;
+            objCola.hora = DateTime.Now;
+
+            this.objDAO.Crear(Enumeraciones.Entidad.COLA, objCola);
         }
 
         /// <summary>
@@ -124,7 +122,7 @@ namespace EnturnadorLIB.Enturnador
             List<COLA> listaCola = this.objCola.GetColaByPlaca(placa);
             if (listaCola.Count == 0)
                 resultado = "No se puede desenturnar el camión porque no está en la cola";
-            
+
 
             //Si todas las validacines estan OK, se elimina el registro de la cola
             if (resultado.Length == 0)
@@ -134,7 +132,7 @@ namespace EnturnadorLIB.Enturnador
                 this.RegistrarLogManual(camion.idTipoCargue, camion.id, idUsuario, DateTime.Now, idPuertaDesenturna);
             }
 
-            return resultado;        
+            return resultado;
         }
 
         /// <summary>
@@ -158,8 +156,8 @@ namespace EnturnadorLIB.Enturnador
         /// <param name="idAntena">Id de la antena donde se hizo la lectura</param>
         /// <param name="ipReader">Ip del reader que hizo la lectura</param>
         /// <param name="epc">EPC leído</param>
-        public void RegistrarLectura(string idAntena, string ipReader, string epc, int idPuertaEnturna, int idPuertaDesenturna)
-        { 
+        public void RegistrarLectura(string idAntena, string ipReader, string epc, ArrayList arrPuertaEnturna, ArrayList arrPuertaDesenturna)
+        {
             //Se obtiene el camion correspondiente al epc leído. 
             CAMION camion = this.objCamion.GetCamionByRFID(epc);
 
@@ -177,13 +175,13 @@ namespace EnturnadorLIB.Enturnador
             this.RegistrarLogAutomatico(antena.id, camion.idTipoCargue, camion.id, antena.PUERTA.puerta1, epc, DateTime.Now);
 
             //Se determina si se enturna, se desenturna o no se hace nada
-            if (antena.idPuerta == idPuertaEnturna)
-            { 
+            if (arrPuertaEnturna.Contains(antena.idPuerta.ToString()))
+            {
                 //Se enturna
                 this.EnturnarAutomatico(camion, antena.idPuerta);
             }
-            else if (antena.idPuerta == idPuertaDesenturna)
-            { 
+            else if (arrPuertaDesenturna.Contains(antena.idPuerta.ToString()))
+            {
                 //Se desenturna
                 this.DesenturnarAutomatico(camion, antena.idPuerta);
             }
@@ -244,7 +242,7 @@ namespace EnturnadorLIB.Enturnador
             //Recorre la cola y asigna la posición a cada placa
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                dt.Rows[i]["no"] = i + 1;                
+                dt.Rows[i]["no"] = i + 1;
             }
 
             return dt;
