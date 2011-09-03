@@ -90,9 +90,9 @@
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 488);
+            this.panel1.Size = new System.Drawing.Size(625, 601);
             this.panel1.TabIndex = 0;
             // 
             // panelCargueMasivo
@@ -104,9 +104,10 @@
             this.panelCargueMasivo.Controls.Add(this.btnSeleccionar);
             this.panelCargueMasivo.Controls.Add(this.label6);
             this.panelCargueMasivo.Controls.Add(this.grdCargue);
-            this.panelCargueMasivo.Location = new System.Drawing.Point(12, 75);
+            this.panelCargueMasivo.Location = new System.Drawing.Point(16, 92);
+            this.panelCargueMasivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelCargueMasivo.Name = "panelCargueMasivo";
-            this.panelCargueMasivo.Size = new System.Drawing.Size(449, 27);
+            this.panelCargueMasivo.Size = new System.Drawing.Size(599, 33);
             this.panelCargueMasivo.TabIndex = 7;
             this.panelCargueMasivo.Visible = false;
             // 
@@ -115,9 +116,10 @@
             this.btnCancelarCarga.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelarCarga.Image = global::RFIDEnturnador.Properties.Resources.back;
             this.btnCancelarCarga.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelarCarga.Location = new System.Drawing.Point(328, 9);
+            this.btnCancelarCarga.Location = new System.Drawing.Point(437, 11);
+            this.btnCancelarCarga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelarCarga.Name = "btnCancelarCarga";
-            this.btnCancelarCarga.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelarCarga.Size = new System.Drawing.Size(100, 28);
             this.btnCancelarCarga.TabIndex = 24;
             this.btnCancelarCarga.Text = "Volver";
             this.btnCancelarCarga.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -127,27 +129,30 @@
             // lblCantidadError
             // 
             this.lblCantidadError.AutoSize = true;
-            this.lblCantidadError.Location = new System.Drawing.Point(6, 86);
+            this.lblCantidadError.Location = new System.Drawing.Point(8, 106);
+            this.lblCantidadError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantidadError.Name = "lblCantidadError";
-            this.lblCantidadError.Size = new System.Drawing.Size(99, 13);
+            this.lblCantidadError.Size = new System.Drawing.Size(134, 17);
             this.lblCantidadError.TabIndex = 23;
             this.lblCantidadError.Text = "Registros con error:";
             // 
             // lblCantidadGuardada
             // 
             this.lblCantidadGuardada.AutoSize = true;
-            this.lblCantidadGuardada.Location = new System.Drawing.Point(6, 63);
+            this.lblCantidadGuardada.Location = new System.Drawing.Point(8, 78);
+            this.lblCantidadGuardada.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantidadGuardada.Name = "lblCantidadGuardada";
-            this.lblCantidadGuardada.Size = new System.Drawing.Size(172, 13);
+            this.lblCantidadGuardada.Size = new System.Drawing.Size(231, 17);
             this.lblCantidadGuardada.TabIndex = 22;
             this.lblCantidadGuardada.Text = "Registros guardados exitosamente:";
             // 
             // lblCantidadLeida
             // 
             this.lblCantidadLeida.AutoSize = true;
-            this.lblCantidadLeida.Location = new System.Drawing.Point(6, 39);
+            this.lblCantidadLeida.Location = new System.Drawing.Point(8, 48);
+            this.lblCantidadLeida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantidadLeida.Name = "lblCantidadLeida";
-            this.lblCantidadLeida.Size = new System.Drawing.Size(118, 13);
+            this.lblCantidadLeida.Size = new System.Drawing.Size(157, 17);
             this.lblCantidadLeida.TabIndex = 21;
             this.lblCantidadLeida.Text = "Registros en el archivo:";
             // 
@@ -155,9 +160,10 @@
             // 
             this.btnSeleccionar.Image = global::RFIDEnturnador.Properties.Resources.folder;
             this.btnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSeleccionar.Location = new System.Drawing.Point(190, 9);
+            this.btnSeleccionar.Location = new System.Drawing.Point(253, 11);
+            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(132, 23);
+            this.btnSeleccionar.Size = new System.Drawing.Size(176, 28);
             this.btnSeleccionar.TabIndex = 20;
             this.btnSeleccionar.Text = "Seleccionar archivo";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
@@ -166,9 +172,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 14);
+            this.label6.Location = new System.Drawing.Point(8, 17);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(178, 13);
+            this.label6.Size = new System.Drawing.Size(234, 17);
             this.label6.TabIndex = 19;
             this.label6.Text = "Seleccione el archivo con los datos:";
             // 
@@ -187,7 +194,8 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.grdCargue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdCargue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdCargue.Location = new System.Drawing.Point(9, 113);
+            this.grdCargue.Location = new System.Drawing.Point(12, 139);
+            this.grdCargue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grdCargue.Name = "grdCargue";
             this.grdCargue.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -203,7 +211,7 @@
             this.grdCargue.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.grdCargue.RowTemplate.Height = 24;
             this.grdCargue.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.grdCargue.Size = new System.Drawing.Size(428, 264);
+            this.grdCargue.Size = new System.Drawing.Size(571, 325);
             this.grdCargue.TabIndex = 18;
             // 
             // panel2
@@ -214,16 +222,16 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(469, 70);
+            this.panel2.Size = new System.Drawing.Size(625, 85);
             this.panel2.TabIndex = 6;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::RFIDEnturnador.Properties.Resources.camion6;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 4);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -235,18 +243,17 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label1.Location = new System.Drawing.Point(73, 33);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(97, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 22);
+            this.label1.Size = new System.Drawing.Size(255, 29);
             this.label1.TabIndex = 4;
             this.label1.Text = "Gestión de camiones";
             // 
             // splitContainer1
             // 
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(12, 90);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Location = new System.Drawing.Point(16, 111);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -270,19 +277,18 @@
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2Collapsed = true;
-            this.splitContainer1.Size = new System.Drawing.Size(450, 387);
+            this.splitContainer1.Size = new System.Drawing.Size(600, 476);
             this.splitContainer1.SplitterDistance = 25;
-            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 5;
             // 
             // btnVerCargue
             // 
             this.btnVerCargue.Image = global::RFIDEnturnador.Properties.Resources.folder;
             this.btnVerCargue.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerCargue.Location = new System.Drawing.Point(129, 10);
-            this.btnVerCargue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVerCargue.Location = new System.Drawing.Point(172, 12);
+            this.btnVerCargue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVerCargue.Name = "btnVerCargue";
-            this.btnVerCargue.Size = new System.Drawing.Size(105, 29);
+            this.btnVerCargue.Size = new System.Drawing.Size(140, 36);
             this.btnVerCargue.TabIndex = 22;
             this.btnVerCargue.Text = "    Cargar registro";
             this.btnVerCargue.UseVisualStyleBackColor = true;
@@ -292,27 +298,29 @@
             // 
             this.btnBuscar.Image = global::RFIDEnturnador.Properties.Resources.xpLens;
             this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(208, 50);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBuscar.Location = new System.Drawing.Point(277, 62);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(20, 24);
+            this.btnBuscar.Size = new System.Drawing.Size(27, 30);
             this.btnBuscar.TabIndex = 21;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscarPlaca
             // 
-            this.txtBuscarPlaca.Location = new System.Drawing.Point(103, 50);
+            this.txtBuscarPlaca.Location = new System.Drawing.Point(137, 62);
+            this.txtBuscarPlaca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscarPlaca.Name = "txtBuscarPlaca";
-            this.txtBuscarPlaca.Size = new System.Drawing.Size(100, 20);
+            this.txtBuscarPlaca.Size = new System.Drawing.Size(132, 22);
             this.txtBuscarPlaca.TabIndex = 20;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 53);
+            this.label5.Location = new System.Drawing.Point(9, 65);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 13);
+            this.label5.Size = new System.Drawing.Size(119, 17);
             this.label5.TabIndex = 19;
             this.label5.Text = "Buscar por placa:";
             // 
@@ -320,10 +328,10 @@
             // 
             this.btnNuevo.Image = global::RFIDEnturnador.Properties.Resources.NewFolder;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(10, 10);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNuevo.Location = new System.Drawing.Point(13, 12);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(108, 29);
+            this.btnNuevo.Size = new System.Drawing.Size(144, 36);
             this.btnNuevo.TabIndex = 18;
             this.btnNuevo.Text = "  Nuevo camión";
             this.btnNuevo.UseVisualStyleBackColor = true;
@@ -351,7 +359,8 @@
             this.TIPOCARGUE,
             this.EDITAR,
             this.ELIMINAR});
-            this.grdCamiones.Location = new System.Drawing.Point(10, 84);
+            this.grdCamiones.Location = new System.Drawing.Point(13, 103);
+            this.grdCamiones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grdCamiones.Name = "grdCamiones";
             this.grdCamiones.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -366,7 +375,7 @@
             this.grdCamiones.RowHeadersWidth = 20;
             this.grdCamiones.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.grdCamiones.RowTemplate.Height = 24;
-            this.grdCamiones.Size = new System.Drawing.Size(428, 290);
+            this.grdCamiones.Size = new System.Drawing.Size(571, 357);
             this.grdCamiones.TabIndex = 17;
             this.grdCamiones.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCamiones_CellDoubleClick);
             // 
@@ -421,8 +430,8 @@
             // pictureLectora
             // 
             this.pictureLectora.Image = global::RFIDEnturnador.Properties.Resources.Ball_green_32;
-            this.pictureLectora.Location = new System.Drawing.Point(352, 124);
-            this.pictureLectora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureLectora.Location = new System.Drawing.Point(469, 153);
+            this.pictureLectora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureLectora.Name = "pictureLectora";
             this.pictureLectora.Size = new System.Drawing.Size(32, 32);
             this.pictureLectora.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -433,28 +442,28 @@
             // 
             // txtCodigoRFID
             // 
-            this.txtCodigoRFID.Location = new System.Drawing.Point(155, 127);
-            this.txtCodigoRFID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCodigoRFID.Location = new System.Drawing.Point(207, 156);
+            this.txtCodigoRFID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCodigoRFID.Name = "txtCodigoRFID";
             this.txtCodigoRFID.ReadOnly = true;
-            this.txtCodigoRFID.Size = new System.Drawing.Size(196, 20);
+            this.txtCodigoRFID.Size = new System.Drawing.Size(260, 22);
             this.txtCodigoRFID.TabIndex = 22;
             // 
             // cboTipoCargue
             // 
             this.cboTipoCargue.FormattingEnabled = true;
-            this.cboTipoCargue.Location = new System.Drawing.Point(155, 93);
-            this.cboTipoCargue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboTipoCargue.Location = new System.Drawing.Point(207, 114);
+            this.cboTipoCargue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboTipoCargue.Name = "cboTipoCargue";
-            this.cboTipoCargue.Size = new System.Drawing.Size(196, 21);
+            this.cboTipoCargue.Size = new System.Drawing.Size(260, 24);
             this.cboTipoCargue.TabIndex = 21;
             // 
             // txtPlaca
             // 
-            this.txtPlaca.Location = new System.Drawing.Point(155, 58);
-            this.txtPlaca.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPlaca.Location = new System.Drawing.Point(207, 71);
+            this.txtPlaca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPlaca.Name = "txtPlaca";
-            this.txtPlaca.Size = new System.Drawing.Size(196, 20);
+            this.txtPlaca.Size = new System.Drawing.Size(260, 22);
             this.txtPlaca.TabIndex = 20;
             // 
             // btnCancelar
@@ -462,9 +471,10 @@
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.Image = global::RFIDEnturnador.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(275, 162);
+            this.btnCancelar.Location = new System.Drawing.Point(367, 199);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(100, 28);
             this.btnCancelar.TabIndex = 19;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -475,9 +485,10 @@
             // 
             this.btnListo.Image = global::RFIDEnturnador.Properties.Resources.chulo;
             this.btnListo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListo.Location = new System.Drawing.Point(194, 162);
+            this.btnListo.Location = new System.Drawing.Point(259, 199);
+            this.btnListo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnListo.Name = "btnListo";
-            this.btnListo.Size = new System.Drawing.Size(75, 23);
+            this.btnListo.Size = new System.Drawing.Size(100, 28);
             this.btnListo.TabIndex = 18;
             this.btnListo.Text = "Listo";
             this.btnListo.UseVisualStyleBackColor = true;
@@ -486,30 +497,27 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(70, 129);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(93, 159);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.Size = new System.Drawing.Size(87, 17);
             this.label4.TabIndex = 2;
             this.label4.Text = "Código RFID";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 95);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(93, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.Size = new System.Drawing.Size(108, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "Tipo de cargue:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(70, 61);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(93, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.Size = new System.Drawing.Size(47, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Placa:";
             // 
@@ -520,12 +528,12 @@
             // 
             // Camiones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 488);
+            this.ClientSize = new System.Drawing.Size(625, 601);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "Camiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
