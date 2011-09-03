@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace ADT_ServicioRFIDEnturnador
 {
@@ -13,8 +14,8 @@ namespace ADT_ServicioRFIDEnturnador
         /// <summary>
         /// Variables estáticas que son visibles en toda la aplicación
         /// </summary>
-        public static int ID_PUERTA_E1;
-        public static int ID_PUERTA_E2;
+        public static ArrayList ID_PUERTAS_ENTURNAN = new ArrayList();
+        public static ArrayList ID_PUERTAS_DESENTURNAN = new ArrayList();
 
     }
 }

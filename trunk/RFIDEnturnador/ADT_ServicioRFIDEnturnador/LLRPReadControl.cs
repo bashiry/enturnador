@@ -85,7 +85,7 @@ namespace ADT_ServicioRFIDEnturnador
                 //row[3] = tag.IpReader;
                 //row[4] = tag.Epc;
 
-                this.obJCola.RegistrarLectura(tag.IdAntenna, tag.IpReader, tag.Epc, CGlobal.ID_PUERTA_E1, CGlobal.ID_PUERTA_E2);
+                this.obJCola.RegistrarLectura(tag.IdAntenna, tag.IpReader, tag.Epc, CGlobal.ID_PUERTAS_ENTURNAN, CGlobal.ID_PUERTAS_DESENTURNAN);
                 //if (!tags.ContainsKey(tag.Epc))
                 //{                    
                 //    tags.Add(tag.Epc, tag);                    
