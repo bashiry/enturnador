@@ -123,6 +123,13 @@ namespace RFIDEnturnador.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap camionCisterna {
+            get {
+                object obj = ResourceManager.GetObject("camionCisterna", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap camionPequeno {
             get {
                 object obj = ResourceManager.GetObject("camionPequeno", resourceCulture);
