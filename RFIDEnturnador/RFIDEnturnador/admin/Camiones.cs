@@ -60,15 +60,27 @@ namespace RFIDEnturnador.admin
 
         private void GetCamiones()
         {
+            if (!this.grdCamiones.Columns.Contains("CODIGO"))
+            {
+                DataGridViewTextBoxColumn columnaCodigo = new DataGridViewTextBoxColumn();
+                columnaCodigo.HeaderText = "CODIGO";
+                columnaCodigo.Name = "CODIGO";
+                columnaCodigo.DataPropertyName = "codigoRFID";
+                columnaCodigo.Width = 100;                
+                this.grdCamiones.Columns.Insert(4, columnaCodigo);
+            }
+
             this.grdCamiones.AutoGenerateColumns = false;
             DataTable dtCamiones = this.objCamion.GetAll();
             this.grdCamiones.DataSource = dtCamiones;
-
-            this.grdCamiones.Columns["PLACA"].Width = 130;
-            this.grdCamiones.Columns["TIPOCARGUE"].Width = 200;
-            this.grdCamiones.Columns["EDITAR"].Width = 95;
-            this.grdCamiones.Columns["ELIMINAR"].Width = 95;
+            
+            this.grdCamiones.Columns["PLACA"].Width = 100;
+            this.grdCamiones.Columns["TIPOCARGUE"].Width = 130;
+            this.grdCamiones.Columns["EDITAR"].Width = 90;
+            this.grdCamiones.Columns["ELIMINAR"].Width = 90;
             this.grdCamiones.Columns["TIPOCARGUE"].HeaderText = "TIPO CARGUE";
+
+            this.lblTotalRegistros.Text = "Total de camiones: " + dtCamiones.Rows.Count.ToString();
         }
 
         private void LlenarComboTipoCargue()
