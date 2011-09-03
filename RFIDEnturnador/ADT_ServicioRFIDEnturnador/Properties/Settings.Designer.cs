@@ -103,5 +103,23 @@ namespace ADT_ServicioRFIDEnturnador.Properties {
                 return ((double)(this["TiempoVerificacion"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string PuertasEnturnan {
+            get {
+                return ((string)(this["PuertasEnturnan"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2,3,4")]
+        public string PuertasDesenturnan {
+            get {
+                return ((string)(this["PuertasDesenturnan"]));
+            }
+        }
     }
 }
