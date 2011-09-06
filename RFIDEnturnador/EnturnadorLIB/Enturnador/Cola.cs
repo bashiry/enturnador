@@ -81,14 +81,19 @@ namespace EnturnadorLIB.Enturnador
         /// <param name="idPuerta">id de la puerta donde se detectó el camión</param>
         private void EnturnarAutomatico(CAMION camion, int idPuerta)
         {
-            //Si el camion esta en la cola no puede enturnar
+            //Si el camion esta en la cola 
             List<COLA> listaCola = this.objCola.GetColaByPlaca(camion.placa);
             if (listaCola.Count > 0)
             {
+                //El camion esta en la cola
                 if (listaCola.First().idPuerta == idPuerta)
-                    return;
+                { 
+                    //Se elimina el camion de la cola
+                    this.objCola.EliminarRegistro(camion.placa);
+                }                
             }
 
+            //Se crea el camion en la cola
             COLA objCola = new COLA();
             objCola.idPuerta = idPuerta;
             objCola.idTipoCargue = camion.idTipoCargue;
