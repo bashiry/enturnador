@@ -40,8 +40,7 @@ namespace RFIDEnturnador
             NOTICIAS,
             CONFIGURACION,
             ENTURNAR,            
-            REPORTE_TRAZABILIDAD,
-            REPORTE_MANUALES,
+            REPORTES,
             MONITOR
         }
 

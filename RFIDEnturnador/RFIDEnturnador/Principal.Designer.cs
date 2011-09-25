@@ -42,21 +42,23 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnReporteTrazabilidad = new System.Windows.Forms.Button();
-            this.btnReporteManual = new System.Windows.Forms.Button();
+            this.cboReporte = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnReporte = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panelPrincipal.SuspendLayout();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelPrincipal
             // 
             this.panelPrincipal.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelPrincipal.Controls.Add(this.btnReporteManual);
-            this.panelPrincipal.Controls.Add(this.btnReporteTrazabilidad);
+            this.panelPrincipal.Controls.Add(this.groupBox1);
             this.panelPrincipal.Controls.Add(this.lblUsuario);
             this.panelPrincipal.Controls.Add(this.pictureBox4);
             this.panelPrincipal.Controls.Add(this.btnMonitor);
@@ -221,11 +223,11 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::RFIDEnturnador.Properties.Resources.Principal;
-            this.pictureBox3.Location = new System.Drawing.Point(19, 68);
+            this.pictureBox3.Image = global::RFIDEnturnador.Properties.Resources.Principal2;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 68);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(391, 334);
+            this.pictureBox3.Size = new System.Drawing.Size(430, 334);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
@@ -241,35 +243,51 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
-            // btnReporteTrazabilidad
+            // cboReporte
             // 
-            this.btnReporteTrazabilidad.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReporteTrazabilidad.Image = global::RFIDEnturnador.Properties.Resources.trazabilidad;
-            this.btnReporteTrazabilidad.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporteTrazabilidad.Location = new System.Drawing.Point(497, 324);
-            this.btnReporteTrazabilidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnReporteTrazabilidad.Name = "btnReporteTrazabilidad";
-            this.btnReporteTrazabilidad.Size = new System.Drawing.Size(261, 68);
-            this.btnReporteTrazabilidad.TabIndex = 9;
-            this.btnReporteTrazabilidad.Text = "       Reporte trazabilidad";
-            this.btnReporteTrazabilidad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReporteTrazabilidad.UseVisualStyleBackColor = true;
-            this.btnReporteTrazabilidad.Click += new System.EventHandler(this.btnReporteTrazabilidad_Click);
+            this.cboReporte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboReporte.FormattingEnabled = true;
+            this.cboReporte.Items.AddRange(new object[] {
+            "Trazabilidad",
+            "Enturnamientos manuales",
+            "Ciclos incompletos",
+            "Tiempo en planta",
+            "Tiempo por ciclo"});
+            this.cboReporte.Location = new System.Drawing.Point(76, 37);
+            this.cboReporte.Name = "cboReporte";
+            this.cboReporte.Size = new System.Drawing.Size(185, 24);
+            this.cboReporte.TabIndex = 9;
             // 
-            // btnReporteManual
+            // label2
             // 
-            this.btnReporteManual.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReporteManual.Image = global::RFIDEnturnador.Properties.Resources.ReporteManual;
-            this.btnReporteManual.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporteManual.Location = new System.Drawing.Point(776, 324);
-            this.btnReporteManual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnReporteManual.Name = "btnReporteManual";
-            this.btnReporteManual.Size = new System.Drawing.Size(261, 68);
-            this.btnReporteManual.TabIndex = 10;
-            this.btnReporteManual.Text = "Reporte enturnamientos manuales";
-            this.btnReporteManual.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReporteManual.UseVisualStyleBackColor = true;
-            this.btnReporteManual.Click += new System.EventHandler(this.btnReporteManual_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 17);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Reporte:";
+            // 
+            // btnReporte
+            // 
+            this.btnReporte.Location = new System.Drawing.Point(279, 33);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(255, 30);
+            this.btnReporte.TabIndex = 11;
+            this.btnReporte.Text = "Ver reporte";
+            this.btnReporte.UseVisualStyleBackColor = true;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.btnReporte);
+            this.groupBox1.Controls.Add(this.cboReporte);
+            this.groupBox1.Location = new System.Drawing.Point(497, 331);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(540, 95);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Reportes:";
             // 
             // Principal
             // 
@@ -293,6 +311,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -313,7 +333,9 @@
         private System.Windows.Forms.Button btnMonitor;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.Button btnReporteManual;
-        private System.Windows.Forms.Button btnReporteTrazabilidad;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnReporte;
+        private System.Windows.Forms.ComboBox cboReporte;
     }
 }
