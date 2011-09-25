@@ -242,9 +242,30 @@ namespace RFIDEnturnador.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Principal2 {
+            get {
+                object obj = ResourceManager.GetObject("Principal2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ReporteCiclosIncompletos {
+            get {
+                object obj = ResourceManager.GetObject("ReporteCiclosIncompletos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ReporteManual {
             get {
                 object obj = ResourceManager.GetObject("ReporteManual", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ReporteTiemposEnPlanta {
+            get {
+                object obj = ResourceManager.GetObject("ReporteTiemposEnPlanta", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

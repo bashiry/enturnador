@@ -47,6 +47,8 @@ namespace RFIDEnturnador
             EnturnadorLIB.Enturnador.Configuracion objConfig = new EnturnadorLIB.Enturnador.Configuracion();
             CGlobal.ID_PUERTA_E1 = Convert.ToInt32(objConfig.GetValorConfig(LLAVE_PUERTA_E1));
             CGlobal.ID_PUERTA_E2 = Convert.ToInt32(objConfig.GetValorConfig(LLAVE_PUERTA_E2));
+
+            this.cboReporte.SelectedIndex = 0;
         }
 
         private void Principal_Load(object sender, EventArgs e)
@@ -107,15 +109,10 @@ namespace RFIDEnturnador
                 case CGlobal.Formularios.MONITOR:                    
                         retorno = true;
                     break;
-                case CGlobal.Formularios.REPORTE_TRAZABILIDAD:
+                case CGlobal.Formularios.REPORTES:
                     if (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString()))
                         retorno = true;
                     break;
-                case CGlobal.Formularios.REPORTE_MANUALES:
-                    if (this.usuario.ROL.rol1.Equals(CGlobal.Roles.ADMINISTRADOR.ToString()))
-                        retorno = true;
-                    break;
-
             }
 
 
@@ -190,32 +187,6 @@ namespace RFIDEnturnador
             }
         }
 
-        private void btnReporteTrazabilidad_Click(object sender, EventArgs e)
-        {
-            if (this.ValidarPermiso(CGlobal.Formularios.REPORTE_TRAZABILIDAD))
-            {
-                Form form = new reportes.ReporteTrazabilidad();
-                form.Show();
-            }
-            else
-            {
-                MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnReporteManual_Click(object sender, EventArgs e)
-        {
-            if (this.ValidarPermiso(CGlobal.Formularios.REPORTE_MANUALES))
-            {
-                Form form = new reportes.ReporteManuales();
-                form.Show();
-            }
-            else
-            {
-                MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void btnEnturnar_Click(object sender, EventArgs e)
         {
             if (this.ValidarPermiso(CGlobal.Formularios.ENTURNAR))
@@ -241,6 +212,44 @@ namespace RFIDEnturnador
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
             //this.ctrl.Detener();
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            if (this.ValidarPermiso(CGlobal.Formularios.REPORTES))
+            {
+                if (this.cboReporte.Items[this.cboReporte.SelectedIndex].ToString() == "Trazabilidad")
+                {
+                    Form form = new reportes.ReporteTrazabilidad();
+                    form.Show();                
+                }
+                else if (this.cboReporte.Items[this.cboReporte.SelectedIndex].ToString() == "Enturnamientos manuales")
+                {
+                    Form form = new reportes.ReporteManuales();
+                    form.Show();
+                }
+                else if (this.cboReporte.Items[this.cboReporte.SelectedIndex].ToString() == "Ciclos incompletos")
+                {
+                    Form form = new reportes.ReporteCiclosIncompletos();
+                    form.Show();                
+                }
+                else if (this.cboReporte.Items[this.cboReporte.SelectedIndex].ToString() == "Tiempo en planta")
+                {
+                    Form form = new reportes.ReporteTiemposEnPlanta();
+                    form.Show();                                
+                }
+                else if (this.cboReporte.Items[this.cboReporte.SelectedIndex].ToString() == "Tiempo por ciclo")
+                { 
+                
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("No tiene permisos para ingresar a esta opción", "No tiene permisos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
     }

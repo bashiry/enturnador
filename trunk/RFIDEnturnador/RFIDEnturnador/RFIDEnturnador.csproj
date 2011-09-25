@@ -117,11 +117,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="reportes\ReporteCiclosIncompletos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportes\ReporteCiclosIncompletos.Designer.cs">
+      <DependentUpon>ReporteCiclosIncompletos.cs</DependentUpon>
+    </Compile>
     <Compile Include="reportes\ReporteManuales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="reportes\ReporteManuales.Designer.cs">
       <DependentUpon>ReporteManuales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reportes\ReporteTiemposEnPlanta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportes\ReporteTiemposEnPlanta.Designer.cs">
+      <DependentUpon>ReporteTiemposEnPlanta.cs</DependentUpon>
     </Compile>
     <Compile Include="reportes\ReporteTrazabilidad.cs">
       <SubType>Form</SubType>
@@ -166,8 +178,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="reportes\ReporteCiclosIncompletos.resx">
+      <DependentUpon>ReporteCiclosIncompletos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="reportes\ReporteManuales.resx">
       <DependentUpon>ReporteManuales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\ReporteTiemposEnPlanta.resx">
+      <DependentUpon>ReporteTiemposEnPlanta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reportes\ReporteTrazabilidad.resx">
       <DependentUpon>ReporteTrazabilidad.cs</DependentUpon>
@@ -283,6 +301,9 @@
     <Content Include="configFiles\ROSPEC_CONTINUO.xml" />
     <Content Include="configFiles\ROSPEC_CONTINUO2.xml" />
     <Content Include="configFiles\WRITE_ACCES_SPEC.xml" />
+    <None Include="Resources\ReporteTiemposEnPlanta.png" />
+    <None Include="Resources\ReporteCiclosIncompletos.png" />
+    <None Include="Resources\Principal2.png" />
     <None Include="Resources\camionCisterna.jpg" />
     <None Include="Resources\rfidEnturnador.jpg" />
     <None Include="Resources\camionPequeno.gif" />
