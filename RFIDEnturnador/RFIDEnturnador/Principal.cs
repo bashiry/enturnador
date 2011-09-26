@@ -239,8 +239,9 @@ namespace RFIDEnturnador
                     form.Show();                                
                 }
                 else if (this.cboReporte.Items[this.cboReporte.SelectedIndex].ToString() == "Tiempo por ciclo")
-                { 
-                
+                {
+                    Form form = new reportes.ReporteTiemposPorCiclo();
+                    form.Show();                                                
                 }
 
 

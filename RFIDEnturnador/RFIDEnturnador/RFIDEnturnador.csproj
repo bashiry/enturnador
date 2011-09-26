@@ -135,6 +135,12 @@
     <Compile Include="reportes\ReporteTiemposEnPlanta.Designer.cs">
       <DependentUpon>ReporteTiemposEnPlanta.cs</DependentUpon>
     </Compile>
+    <Compile Include="reportes\ReporteTiemposPorCiclo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reportes\ReporteTiemposPorCiclo.Designer.cs">
+      <DependentUpon>ReporteTiemposPorCiclo.cs</DependentUpon>
+    </Compile>
     <Compile Include="reportes\ReporteTrazabilidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reportes\ReporteTiemposEnPlanta.resx">
       <DependentUpon>ReporteTiemposEnPlanta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reportes\ReporteTiemposPorCiclo.resx">
+      <DependentUpon>ReporteTiemposPorCiclo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reportes\ReporteTrazabilidad.resx">
       <DependentUpon>ReporteTrazabilidad.cs</DependentUpon>
@@ -301,6 +310,7 @@
     <Content Include="configFiles\ROSPEC_CONTINUO.xml" />
     <Content Include="configFiles\ROSPEC_CONTINUO2.xml" />
     <Content Include="configFiles\WRITE_ACCES_SPEC.xml" />
+    <None Include="Resources\ReporteTiemposPorCiclo.png" />
     <None Include="Resources\ReporteTiemposEnPlanta.png" />
     <None Include="Resources\ReporteCiclosIncompletos.png" />
     <None Include="Resources\Principal2.png" />
