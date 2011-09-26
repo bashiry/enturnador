@@ -270,6 +270,13 @@ namespace RFIDEnturnador.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ReporteTiemposPorCiclo {
+            get {
+                object obj = ResourceManager.GetObject("ReporteTiemposPorCiclo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap rfidEnturnador {
             get {
                 object obj = ResourceManager.GetObject("rfidEnturnador", resourceCulture);
