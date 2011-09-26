@@ -245,25 +245,25 @@ namespace RFIDEnturnador
         {
             this.grd1.Columns[0].HeaderText = "No.";
             this.grd1.Columns[1].HeaderText = "PLACA";
-            this.grd1.Columns[2].HeaderText = "HORA";
-            this.grd1.Columns[2].DefaultCellStyle.Format = "t";
+            this.grd1.Columns[2].HeaderText = "FECHA Y HORA";
+            this.grd1.Columns[2].DefaultCellStyle.Format = "MMM dd hh:mm tt";
             this.grd1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             this.grd2.Columns[0].HeaderText = "No.";
             this.grd2.Columns[1].HeaderText = "PLACA";
-            this.grd2.Columns[2].HeaderText = "HORA";
-            this.grd2.Columns[2].DefaultCellStyle.Format = "t";
+            this.grd2.Columns[2].HeaderText = "FECHA Y HORA";
+            this.grd2.Columns[2].DefaultCellStyle.Format = "g";
             this.grd2.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             this.grd1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.grd2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            //this.grd1.Columns[0].Width = 90;
-            //this.grd1.Columns[1].Width = 180;
-            //this.grd1.Columns[2].Width = 280;
-            //this.grd2.Columns[0].Width = 90;
-            //this.grd2.Columns[1].Width = 180;
-            //this.grd2.Columns[2].Width = 280;
+            this.grd1.Columns[0].Width = Convert.ToInt32(this.grd1.Width * 0.14);
+            this.grd1.Columns[1].Width = Convert.ToInt32(this.grd1.Width * 0.25);
+            this.grd1.Columns[2].Width = Convert.ToInt32(this.grd1.Width * 0.60);
+            this.grd2.Columns[0].Width = Convert.ToInt32(this.grd1.Width * 0.14);
+            this.grd2.Columns[1].Width = Convert.ToInt32(this.grd1.Width * 0.25);
+            this.grd2.Columns[2].Width = Convert.ToInt32(this.grd1.Width * 0.60);
         }
 
         #endregion

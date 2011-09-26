@@ -31,11 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnListo = new System.Windows.Forms.Button();
-            this.txtPlacas = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cboTipoCargue = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -54,10 +53,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grd = new System.Windows.Forms.DataGridView();
             this.btnExportar = new System.Windows.Forms.Button();
+            this.numTiempoEnPlanta = new System.Windows.Forms.NumericUpDown();
             this.PLACA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPOCARGUE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FECHAINICIAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FECHAFINAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIEMPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numHoraInicial)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTiempoEnPlanta)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -83,17 +83,6 @@
             this.panel2.Size = new System.Drawing.Size(723, 85);
             this.panel2.TabIndex = 8;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label1.Location = new System.Drawing.Point(97, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(350, 29);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Reporte de tiempos en planta";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::RFIDEnturnador.Properties.Resources.ReporteTiemposEnPlanta;
@@ -105,10 +94,21 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label1.Location = new System.Drawing.Point(97, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(350, 29);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Reporte de tiempos en planta";
+            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.numTiempoEnPlanta);
             this.groupBox1.Controls.Add(this.btnListo);
-            this.groupBox1.Controls.Add(this.txtPlacas);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cboTipoCargue);
             this.groupBox1.Controls.Add(this.label8);
@@ -144,21 +144,14 @@
             this.btnListo.UseVisualStyleBackColor = true;
             this.btnListo.Click += new System.EventHandler(this.btnListo_Click);
             // 
-            // txtPlacas
-            // 
-            this.txtPlacas.Location = new System.Drawing.Point(222, 139);
-            this.txtPlacas.Name = "txtPlacas";
-            this.txtPlacas.Size = new System.Drawing.Size(469, 22);
-            this.txtPlacas.TabIndex = 30;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(18, 142);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(198, 17);
+            this.label9.Size = new System.Drawing.Size(160, 17);
             this.label9.TabIndex = 29;
-            this.label9.Text = "Placas (separadas por coma):";
+            this.label9.Text = "Tiempo en planta (hrs.):";
             // 
             // cboTipoCargue
             // 
@@ -332,7 +325,6 @@
             this.PLACA,
             this.TIPOCARGUE,
             this.FECHAINICIAL,
-            this.FECHAFINAL,
             this.TIEMPO});
             this.grd.Location = new System.Drawing.Point(21, 58);
             this.grd.Margin = new System.Windows.Forms.Padding(4);
@@ -367,6 +359,19 @@
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
+            // numTiempoEnPlanta
+            // 
+            this.numTiempoEnPlanta.Location = new System.Drawing.Point(185, 140);
+            this.numTiempoEnPlanta.Margin = new System.Windows.Forms.Padding(4);
+            this.numTiempoEnPlanta.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numTiempoEnPlanta.Name = "numTiempoEnPlanta";
+            this.numTiempoEnPlanta.Size = new System.Drawing.Size(71, 22);
+            this.numTiempoEnPlanta.TabIndex = 32;
+            // 
             // PLACA
             // 
             this.PLACA.DataPropertyName = "placa";
@@ -385,17 +390,10 @@
             // 
             // FECHAINICIAL
             // 
-            this.FECHAINICIAL.DataPropertyName = "horaInicial";
-            this.FECHAINICIAL.HeaderText = "FECHA INICIAL";
+            this.FECHAINICIAL.DataPropertyName = "hora";
+            this.FECHAINICIAL.HeaderText = "FECHA ENTRADA";
             this.FECHAINICIAL.Name = "FECHAINICIAL";
             this.FECHAINICIAL.ReadOnly = true;
-            // 
-            // FECHAFINAL
-            // 
-            this.FECHAFINAL.DataPropertyName = "horaFinal";
-            this.FECHAFINAL.HeaderText = "FECHA FINAL";
-            this.FECHAFINAL.Name = "FECHAFINAL";
-            this.FECHAFINAL.ReadOnly = true;
             // 
             // TIEMPO
             // 
@@ -428,6 +426,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numHoraInicial)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTiempoEnPlanta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -439,7 +438,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         internal System.Windows.Forms.Button btnListo;
-        private System.Windows.Forms.TextBox txtPlacas;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboTipoCargue;
         private System.Windows.Forms.Label label8;
@@ -458,10 +456,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         internal System.Windows.Forms.DataGridView grd;
         internal System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.NumericUpDown numTiempoEnPlanta;
         private System.Windows.Forms.DataGridViewTextBoxColumn PLACA;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPOCARGUE;
         private System.Windows.Forms.DataGridViewTextBoxColumn FECHAINICIAL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FECHAFINAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIEMPO;
     }
 }

@@ -166,7 +166,7 @@ namespace EnturnadorDAO.DAO
         }
 
         /// <summary>
-        /// Retorna datatable con los resultados del reporte de ciclos incompletos
+        /// Retorna datatable con los resultados del reporte de camiones que llevan mas de x tiempo en planta
         /// </summary>
         /// <param name="hashFiltros">Hashtable con los filtros que se deben aplicar</param>
         /// <returns></returns>
@@ -174,7 +174,8 @@ namespace EnturnadorDAO.DAO
         {
             var q = from l in this._ent.LOG_AUTOMATICO
                     join c in this._ent.CAMION on l.idCamion equals c.id
-                    join t in this._ent.TIPO_CARGUE on c.idTipoCargue equals t.id
+                    join t in this._ent.TIPO_CARGUE on c.idTipoCargue equals t.id                    
+                    where l.idAntena == 1 || l.idAntena == 4
                     orderby l.idCamion, l.hora
                     select new
                     {
@@ -183,7 +184,7 @@ namespace EnturnadorDAO.DAO
                         idTipoCargue = l.idTipoCargue,
                         tipoCargue = t.tipoCargue,
                         puerta = l.puerta,
-                        hora = l.hora,
+                        hora = l.hora,                        
                         l.idAntena
                     };
 
@@ -204,11 +205,6 @@ namespace EnturnadorDAO.DAO
                 q = q.Where(l => l.idTipoCargue == idTipoCargue);
             }
 
-            if (hashFiltros.ContainsKey("placas"))
-            {
-                string[] placas = hashFiltros["placas"].ToString().Split(',');
-                q = q.Where(l => placas.Contains(l.placa));
-            }
 
             return Utilidades.DAOUtil.ToDataTable(q);
         }
