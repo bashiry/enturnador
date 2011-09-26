@@ -222,53 +222,64 @@ namespace EnturnadorLIB.Reportes
             DataTable dtTiempo = new DataTable();
             dtTiempo.Columns.Add("placa");
             dtTiempo.Columns.Add("tipoCargue");
-            dtTiempo.Columns.Add("horaInicial");
-            dtTiempo.Columns.Add("horaFinal");
+            dtTiempo.Columns.Add("hora");            
             dtTiempo.Columns.Add("tiempo");            
             string horaInicial = "";
             string idAntenaAnterior = "";
+            string tipoCargueAnterior = "";
             DataRow dr;
-            TimeSpan tiempo;
+            int tiempo;
             if (dt.Rows.Count > 0)
             {
                 placaAnterior = dt.Rows[0]["placa"].ToString();
-                puertaAnterior = dt.Rows[0]["puerta"].ToString();                
+                tipoCargueAnterior = dt.Rows[0]["tipoCargue"].ToString();      
                 horaInicial = dt.Rows[0]["hora"].ToString();
                 idAntenaAnterior = dt.Rows[0]["idAntena"].ToString();
 
                 //OJO: empieza en 1 el for
                 for (int i = 1; i < dt.Rows.Count; i++)
                 {                    
-                    //Si la placa del registro anterior es igual
-                    if ((dt.Rows[i]["placa"].ToString() == placaAnterior) && (idAntenaAnterior == "1") && (dt.Rows[i]["idAntena"].ToString() == "4"))
+                    //Si cambia de placa y el registro anterior era en la puerta 1, quiere decir que el camion no ha salido
+                    if ((placaAnterior != dt.Rows[i]["placa"].ToString()) && (idAntenaAnterior == "1"))
                     {
-                        dr = dtTiempo.NewRow();
-                        dr["placa"] = placaAnterior;
-                        dr["tipoCargue"] = dt.Rows[i]["tipoCargue"].ToString();
-                        dr["horaInicial"] = horaInicial;
-                        dr["horaFinal"] = dt.Rows[i]["hora"].ToString();
+                        tiempo = Convert.ToInt32(DateTime.Now.Subtract(Convert.ToDateTime(horaInicial)).TotalHours);
 
-                        if (dt.Rows[i]["hora"].ToString().Length > 0)
+                        //Si el tiempo es mayor al que llega en el filtro se agrega la fila
+                        if (tiempo >= Convert.ToInt32(hashFiltros["tiempo"].ToString()))
                         {
-                            tiempo = Convert.ToDateTime(dt.Rows[i]["hora"].ToString()).Subtract(Convert.ToDateTime(horaInicial));
+                            dr = dtTiempo.NewRow();
+                            dr["placa"] = placaAnterior;
+                            dr["tipoCargue"] = tipoCargueAnterior;
+                            dr["hora"] = horaInicial;
                             dr["tiempo"] = tiempo;
-                        }
-                        else
-                        {
-                            tiempo = DateTime.Now.Subtract(Convert.ToDateTime(horaInicial));
-                            dr["tiempo"] = tiempo;
+                            dtTiempo.Rows.Add(dr);                        
                         }
 
-                        dtTiempo.Rows.Add(dr);
-                        
                     }
 
                     placaAnterior = dt.Rows[i]["placa"].ToString();
-                    puertaAnterior = dt.Rows[i]["puerta"].ToString();                    
+                    tipoCargueAnterior = dt.Rows[i]["tipoCargue"].ToString();
                     horaInicial = dt.Rows[i]["hora"].ToString();
-                    idAntenaAnterior = dt.Rows[i]["idAntena"].ToString();
+                    idAntenaAnterior = dt.Rows[i]["idAntena"].ToString();                   
+                }
+
+                //Para el ultimo registro
+                if (idAntenaAnterior == "1")
+                {
+                    tiempo = Convert.ToInt32(DateTime.Now.Subtract(Convert.ToDateTime(horaInicial)).TotalHours);
+                    if (tiempo >= Convert.ToInt32(hashFiltros["tiempo"].ToString()))
+                    {
+                        dr = dtTiempo.NewRow();
+                        dr["placa"] = placaAnterior;
+                        dr["tipoCargue"] = tipoCargueAnterior;
+                        dr["hora"] = horaInicial;
+                        dr["tiempo"] = tiempo;
+                        dtTiempo.Rows.Add(dr);
+                    }                    
                 }
             }
+
+            
 
             return dtTiempo;
         }

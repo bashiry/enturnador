@@ -85,8 +85,8 @@ namespace RFIDEnturnador.reportes
 
             if (this.cboTipoCargue.SelectedIndex > 0)
                 filtros.Add("idTipoCargue", this.cboTipoCargue.SelectedValue);
-            if (this.txtPlacas.Text.Trim().Length > 0)
-                filtros.Add("placas", this.txtPlacas.Text.Trim());
+
+            filtros.Add("tiempo", this.numTiempoEnPlanta.Value);
 
             this.dt = this.objReporte.GetReporteTiemposEnPlanta(filtros);
             this.grd.AutoGenerateColumns = false;
@@ -114,8 +114,7 @@ namespace RFIDEnturnador.reportes
                 rep.Append("<tr>");
                 rep.Append("<td align='center'><strong>PLACA</strong></td>");
                 rep.Append("<td align='center'><strong>TIPO DE CARGUE</strong></td>");
-                rep.Append("<td align='center'><strong>FECHA INICIAL</strong></td>");
-                rep.Append("<td align='center'><strong>FECHA FINAL</strong></td>");
+                rep.Append("<td align='center'><strong>FECHA ENTRADA</strong></td>");                
                 rep.Append("<td align='center'><strong>TIEMPO</strong></td>");
                 rep.Append("</tr>");
 
@@ -125,8 +124,7 @@ namespace RFIDEnturnador.reportes
                     rep.Append("<tr>");
                     rep.Append("<td>" + dt.Rows[i]["placa"].ToString() + "</td>");
                     rep.Append("<td>" + dt.Rows[i]["tipoCargue"].ToString() + "</td>");
-                    rep.Append("<td>" + dt.Rows[i]["horaInicial"].ToString() + "</td>");
-                    rep.Append("<td>" + dt.Rows[i]["horaFinal"].ToString() + "</td>");
+                    rep.Append("<td>" + dt.Rows[i]["hora"].ToString() + "</td>");                    
                     rep.Append("<td>" + dt.Rows[i]["tiempo"].ToString() + "</td>");
                     rep.Append("</tr>");
                 }
